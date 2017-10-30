@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { User } from '../../domain/models/user';
 
 @Component({
   selector: 'login-new',
@@ -6,5 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login-new.component.css']
 })
 export class loginNewComponent {
-  constructor() {}
+
+  private newUser = new User();
+
+  @Input()
+  public users : User[] = [];
+
+  constructor() { }
+
+  private addUser() {
+    this.users.push(this.newUser);
+    this.newUser = new User();
+  }
 }
