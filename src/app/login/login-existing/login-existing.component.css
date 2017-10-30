@@ -1,0 +1,17 @@
+#loginContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+}
+
+.jumbotron {
+    border: 2em;
+    width: 40em;
+    margin: auto;
+    padding: 2rem;
+}
+
+a:hover {
+    text-decoration: none;
+}
