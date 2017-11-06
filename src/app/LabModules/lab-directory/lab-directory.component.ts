@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Folder } from '../../domain/index';
 
 @Component({
   selector: 'lab-directory',
@@ -7,5 +8,16 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 
 export class labDirectoryComponent {
-  
+  private newFile = "";
+
+  @Input()
+  public files : string[] = [];
+
+  constructor() {
+    this.files = ["File 1", "File 2"];
+  }
+
+  private addFile() {
+    this.files.push(this.newFile);
+  }
 }

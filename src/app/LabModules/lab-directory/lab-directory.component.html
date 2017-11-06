@@ -1,92 +1,47 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <div class="container">
-<div class="col-4">
-  <h5 class="pl-2">Lab Directory</h5>
-  <ul class="list-group">
-    <li class="list-group-item bg-light">
-      <a href="#" data-toggle="collapse" href="#folder1" aria-expanded="false" aria-controls="folder1">
-        Folder 1
-        <i class="material-icons d-inline">face</i>
-      </a>
-    </li>
-    <div class="collapse" id="folder1">
-      <div class="list-group-item bg-light">
-        <ul class="list-group mb-0">
-          <li class="list-group-item bg-light">
-            <a href="#">
-              File 1
-              <span class="glyphicon glyphicon-file float-right"></span>
-            </a>
-          </li>
-          <li class="list-group-item bg-light">
-            <a href="#">
-              File 2
-              <span class="glyphicon glyphicon-file float-right"></span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
+<div class="col-6">
 
-    <li class="list-group-item bg-light">
-      <a href="#" data-toggle="collapse" href="#folder2" aria-expanded="false" aria-controls="folder2">
-        Folder 2
-        <span class="float-right glyphicon glyphicon-chevron-down"></span>
-      </a>
-    </li>
-    <div class="collapse" id="folder2">
-      <div class="list-group-item bg-light">
-        <ul class="list-group mb-0">
-          <li class="list-group-item bg-light">
-            <a href="#">
-              File 3
-              <span class="glyphicon glyphicon-file float-right"></span>
-            </a>
-          </li>
-          <li class="list-group-item bg-light">
-            <a href="#">
-              File 4
-              <span class="glyphicon glyphicon-file float-right"></span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
+  <div class="d-flex mb-2">
+    <h4 class="pt-3">Lab Directory</h4>
+    <button class="btn btn-primary ml-md-auto" data-toggle="modal" data-target="#addModal">
+      <h6 class="adjust-up d-inline">Add New
+      <i class="material-icons adjust-down">add_circle_outline</i></h6>
+    </button>
+  </div>
 
-    <li class="list-group-item bg-light">
-      <a href="#" data-toggle="collapse" href="#folder3" aria-expanded="false" aria-controls="folder3">
-        Folder 3
-        <span class="float-right glyphicon glyphicon-chevron-down"></span>
-      </a>
-    </li>
-    <div class="collapse" id="folder3">
-      <div class="list-group-item bg-light">
-        <ul class="list-group mb-0">
-          <li class="list-group-item bg-light">
-            <a href="#">
-              File 5
-              <span class="glyphicon glyphicon-file float-right"></span>
-            </a>
-          </li>
-          <li class="list-group-item bg-light">
-            <a href="#">
-              File 6
-              <span class="glyphicon glyphicon-file float-right"></span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <li class="list-group-item bg-light">
+  <ul class="list-group mb-0">
+    <li class="list-group-item bg-light" *ngFor="let file of files; let i = index;">
       <a href="#">
-        File 5
-        <span class="glyphicon glyphicon-file float-right"></span>
+        {{file}}
+      <i class="material-icons d-inline float-right">insert_drive_file</i>
       </a>
     </li>
-
-
   </ul>
 </div>
+
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add New Report</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="text"
+         class="form-control"
+         placeholder="Filename"
+         [(ngModel)]="newFile" />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addFile()" [disabled]="!newFile" onclick="$('#addModal').modal('hide')">Add File</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </div>
