@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app',
@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  
+
+  private newModule : string = "";
+  @Input()
+  public modules : string [] = [];
+
+  private addModule() {
+      this.modules.push(this.newModule);
+  }
 }

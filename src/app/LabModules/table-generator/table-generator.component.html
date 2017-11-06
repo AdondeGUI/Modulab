@@ -1,16 +1,9 @@
 <div>
   <h5>Table</h5>
-  <label for="moduleType">Module Type</label>
-  <select class="form-control" id="moduleType" onclick="events.onModuleChange()">
-    <option>
-      Table
-    </option>
-  </select>
-
   <label for="tableRows">Rows</label>
-  <input type="number" id="tableRows" name="tableRows" min="1"  value="1" [(ngModel)]="rowNum" (click)="adjustTableSize()"/>
+  <input type="number" name="tableRows" min="1" [(ngModel)]="rowNum" (click)="adjustTableSize()"/>
   <label for="tableCols">Cols</label>
-  <input type="number" id="tableCols" name="tableCols" min="1" value="1" [(ngModel)]="colNum" (click)="adjustTableSize()"/>
+  <input type="number" name="tableCols" min="1" [(ngModel)]="colNum" (click)="adjustTableSize()"/>
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="fall2017-tab">
     <table class="table table-striped">
       <thead id="dataTableHead">

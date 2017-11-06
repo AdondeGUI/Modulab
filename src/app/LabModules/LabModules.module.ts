@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { tableGeneratorComponent } from './table-generator/table-generator.component';
+import { TableGeneratorComponent } from './table-generator/table-generator.component';
+import { TextModuleComponent } from './text-module/text-module.component';
 
 
 @NgModule({
@@ -10,10 +11,12 @@ import { tableGeneratorComponent } from './table-generator/table-generator.compo
         FormsModule,
     ],
     declarations: [
-        tableGeneratorComponent,
+        TableGeneratorComponent,
+        TextModuleComponent
     ],
     exports: [
-        tableGeneratorComponent
+        TableGeneratorComponent,
+        TextModuleComponent
     ]
 })
 export class LabModulesModule {
