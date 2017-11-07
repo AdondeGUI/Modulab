@@ -6,34 +6,39 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./table-generator.component.css']
 })
 
-export class tableGeneratorComponent {
+export class TableGeneratorComponent {
   rows: any[] = [];
   cols: any[] = [];
-  rowNum: number;
-  colNum: number;
+  rowNum: number = 1;
+  colNum: number = 1;
   constructor() {
   }
 
   private adjustTableSize() {
-    var shit = {'one':this.rowNum,'two':this.colNum}
-    this.rows.push(shit);
-    // var rowsVal = this.rowNum;
-    // for(item in rows)
-    //   delete this.rows();
-    // for(var i=0;i<rowsVal; i++)
-    //   this.rows.push(shit);
+    console.log('Cols: ' + this.cols.length);
+    console.log('Rows: ' + this.rows.length);
+    console.log('ColNum: ' + this.colNum);
+    console.log('RowNum: ' + this.rowNum);
 
-    // var tableBody = '';
-    // var rows = document.getElementById('tableRows').value;
-    // alert(rows);
-    // for(var i = 0; i<rows; i++){
-    //   tableBody +="<tr><td>Row Content</td><td>Row Content</td><td>Row Content</td><td>Row Content</td></tr>";
-    // }
-    // $('dataTableBody').html(tableBody);
+    while(this.colNum != this.cols.length || this.rowNum != this.rows.length)
+    {
+      var col = {'one':this.colNum}
+      if(this.colNum > this.cols.length)
+        this.cols.push(col);
+      else if(this.colNum < this.cols.length)
+        this.cols.pop();
+      var row = {'one':this.rowNum}
+      if(this.rowNum > this.rows.length)
+      {
+        console.log('Add Row');
+        console.log(row);
+        this.rows.push(row);
+      }
+      else if(this.rowNum < this.rows.length)
+      {
+        console.log('Pop Row');
+        this.rows.pop();
+      }
+    }
   }
-
-  // private addCol() {
-  //   var shit = {'one':this.rowNum,'two':this.colNum}
-  //   this.rows.push(shit);
-  // }
 }

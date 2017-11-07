@@ -1,10 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { tableGeneratorComponent } from './table-generator/table-generator.component';
-import { labDirectoryComponent } from './lab-directory/lab-directory.component';
 import { ImageModuleComponent } from './image-module/image-module.component';
-
+import { TableGeneratorComponent } from './table-generator/table-generator.component';
+import { TextModuleComponent } from './text-module/text-module.component';
 
 @NgModule({
     imports: [
@@ -12,17 +11,19 @@ import { ImageModuleComponent } from './image-module/image-module.component';
         FormsModule,
     ],
     declarations: [
-
-        tableGeneratorComponent,
+        TableGeneratorComponent,
         labDirectoryComponent,
-        ImageModuleComponent
+        ImageModuleComponent,
+        TextModuleComponent
     ],
     exports: [
-        tableGeneratorComponent,
+        TableGeneratorComponent,
         labDirectoryComponent,
-        ImageModuleComponent
+        ImageModuleComponent,
+        TextModuleComponent
     ]
 })
+
 export class LabModulesModule {
 
 }
