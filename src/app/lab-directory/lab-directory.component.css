@@ -1,0 +1,21 @@
+.collapse {
+  margin-bottom: -1px;
+}
+
+a {
+  color: #15F;
+}
+
+a:hover {
+  color: #026;
+}
+
+.adjust-up {
+  position: relative;
+  bottom: 0.24em;
+}
+
+.adjust-down {
+  position: relative;
+  top: 0.2em;
+}

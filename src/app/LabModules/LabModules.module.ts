@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TableGeneratorComponent } from './table-generator/table-generator.component';
 import { TextModuleComponent } from './text-module/text-module.component';
-import { labDirectoryComponent } from './lab-directory/lab-directory.component';
-
 
 @NgModule({
     imports: [
@@ -13,13 +11,11 @@ import { labDirectoryComponent } from './lab-directory/lab-directory.component';
     ],
     declarations: [
         TableGeneratorComponent,
-        TextModuleComponent,
-        labDirectoryComponent
+        TextModuleComponent
     ],
     exports: [
         TableGeneratorComponent,
-        TextModuleComponent,
-        labDirectoryComponent
+        TextModuleComponent
     ]
 })
 export class LabModulesModule {
