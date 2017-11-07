@@ -19,5 +19,6 @@ export class labDirectoryComponent {
 
   private addFile() {
     this.files.push(this.newFile);
+    this.newFile = "";
   }
 }
