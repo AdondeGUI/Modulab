@@ -1,0 +1,27 @@
+<div class="d-flex flex-column" id="loginContainer">
+    <div class="jumbotron">
+        <h1>New User</h1>
+        <br>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" [(ngModel)]="newUser.email">
+        </div>
+        <br>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="newUser.username">
+        </div>
+        <br>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" [(ngModel)]="newUser.password">
+        </div>
+        <br>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Confirm Password" aria-label="ConfirmPassword" aria-describedby="basic-addon1">
+        </div>
+        <br>
+        <p class="lead float-right">
+            <a class="btn btn-primary btn-lg" href="#" role="button" (click)="addUser()">Create Account</a>
+        </p>
+        <br>
+        <p id="newAccount"><a href="#">Log in</a></p>
+    </div>
+</div>

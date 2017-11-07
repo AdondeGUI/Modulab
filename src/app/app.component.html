@@ -1,4 +1,3 @@
-Hello!
 <label for="moduleType">Module Type</label>
 <select class="form-control" id="moduleType" onclick="events.onModuleChange()">
   <option value="hypothesis">Hypothesis</option>
@@ -11,3 +10,13 @@ Hello!
 <text-module></text-module>
 <input class="btn btn-secondary" type="submit" value="Insert New Module" (click)="addModule()">
 <table-generator></table-generator>
+
+<div class="container">
+  <h1 class="title">MODULAB</h1>
+  <login-existing></login-existing>
+  <login-new></login-new>
+  <hr>
+  <table-generator></table-generator>
+  <hr>
+  <lab-directory></lab-directory>
+</div>

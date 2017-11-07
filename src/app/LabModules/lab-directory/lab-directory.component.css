@@ -1,0 +1,15 @@
+.glyphicon {
+  padding-top: 0.3em;
+}
+
+.collapse {
+  margin-bottom: -1px;
+}
+
+a {
+  color: #15F;
+}
+
+a:hover {
+  color: #026;
+}

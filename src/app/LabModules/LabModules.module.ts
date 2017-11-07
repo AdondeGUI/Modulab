@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TableGeneratorComponent } from './table-generator/table-generator.component';
 import { TextModuleComponent } from './text-module/text-module.component';
+import { labDirectoryComponent } from './lab-directory/lab-directory.component';
 
 
 @NgModule({
@@ -12,11 +13,13 @@ import { TextModuleComponent } from './text-module/text-module.component';
     ],
     declarations: [
         TableGeneratorComponent,
-        TextModuleComponent
+        TextModuleComponent,
+        labDirectoryComponent
     ],
     exports: [
         TableGeneratorComponent,
-        TextModuleComponent
+        TextModuleComponent,
+        labDirectoryComponent
     ]
 })
 export class LabModulesModule {
