@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Folder } from '../../domain/index';
+import { Folder } from '../domain/index';
 
 @Component({
   selector: 'lab-directory',
