@@ -1,0 +1,8 @@
+<div class="text-center">
+    <input type='file' (change)="readUrl($event)">
+    <br>
+    <!--<img [src]="url">-->
+    <div *ngFor="let string of picURLs">
+        <img src={{string}} />
+    </div>
+</div>

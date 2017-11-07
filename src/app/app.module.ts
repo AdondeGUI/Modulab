@@ -2,16 +2,16 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { LoginModule } from './LabModules/login';
-import { LabModulesModule } from './LabModules'
+import { LabModulesModule } from './LabModules';
+import { LoginModule } from './login';
 import { labDirectoryComponent } from './lab-directory/lab-directory.component';
 
 @NgModule({
   imports: [ 
     BrowserModule,
-    FormsModule,
+    LabModulesModule,
     LoginModule,
-    LabModulesModule
+    FormsModule
   ],
   declarations: [
     AppComponent,

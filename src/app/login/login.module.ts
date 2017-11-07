@@ -4,13 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { loginExistingComponent } from './login-existing/login-existing.component';
 import { loginNewComponent } from './login-new/login-new.component';
 
-
 @NgModule({
     imports: [
         BrowserModule,
-        FormsModule
+        FormsModule,
     ],
     declarations: [
+
         loginExistingComponent,
         loginNewComponent
     ],
