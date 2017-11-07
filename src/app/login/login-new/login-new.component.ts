@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User } from '../../../domain/models/user';
+import { User } from '../../domain/models/user';
 
 @Component({
   selector: 'login-new',

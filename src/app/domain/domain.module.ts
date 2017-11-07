@@ -1,3 +1,4 @@
+import { NgModule } from '@angular/core';
 import{ BrowserModule } from '@angular/platform-browser';
 import{ TextData } from './models/text-data';
 
@@ -7,6 +8,7 @@ import{ TextData } from './models/text-data';
     declarations:[TextData],
     exports:[TextData]
 })
+
 export class DomainModule{
 
 }

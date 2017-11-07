@@ -12,13 +12,11 @@ import { TextModuleComponent } from './text-module/text-module.component';
     ],
     declarations: [
         TableGeneratorComponent,
-        labDirectoryComponent,
         ImageModuleComponent,
         TextModuleComponent
     ],
     exports: [
         TableGeneratorComponent,
-        labDirectoryComponent,
         ImageModuleComponent,
         TextModuleComponent
     ]
