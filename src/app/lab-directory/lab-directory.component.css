@@ -10,12 +10,17 @@ a:hover {
   color: #026;
 }
 
-.adjust-up {
+.adj-1 {
   position: relative;
   bottom: 0.24em;
 }
 
-.adjust-down {
+.adj-2 {
   position: relative;
   top: 0.2em;
+}
+
+.adj-3 {
+  position: relative;
+  left: 0.06em;
 }

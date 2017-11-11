@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { LabModulesModule } from './LabModules';
 import { LoginModule } from './login';
 import { labDirectoryComponent } from './lab-directory/lab-directory.component';
+import { accountNavComponent } from './account-nav/account-nav.component';
 
 @NgModule({
   imports: [ 
@@ -15,11 +16,13 @@ import { labDirectoryComponent } from './lab-directory/lab-directory.component';
   ],
   declarations: [
     AppComponent,
-    labDirectoryComponent
+    labDirectoryComponent,
+    accountNavComponent
   ],
   bootstrap: [
     AppComponent,
-    labDirectoryComponent
+    labDirectoryComponent,
+    accountNavComponent
   ]
 })
 
