@@ -4,18 +4,18 @@
 <div class="col-6">
 
   <div class="d-flex mb-2">
-    <h4 class="pt-3">Lab Directory</h4>
-    <button class="btn btn-primary ml-md-auto" data-toggle="modal" data-target="#addModal">
-      <h6 class="adj-1 adj-3 d-inline">Add New
-      <i class="material-icons adj-2">add_circle_outline</i></h6>
+    <h4 class="pt-3"><i class="material-icons d-inline adj-4">folder</i> Lab Directory</h4>
+    <button class="btn btn-info ml-md-auto" data-toggle="modal" data-target="#addModal">
+      <span class="adj-1 adj-3 d-inline">Add New</span>
+      <i class="material-icons adj-2">add_circle_outline</i>
     </button>
   </div>
 
   <ul class="list-group mb-0">
-    <li class="list-group-item bg-light" *ngFor="let file of files; let i = index;">
-      <a href="#">
+    <li class="list-group-item bg-light clearfix" *ngFor="let file of files; let i = index;">
+      <a href="#" class="text-dark">
         {{file}}
-      <i class="material-icons d-inline float-right">insert_drive_file</i>
+      <i class="material-icons d-inline float-right text-info">insert_drive_file</i>
       </a>
     </li>
   </ul>
@@ -38,7 +38,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" (click)="addFile()" [disabled]="!newFile" onclick="$('#addModal').modal('hide')">Add File</button>
+        <button type="button" class="btn btn-info" (click)="addFile()" [disabled]="!newFile" onclick="$('#addModal').modal('hide')">Add File</button>
       </div>
     </div>
   </div>
