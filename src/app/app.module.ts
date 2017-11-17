@@ -12,6 +12,7 @@ const defaultRoute = 'directory';
   imports: [ 
     BrowserModule,
     HttpClientModule,
+    DirectoryModule,
     RouterModule.forRoot([
       { path: '', redirectTo: defaultRoute, pathMatch: 'full' }
     ])

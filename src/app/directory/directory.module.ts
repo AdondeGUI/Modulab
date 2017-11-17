@@ -14,6 +14,7 @@ import { LabDirectoryComponent } from '../lab-directory/lab-directory.component'
   imports: [
     BrowserModule,
     FormsModule,
+    AccountModule,
     RouterModule.forChild(DIRECTORY_ROUTES)
   ],
   declarations: [

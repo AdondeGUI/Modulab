@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'account-nav',
@@ -7,4 +8,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 
 export class AccountNavComponent {
+
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) { }
+
+  private navigateToSettings() {
+    this.router.navigateByUrl('settings');
+  }
 }
