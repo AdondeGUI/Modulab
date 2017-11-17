@@ -5,17 +5,20 @@ import { AppComponent } from './app.component';
 import { LabModulesModule } from './LabModules';
 import { LoginModule } from './login';
 import { labDirectoryComponent } from './lab-directory/lab-directory.component';
+import { LabGeneratorComponent } from './lab-generator/lab-generator.component';
+
 
 @NgModule({
-  imports: [ 
+  imports: [
     BrowserModule,
     LabModulesModule,
     LoginModule,
-    FormsModule
+    FormsModule,
   ],
   declarations: [
     AppComponent,
-    labDirectoryComponent
+    labDirectoryComponent,
+    LabGeneratorComponent
   ],
   bootstrap: [
     AppComponent,
