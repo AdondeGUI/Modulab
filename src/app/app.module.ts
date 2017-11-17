@@ -8,10 +8,11 @@ import { LabModulesModule } from './LabModules';
 import { accountModule } from './account';
 import { LoginModule } from './login';
 import { labDirectoryComponent } from './lab-directory/lab-directory.component';
+import { LabGeneratorComponent } from './lab-generator/lab-generator.component';
 import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
-  imports: [ 
+  imports: [
     BrowserModule,
     LabModulesModule,
     accountModule,
@@ -21,7 +22,8 @@ import {HttpClientModule} from '@angular/common/http';
   ],
   declarations: [
     AppComponent,
-    labDirectoryComponent
+    labDirectoryComponent,
+    LabGeneratorComponent
   ],
   bootstrap: [
     AppComponent,
