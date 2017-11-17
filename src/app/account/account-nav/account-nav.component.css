@@ -1,0 +1,34 @@
+.adj-1 {
+  position: relative;
+  top: 0.25em;
+}
+
+.adj-2 {
+  position: relative;
+  top: 0.08em;
+}
+
+.nav {
+  font-size: 1.18rem;
+}
+
+.nav-link {
+  color: #e0f0f8;
+}
+
+.nav-link.active,
+.nav-link.constant {
+  color: #fff;
+}
+
+.nav-link i {
+  color: #fff;
+}
+
+.nav-item {
+  padding: 0 0.5rem;
+}
+
+.big-icon {
+  font-size: 2em;
+}
