@@ -1,39 +1,119 @@
 FORMAT: 1A
 HOST: http://polls.apiblueprint.org/
 
-# Adonde
+# Modulab
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+Modulab is a web app for generating modular lab reports from scratch or from teach specified templates
 
-## Questions Collection [/questions]
 
-### List All Questions [GET]
+
+## User Collection [/users/{user_id}]
+
++ Parameters
+    + user_id: "1" (int, required) - user id to return data for
+
+### Get a user[GET]
 
 + Response 200 (application/json)
 
-        [
+        {
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
+                "username": "testuser1",
+                "user_id": 1,
+                "email": "email@gmail.com",
+                "courses": [
                     {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
+                        "title": "Basketweaving 101",
+                        "instructor": "Dr. Smith",
+                        "course_id": 123
+                    },
+                    {
+                        "title": "Physics 1",
+                        "instructor": "Dr. Roberts",
+                        "course_id": 305
+                    },
+                ],
+                "labs": [
+                    {
+                        "title": "Dark Energy Report",
+                        "lab_id": 2048,
+                        "course_id": 305,
+                        "modules": [
+                            {
+                                "type": "text",
+                                "description": "This is sample text for a text module!"
+                            },
+                            {
+                                "type": "table",
+                                "rows": 2
+                                "columns": 2
+                                "data": "header1 header2 datapoint1 datapoint2 datapoint3 datapoint4"
+                            },
+                            {
+                                "type": "image",
+                                "source": "images/figure1.png"
+                            },
                     }
                 ]
             }
-        ]
+        }
 
-### Create a New Question [POST]
+### Update User Info [PUT]
+
+Updates the user with user_id with new password.
+
++ Request (application/JSON)
+
+        {
+            user_id: 5,
+            oldPassword: "secure-password",
+            newPassword: "way-b3tt3r-p@ssw0rd"
+        }
+    
++ Response 201 (application/JSON)
+
+        {
+            "error":false,
+            "details":"User updated",
+        }
+
++ Response 404 (application/JSON)
+
+        {
+            "error":true,
+            "type":"UserNotFound",
+        }
+
+### Delete User [DELETE]
+
+Dete the user with user_id
+
++ Request (application/JSON)
+
+        {
+            user_id: 5,
+            oldPassword: "secure-password",
+            newPassword: "way-b3tt3r-p@ssw0rd"
+        }
+
++ Response 201 (application/JSON)
+
+        {
+            "error":false,
+            "details":"User deleted",
+        }
+
++ Response 404 (application/JSON)
+
+        {
+            "error":true,
+            "type":"UserNotFound",
+            "details":"User not found",
+        }
+
+## Users Group [/users]
+
+### Create a New User [POST]
 
 You may create your own question using this action. It takes a JSON
 object containing a question and a collection of answers in the
@@ -42,39 +122,32 @@ form of choices.
 + Request (application/json)
 
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
+            "username": "testuser2",
+            "email": "liame@liamg.moc",
+            "password": "passw0rd"
         }
 
 + Response 201 (application/json)
 
     + Headers
 
-            Location: /questions/2
+            Location: /users/2
 
     + Body
 
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
+                "username": "testuser2",
+                "email": "liame@liamg.moc",
+                "password": "passw0rd",
+                "courses": [],
+                "labs": []
             }
+
+
++ Response 404 (application/JSON)
+
+        {
+            "error":true,
+            "type":"UserNotFound",
+            "details": "User not found"
+        }
