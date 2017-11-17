@@ -7,7 +7,7 @@ import { Folder } from '../domain/index';
   styleUrls: [ 'lab-directory.component.css' ]
 })
 
-export class labDirectoryComponent {
+export class LabDirectoryComponent {
   private newFile = "";
 
   @Input()

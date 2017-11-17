@@ -1,31 +1,26 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-
 import { AppComponent } from './app.component';
-import { LabModulesModule } from './LabModules';
-import { accountModule } from './account';
-import { LoginModule } from './login';
-import { labDirectoryComponent } from './lab-directory/lab-directory.component';
-import {HttpClientModule} from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+
+import { DirectoryModule } from './directory';
+
+const defaultRoute = 'directory';
 
 @NgModule({
   imports: [ 
     BrowserModule,
-    LabModulesModule,
-    accountModule,
-    LoginModule,
-    FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([
+      { path: '', redirectTo: defaultRoute, pathMatch: 'full' }
+    ])
   ],
   declarations: [
-    AppComponent,
-    labDirectoryComponent
+    AppComponent
   ],
   bootstrap: [
-    AppComponent,
-    labDirectoryComponent
+    AppComponent
   ]
 })
 

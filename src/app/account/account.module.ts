@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { accountNavComponent } from './account-nav/account-nav.component';
-import { accountSettingsComponent } from './account-settings/account-settings.component';
+import { AccountNavComponent } from './account-nav/account-nav.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 @NgModule({
     imports: [
@@ -10,15 +10,15 @@ import { accountSettingsComponent } from './account-settings/account-settings.co
         FormsModule,
     ],
     declarations: [
-        accountNavComponent,
-        accountSettingsComponent
+        AccountNavComponent,
+        AccountSettingsComponent
     ],
     exports: [
-        accountNavComponent,
-        accountSettingsComponent
+        AccountNavComponent,
+        AccountSettingsComponent
     ]
 })
 
-export class accountModule {
+export class AccountModule {
 
 }
