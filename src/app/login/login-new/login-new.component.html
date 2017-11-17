@@ -7,7 +7,7 @@
         </div>
         <br>
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="newUser.username">
+            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="newUser.userName">
         </div>
         <br>
         <div class="input-group">
@@ -18,10 +18,22 @@
             <input type="text" class="form-control" placeholder="Confirm Password" aria-label="ConfirmPassword" aria-describedby="basic-addon1">
         </div>
         <br>
+
         <p class="lead float-right">
             <a class="btn btn-primary btn-lg" href="#" role="button" (click)="addUser()">Create Account</a>
         </p>
-        <br>
-        <p id="newAccount"><a href="#">Log in</a></p>
+        <div>
+            <form #f="ngForm">
+                <input type="radio" value="0" name="studentTeacher" [(ngModel)]="newUser.type" required #genderControl="ngModel"> Student
+                <input type="radio" value="1" name="studentTeacher" [(ngModel)]="newUser.type" required> Teacher
+            </form>
+        </div>
+        <div>
+            <p id="existingAccount">Already have an account? <a href="#">Log in</a></p>
+        </div>
+        <!-- <input type="checkbox" name="my-checkbox" checked> -->
+    </div>
+    <div>
+        <p>Type: {{newUser.type}}</p>
     </div>
 </div>
