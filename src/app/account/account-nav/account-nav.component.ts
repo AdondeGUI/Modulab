@@ -6,5 +6,5 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: [ 'account-nav.component.css' ]
 })
 
-export class accountNavComponent {
+export class AccountNavComponent {
 }
