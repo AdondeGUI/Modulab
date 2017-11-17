@@ -12,6 +12,8 @@ export class AppComponent {
   @Input()
   public modules : string [] = [];
 
+
+  
   private addModule() {
       this.modules.push(this.newModule);
   }
