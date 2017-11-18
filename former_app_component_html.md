@@ -1,0 +1,27 @@
+<account-nav></account-nav>		
+		
+<div class="container">
+  <lab-directory></lab-directory>		
+  <image-module></image-module>		
+  <hr>		
+  <login-existing></login-existing>		
+  <login-new></login-new>		
+  <hr>		
+  <table-generator></table-generator>		
+  <hr>		
+		
+  <label for="moduleType">Module Type</label>		
+  <select class="form-control" id="moduleType" onclick="events.onModuleChange()">		
+  <option value="hypothesis">Hypothesis</option>		
+  <option value="conclusion">Conclusion</option>		
+  <option value="appendix">Appendix</option>		
+  <option value="process">Process</option>		
+  <option value="method">Method</option>		
+  <option value="text">Text</option>		
+  </select>		
+  <text-module></text-module>		
+  <input class="btn btn-secondary" type="submit" value="Insert New Module" (click)="addModule()">		
+  <table-generator></table-generator>		
+</div>		
+		
+<account-settings></account-settings>
