@@ -16,8 +16,7 @@
   color: #e0f0f8;
 }
 
-.nav-link.active,
-.nav-link.constant {
+.nav-item.active .nav-link {
   color: #fff;
 }
 
@@ -25,10 +24,31 @@
   color: #fff;
 }
 
-.nav-item {
-  padding: 0 0.5rem;
-}
-
 .big-icon {
   font-size: 2em;
+}
+
+.navbar-brand {
+  font-weight: 500;
+  color: #fff;
+  font-size: 1.5em;
+  padding-left: 0.5em;
+}
+
+.nav-item-text {
+  padding-top: 0.2em;
+  font-weight: 400;
+  font-size: 1.05em;
+}
+
+.navbar .dropdown-menu:after, .navbar .dropdown-menu:before {
+    display:none;
+}
+
+.dropdown-menu {
+  left: -40px;
+}
+
+.link-custom {
+  cursor: pointer;
 }

@@ -13,7 +13,18 @@ export class AccountNavComponent {
     private activatedRoute: ActivatedRoute
   ) { }
 
+  private navigateToDirectory() {
+    this.router.navigateByUrl('directory');
+  }
+
   private navigateToSettings() {
     this.router.navigateByUrl('settings');
+  }
+
+  private logOut() {
+  
+  }
+
+  private addFileFromNav() {
   }
 }
