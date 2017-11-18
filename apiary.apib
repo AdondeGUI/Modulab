@@ -57,10 +57,14 @@ Retreive a user with a specified user_id
 + Response 200 (application/json)
 
         {
-            "first_name": "Bob",
-            "last_name": "Smith",
-            "email": "email@gmail.com",
-            "user_id": 1,
+            [
+                {
+                    "first_name": "Bob",
+                    "last_name": "Smith",
+                    "email": "email@gmail.com",
+                    "user_id": 1,
+                }
+            ]
         }
 
 ### Update User Info [PUT]
@@ -85,7 +89,7 @@ Updates the user with user_id with new data.
 + Response 404 (application/JSON)
 
         {
-            "details": "Error: user not found"
+            "details": "User 1 not found"
         }
 
 ### Delete User [DELETE]
@@ -101,7 +105,7 @@ Delete the user with user_id
 + Response 404 (application/JSON)
 
         {
-            "details": "Error: user not found"
+            "details": "User 1 not found"
         }
 
 ## Users Group [/users]
@@ -111,25 +115,23 @@ Delete the user with user_id
 + Response 200 (application/json)
 
         {
-            {
-                "first_name": "Bob",
-                "last_name": "Smith",
-                "email": "email@gmail.com",
-                "user_id": 1,
-            },
-            {
-                "first_name": "Jane",
-                "last_name": "Doe",
-                "email": "jane@gmail.com",
-                "user_id": 4,
-            },
+            [
+                {
+                    "first_name": "Bob",
+                    "last_name": "Smith",
+                    "email": "email@gmail.com",
+                    "user_id": 1,
+                },
+                {
+                    "first_name": "Jane",
+                    "last_name": "Doe",
+                    "email": "jane@gmail.com",
+                    "user_id": 4,
+                }
+            ]
         }
 
 ### Create a New User [POST]
-
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
 
 + Request (application/json)
 
@@ -157,26 +159,24 @@ form of choices.
 + Response 200 (application/json)
 
         {
-            {
-                "labs": [
-                    {
-                        "title": "Dark Energy Report",
-                        "lab_id": 2048,
-                        "course_id": 305,
-                    },
-                    {
-                        "title": "Dark Energy Report",
-                        "lab_id": 2048,
-                        "course_id": 305,
-                    }
-                ]
-            }
+            [
+                {
+                    "title": "Dark Energy Report",
+                    "lab_id": 2048,
+                    "course_id": 305,
+                },
+                {
+                    "title": "Dark Energy Report",
+                    "lab_id": 2048,
+                    "course_id": 305,
+                }
+            ]
         }
 
 + Response 404 (application/JSON)
 
         {
-            "error": "User not found"
+            "error": "User 1 not found"
         }
 
 ### Create a new lab [POST]
@@ -194,7 +194,7 @@ form of choices.
 + Response 404 (application/JSON)
 
         {
-            "error": "User not found"
+            "error": "User 1 not found"
         }
 
 ## Individual Lab Collection [/users/{ID}/labs/{lab_id}]
@@ -208,15 +208,19 @@ form of choices.
 + Response 200 (application/json)
 
         {
-            "title": "Dark Energy Report",
-            "lab_id": 2048,
-            "course_id": 305,
+            [
+                {
+                    "title": "Dark Energy Report",
+                    "lab_id": 2048,
+                    "course_id": 305,
+                }
+            ]
         }
 
 + Response 404 (application/JSON)
 
         {
-            "error": "User or lab not found"
+            "error": "User 1 or lab 2048 not found"
         }
 
 ### Update a particular lab[PUT]
@@ -238,7 +242,7 @@ form of choices.
 + Response 404 (application/JSON)
 
         {
-            "details": "User or lab not found"
+            "details": "User 1 or lab 2048 not found"
         }
 
 ### Delete a particular lab[DELETE]
@@ -252,11 +256,14 @@ form of choices.
 + Response 404 (application/JSON)
 
         {
-            "details": "User or lab not found"
+            "details": "User 1 or lab 2048 not found"
         }
         
 
-## Lab Modules Collection [/users/{ID}/labs/{lab_id}/modules]
+## Lab Modules Collection [/labs/{lab_id}/modules]
+
++ Parameters
+    + lab_id: "1" (int, required) - user id to return data for
 
 ### Get a particular lab[GET]
     
@@ -286,7 +293,7 @@ form of choices.
 + Response 404 (application/JSON)
 
         {
-            "error": "User or lab not found"
+            "error": "User 1 or lab 2048 not found"
         }
         
 ### Get a particular lab[POST]
@@ -294,8 +301,12 @@ form of choices.
 + Request (application/JSON)
 
         {
-            "type": "text",
-            "data": {"Sample text my guy"}
+            [
+                {
+                    "type": "text",
+                    "data": {"Sample text my guy"}
+                }
+            ]
         }
 
 + Response 201 (application/JSON)
@@ -320,4 +331,194 @@ form of choices.
 
         {
             "details":"Module created for Lab 345",
+        }
+
+## Courses Collection [/courses/{ID}]
+
++ Parameters
+    + ID: "1" (int, required) - user id to return data for
+
+### Get all courses for a user ID[GET]
+    
++ Response 200 (application/json)
+
+        {
+            [
+                {
+                    "ID": 27,
+                    "course_id": 2048,
+                    "title": "Painting",
+                    "instructor": "Bob Ross"
+                },
+                {
+                    "ID": 27,
+                    "course_id": 2048,
+                    "title": "Painting",
+                    "instructor": "Bob Ross"
+                }
+            ]
+        }
+
++ Response 404 (application/json)
+
+        {
+            "details": "ID not found"
+        }
+        
+### Delete all courses for a user ID[DELETE]
+
++ Response 201 (application/json)
+
+        {
+            "details": "Courses for ID 2 deleted"
+        }
+        
++ Response 404 (application/json)
+
+        {
+            "details": "ID 2 not found"
+        }
+
+## Courses Collection [/courses/{ID}/{course_id}]
+
++ Parameters
+    + ID: "1" (int, required) - user id to return data for
+    + course_id: "345" (int, required) - user id to return data for
+
+### Get all courses for a user ID[GET]
+
++ Response 200 (application/json)
+
+        {
+            [
+                {
+                    "ID": 27,
+                    "course_id": 2048,
+                    "title": "Painting",
+                    "instructor": "Bob Ross"
+                }
+            ]
+        }
+
++ Response 404 (application/json)
+
+        { 
+            "details": "ID 27 or course_id 2048 not found"
+        }
+
+### Delete all courses for a user ID[DELETE]
+
++ Response 201 (application/json)
+
+        {
+            "details": "Course id 2048 for ID 2 deleted"
+        }
+        
++ Response 404 (application/json)
+
+        {
+            "details": "ID 27 or course_id 2048 not found"
+        }
+
+## Course Collection [/courses/classes/{course_id}]
+
++ Parameters
+    + course_id: "345" (int, required) - user id to return data for
+    
+### Get a specific course ID [GET]
+
++ Response 200 (application/json)
+
+        {
+            [
+                {
+                    "ID": 27,
+                    "course_id": 2048,
+                    "title": "Painting",
+                    "instructor": "Bob Ross"
+                }
+            ]
+        }
+
++ Response 404 (application/json)
+
+        { 
+            "details": "course_id 2048 not found"
+        }
+
+### Delete a specific course ID[DELETE]
+
++ Response 201 (application/json)
+
+        {
+            "details": "Course id 2048 deleted"
+        }
+        
++ Response 404 (application/json)
+
+        {
+            "details": "Course_id 2048 not found"
+        }
+
+## Module Collection [/labs/{lab_id}/modules/{module_id}]
+
++ Parameters
+    + lab_id: "345" (int, required) - user id to return data for
+    + module_id: "345" (int, required) - user id to return data for
+    
+### Get a particular module [GET]
+
++ Response 200 (application/json)
+
+        {
+            [
+                {
+                    "module_id": 27,
+                    "lab_id": 2048,
+                    "type": "text",
+                    "data": {"Sample text my guy"}
+                }
+        }
+        
++ Response 404 (application/json)
+
+        {
+            "details": "lab_id 2048 or module_id 27 not found"
+        }
+
+### Update a particular module [PUT]
+
++ Request (application/json)
+
+        {
+            "module_id": 27,
+            "lab_id": 2048,
+            "type": "text",
+            "data": {"Sample text my guy"}
+        }
+
++ Response 201 (application/json)
+
+        {
+            "details": "lab_id 2048 or module_id 27 deleted"
+        }
+        
++ Response 404 (application/json)
+
+        {
+            "details": "lab_id 2048 or module_id 27 not found"
+        }
+
+### DELETE a particular module [DELETE]
+
++ Response 201 (application/json)
+
+        {
+            "details": "lab_id 2048 or module_id 27 deleted"
+        }
+        
++ Response 404 (application/json)
+
+        {
+            "details": "lab_id 2048 or module_id 27 not found"
         }
