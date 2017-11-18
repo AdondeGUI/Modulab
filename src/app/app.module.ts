@@ -1,15 +1,10 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-
 import { AppComponent } from './app.component';
-import { LabModulesModule } from './LabModules';
-import { AccountModule } from './account';
-import { LoginModule } from './login';
-// import { LabDirectoryComponent } from './lab-directory/lab-directory.component';
-import { LabGeneratorComponent } from './lab-generator/lab-generator.component';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 import { DirectoryModule } from './directory';
 
 const defaultRoute = 'lab-generator';
@@ -17,23 +12,18 @@ const defaultRoute = 'lab-generator';
 @NgModule({
   imports: [
     BrowserModule,
-    LabModulesModule,
-    AccountModule,
-    LoginModule,
     FormsModule,
     HttpClientModule,
+    DirectoryModule,
     RouterModule.forRoot([
       { path: '', redirectTo: defaultRoute, pathMatch: 'full' }
     ])
   ],
   declarations: [
-    AppComponent,
-    // LabDirectoryComponent,
-    LabGeneratorComponent
+    AppComponent
   ],
   bootstrap: [
-    AppComponent,
-    // LabDirectoryComponent
+    AppComponent
   ]
 })
 

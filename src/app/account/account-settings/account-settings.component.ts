@@ -6,5 +6,4 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: [ 'account-settings.component.css' ]
 })
 
-export class AccountSettingsComponent {
-}
+export class AccountSettingsComponent { }

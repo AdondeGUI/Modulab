@@ -15,6 +15,7 @@ import { LabGeneratorComponent } from '../lab-generator/lab-generator.component'
   imports: [
     BrowserModule,
     FormsModule,
+    AccountModule,
     RouterModule.forChild(DIRECTORY_ROUTES)
   ],
   declarations: [
@@ -26,6 +27,4 @@ import { LabGeneratorComponent } from '../lab-generator/lab-generator.component'
     LabGeneratorComponent
   ]
 })
-export class DirectoryModule {
-
-}
+export class DirectoryModule { }
