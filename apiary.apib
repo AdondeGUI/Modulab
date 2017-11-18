@@ -1,0 +1,161 @@
+FORMAT: 1A
+HOST: http://52.15.171.47
+
+# Modulab
+
+Modulab is a web app for generating modular lab reports from scratch or from teach specified templates
+
+
+
+## User Collection [/users/{ID}]
+
++ Parameters
+    + user_id: "1" (int, required) - user id to return data for
+
+### Get a user[GET]
+
+Retreive a user with a specified user_id
+
++ Response 200 (application/json)
+
+        {
+            "first_name": "Bob",
+            "last_name": "Smith",
+            "email": "email@gmail.com",
+            "user_id": 1,
+        }
+
+### Update User Info [PUT]
+
+Updates the user with user_id with new data.
+
++ Request (application/JSON)
+
+        {
+            "first_name": "Bob",
+            "last_name": "Smith",
+            "email": "email@gmail.com",
+            "password": "newPassw0rd"
+        }
+
++ Response 201 (application/JSON)
+
+        {
+            "details":"User updated",
+        }
+
++ Response 404 (application/JSON)
+
+        {
+            "details": "Error: user not found"
+        }
+
+### Delete User [DELETE]
+
+Delete the user with user_id
+
++ Response 201 (application/JSON)
+
+        {
+            "details":"User deleted",
+        }
+
++ Response 404 (application/JSON)
+
+        {
+            "details": "Error: user not found"
+        }
+
+## Users Group [/users]
+
+### Get all users [GET]
+
++ Response 200 (application/json)
+
+        {
+            {
+                "first_name": "Bob",
+                "last_name": "Smith",
+                "email": "email@gmail.com",
+                "user_id": 1,
+            },
+            {
+                "first_name": "Jane",
+                "last_name": "Doe",
+                "email": "jane@gmail.com",
+                "user_id": 4,
+            },
+        }
+
+### Create a New User [POST]
+
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Request (application/json)
+
+        {
+            "first_name": "Jeff",
+            "last_name": "Coulter",
+            "email": "liame@liamg.moc",
+            "password": "passw0rd"
+        }
+
++ Response 201 (application/JSON)
+
+        {
+            "details":"User created",
+        }
+        
+        
+## User Lab Collection [/users/{ID}/labs]
+
+### Get all user labs[GET]
+
++ Parameters
+    + user_id: "1" (int, required) - user id to return data for
+
++ Response 200 (application/json)
+
+        {
+            {
+                "labs": [
+                    {
+                        "title": "Dark Energy Report",
+                        "lab_id": 2048,
+                        "course_id": 305,
+                    },
+                    {
+                        "title": "Dark Energy Report",
+                        "lab_id": 2048,
+                        "course_id": 305,
+                    }
+                ]
+            }
+        }
+
++ Response 404 (application/JSON)
+
+        {
+            "error": "User not found"
+        }
+
+### Create a new lab [POST]
+
++ Parameters
+    + user_id: "1" (int, required) - user id to return data for
+
++ Request (application/json)
+
+        {
+            "title": "Sample Report 1",
+            "course_id": 345,
+            "user_id": 1
+        }
+        
++ Response 404 (application/JSON)
+
+        {
+            "error": "User not found"
+        }
