@@ -6,11 +6,49 @@ HOST: http://52.15.171.47
 Modulab is a web app for generating modular lab reports from scratch or from teach specified templates
 
 
+## Login Collection [/login/{email}]
+
++ Parameters
+    + email: "jsmith@gmail.com" (string, required) - user id to return data for
+
+### Check for user's existance [GET]
+
++ Response 200 (application/json)
+
+        {
+            "exists": 1
+        }
+
++ Response 400 (application/json)
+
+        {
+            "exists": 0
+        }
+        
+## Login Verification Collection [/login/{email}/{password}]
+
++ Parameters
+    + email: "jsmith@gmail.com" (string, required) - user id to return data for
+    + password: "p4ssw0rd" (string, required) - user id to return data for
+
+### Check for user's existance [GET]
+
++ Response 200 (application/json)
+
+        {
+            "correct": 1
+        }
+
++ Response 400 (application/json)
+
+        {
+            "correct": 0
+        }
 
 ## User Collection [/users/{ID}]
 
 + Parameters
-    + user_id: "1" (int, required) - user id to return data for
+    + ID: "1" (int, required) - user id to return data for
 
 ### Get a user[GET]
 
@@ -41,7 +79,7 @@ Updates the user with user_id with new data.
 + Response 201 (application/JSON)
 
         {
-            "details":"User updated",
+            "details":"User 1 updated",
         }
 
 + Response 404 (application/JSON)
@@ -57,7 +95,7 @@ Delete the user with user_id
 + Response 201 (application/JSON)
 
         {
-            "details":"User deleted",
+            "details":"User 1 deleted",
         }
 
 + Response 404 (application/JSON)
@@ -105,7 +143,7 @@ form of choices.
 + Response 201 (application/JSON)
 
         {
-            "details":"User created",
+            "details":"User Jeff Coulter created",
         }
         
         
@@ -114,7 +152,7 @@ form of choices.
 ### Get all user labs[GET]
 
 + Parameters
-    + user_id: "1" (int, required) - user id to return data for
+    + ID: "1" (int, required) - user id to return data for
 
 + Response 200 (application/json)
 
@@ -144,18 +182,142 @@ form of choices.
 ### Create a new lab [POST]
 
 + Parameters
-    + user_id: "1" (int, required) - user id to return data for
+    + ID: "1" (int, required) - user id to return data for
 
 + Request (application/json)
 
         {
             "title": "Sample Report 1",
             "course_id": 345,
-            "user_id": 1
         }
         
 + Response 404 (application/JSON)
 
         {
             "error": "User not found"
+        }
+
+## Individual Lab Collection [/users/{ID}/labs/{lab_id}]
+
++ Parameters
+    + ID: "1" (int, required) - user id to return data for
+    + lab_id: "1" (int, required) - user id to return data for
+
+### Get a particular lab[GET]
+    
++ Response 200 (application/json)
+
+        {
+            "title": "Dark Energy Report",
+            "lab_id": 2048,
+            "course_id": 305,
+        }
+
++ Response 404 (application/JSON)
+
+        {
+            "error": "User or lab not found"
+        }
+
+### Update a particular lab[PUT]
+    
++ Request (application/JSON)
+
+        {
+            "title": "New Energy Report",
+            "lab_id": 2048,
+            "course_id": 305,
+        }
+
++ Response 201 (application/json)
+
+        {
+            "details": "User 1 Lab 2048 updated"
+        }
+
++ Response 404 (application/JSON)
+
+        {
+            "details": "User or lab not found"
+        }
+
+### Delete a particular lab[DELETE]
+
++ Response 201 (application/JSON)
+
+        {
+            "details": "User 1 Lab 2048 deleted"
+        }
+
++ Response 404 (application/JSON)
+
+        {
+            "details": "User or lab not found"
+        }
+        
+
+## Lab Modules Collection [/users/{ID}/labs/{lab_id}/modules]
+
+### Get a particular lab[GET]
+    
++ Response 200 (application/json)
+
+        {
+            [
+                {
+                    "module_id": 27,
+                    "lab_id": 2048,
+                    "type": "text",
+                    "data": {"Sample text my guy"}
+                },
+                {
+                    "module_id": 89,
+                    "lab_id": 345,
+                    "type": "table",
+                    "data": {
+                        "rows": 2,
+                        "cols": 2,
+                        "data": "header1 header2 dp1 dp2 dp3 dp4"
+                    } 
+                },
+            ]
+        }
+
++ Response 404 (application/JSON)
+
+        {
+            "error": "User or lab not found"
+        }
+        
+### Get a particular lab[POST]
+
++ Request (application/JSON)
+
+        {
+            "type": "text",
+            "data": {"Sample text my guy"}
+        }
+
++ Response 201 (application/JSON)
+
+        {
+            "details":"Module created for Lab 345",
+        }
+
+## Courses Collection [/courses]
+
+### Create a new course[POST]
+
++ Request (application/JSON)
+
+        {
+            "course_id": 
+            "type": "text",
+            "data": {"Sample text my guy"}
+        }
+
++ Response 201 (application/JSON)
+
+        {
+            "details":"Module created for Lab 345",
         }
