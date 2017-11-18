@@ -6,10 +6,10 @@ HOST: http://52.15.171.47
 Modulab is a web app for generating modular lab reports from scratch or from teach specified templates
 
 
-## Login Collection [/login/{email}]
+## Login Group [/login/{email}]
 
 + Parameters
-    + email: "jsmith@gmail.com" (string, required) - user id to return data for
+    + email: "jsmith@gmail.com" (string, required) 
 
 ### Check for user's existance [GET]
 
@@ -25,13 +25,13 @@ Modulab is a web app for generating modular lab reports from scratch or from tea
             "exists": 0
         }
         
-## Login Verification Collection [/login/{email}/{password}]
+## Login Verification Group [/login/{email}/{password}]
 
 + Parameters
-    + email: "jsmith@gmail.com" (string, required) - user id to return data for
-    + password: "p4ssw0rd" (string, required) - user id to return data for
+    + email: "jsmith@gmail.com" (string, required) 
+    + password: "p4ssw0rd" (string, required)
 
-### Check for user's existance [GET]
+### Confirm login information is correct [GET]
 
 + Response 200 (application/json)
 
@@ -43,69 +43,6 @@ Modulab is a web app for generating modular lab reports from scratch or from tea
 
         {
             "correct": 0
-        }
-
-## User Collection [/users/{ID}]
-
-+ Parameters
-    + ID: "1" (int, required) - user id to return data for
-
-### Get a user[GET]
-
-Retreive a user with a specified user_id
-
-+ Response 200 (application/json)
-
-        {
-            [
-                {
-                    "first_name": "Bob",
-                    "last_name": "Smith",
-                    "email": "email@gmail.com",
-                    "user_id": 1,
-                }
-            ]
-        }
-
-### Update User Info [PUT]
-
-Updates the user with user_id with new data.
-
-+ Request (application/JSON)
-
-        {
-            "first_name": "Bob",
-            "last_name": "Smith",
-            "email": "email@gmail.com",
-            "password": "newPassw0rd"
-        }
-
-+ Response 201 (application/JSON)
-
-        {
-            "details":"User 1 updated",
-        }
-
-+ Response 404 (application/JSON)
-
-        {
-            "details": "User 1 not found"
-        }
-
-### Delete User [DELETE]
-
-Delete the user with user_id
-
-+ Response 201 (application/JSON)
-
-        {
-            "details":"User 1 deleted",
-        }
-
-+ Response 404 (application/JSON)
-
-        {
-            "details": "User 1 not found"
         }
 
 ## Users Group [/users]
@@ -131,7 +68,7 @@ Delete the user with user_id
             ]
         }
 
-### Create a New User [POST]
+### Create a new user [POST]
 
 + Request (application/json)
 
@@ -148,13 +85,71 @@ Delete the user with user_id
             "details":"User Jeff Coulter created",
         }
         
-        
-## User Lab Collection [/users/{ID}/labs]
 
-### Get all user labs[GET]
+## Single User Group [/users/{ID}]
 
 + Parameters
-    + ID: "1" (int, required) - user id to return data for
+    + ID: "1" (int, required)
+
+### Get a user [GET]
+
++ Response 200 (application/json)
+
+        {
+            [
+                {
+                    "first_name": "Bob",
+                    "last_name": "Smith",
+                    "email": "email@gmail.com",
+                    "user_id": 1,
+                }
+            ]
+        }
+
+### Update user [PUT]
+
++ Request (application/JSON)
+
+        {
+            "first_name": "Bob",
+            "last_name": "Smith",
+            "email": "email@gmail.com",
+            "password": "newPassw0rd"
+        }
+
++ Response 201 (application/JSON)
+
+        {
+            "details":"User 1 updated",
+        }
+
++ Response 404 (application/JSON)
+
+        {
+            "details": "User 1 not found"
+        }
+
+### Delete user [DELETE]
+
+
++ Response 201 (application/JSON)
+
+        {
+            "details":"User 1 deleted",
+        }
+
++ Response 404 (application/JSON)
+
+        {
+            "details": "User 1 not found"
+        }
+        
+## User Labs Group [/users/{ID}/labs]
+
+### Get all labs for a user[GET]
+
++ Parameters
+    + ID: "1" (int, required)
 
 + Response 200 (application/json)
 
@@ -182,7 +177,7 @@ Delete the user with user_id
 ### Create a new lab [POST]
 
 + Parameters
-    + ID: "1" (int, required) - user id to return data for
+    + ID: "1" (int, required)
 
 + Request (application/json)
 
@@ -197,13 +192,13 @@ Delete the user with user_id
             "error": "User 1 not found"
         }
 
-## Individual Lab Collection [/users/{ID}/labs/{lab_id}]
+## Single Lab Group [/users/{ID}/labs/{lab_id}]
 
 + Parameters
-    + ID: "1" (int, required) - user id to return data for
-    + lab_id: "1" (int, required) - user id to return data for
+    + ID: "1" (int, required) 
+    + lab_id: "1" (int, required)
 
-### Get a particular lab[GET]
+### Get a lab[GET]
     
 + Response 200 (application/json)
 
@@ -223,7 +218,7 @@ Delete the user with user_id
             "error": "User 1 or lab 2048 not found"
         }
 
-### Update a particular lab[PUT]
+### Update a lab[PUT]
     
 + Request (application/JSON)
 
@@ -245,7 +240,7 @@ Delete the user with user_id
             "details": "User 1 or lab 2048 not found"
         }
 
-### Delete a particular lab[DELETE]
+### Delete a lab[DELETE]
 
 + Response 201 (application/JSON)
 
@@ -260,12 +255,12 @@ Delete the user with user_id
         }
         
 
-## Lab Modules Collection [/labs/{lab_id}/modules]
+## Lab Modules Group [/labs/{lab_id}/modules]
 
 + Parameters
-    + lab_id: "1" (int, required) - user id to return data for
+    + lab_id: "1" (int, required)
 
-### Get a particular lab[GET]
+### Get all modules for a lab[GET]
     
 + Response 200 (application/json)
 
@@ -296,7 +291,7 @@ Delete the user with user_id
             "error": "User 1 or lab 2048 not found"
         }
         
-### Get a particular lab[POST]
+### Update a module on a lab[POST]
 
 + Request (application/JSON)
 
@@ -315,7 +310,7 @@ Delete the user with user_id
             "details":"Module created for Lab 345",
         }
 
-## Courses Collection [/courses]
+## Courses Group [/courses]
 
 ### Create a new course[POST]
 
@@ -333,10 +328,10 @@ Delete the user with user_id
             "details":"Module created for Lab 345",
         }
 
-## Courses Collection [/courses/{ID}]
+## Single Course Group [/courses/{ID}]
 
 + Parameters
-    + ID: "1" (int, required) - user id to return data for
+    + ID: "1" (int, required)
 
 ### Get all courses for a user ID[GET]
     
@@ -379,13 +374,13 @@ Delete the user with user_id
             "details": "ID 2 not found"
         }
 
-## Courses Collection [/courses/{ID}/{course_id}]
+## User Courses Group [/courses/{ID}/{course_id}]
 
 + Parameters
-    + ID: "1" (int, required) - user id to return data for
-    + course_id: "345" (int, required) - user id to return data for
+    + ID: "1" (int, required)
+    + course_id: "345" (int, required)
 
-### Get all courses for a user ID[GET]
+### Get all courses for a user [GET]
 
 + Response 200 (application/json)
 
@@ -406,7 +401,7 @@ Delete the user with user_id
             "details": "ID 27 or course_id 2048 not found"
         }
 
-### Delete all courses for a user ID[DELETE]
+### Delete all courses for a user [DELETE]
 
 + Response 201 (application/json)
 
@@ -420,12 +415,12 @@ Delete the user with user_id
             "details": "ID 27 or course_id 2048 not found"
         }
 
-## Course Collection [/courses/classes/{course_id}]
+## User Single Course Group [/courses/classes/{course_id}]
 
 + Parameters
-    + course_id: "345" (int, required) - user id to return data for
+    + course_id: "345" (int, required)
     
-### Get a specific course ID [GET]
+### Get a specific course for a user [GET]
 
 + Response 200 (application/json)
 
@@ -446,7 +441,7 @@ Delete the user with user_id
             "details": "course_id 2048 not found"
         }
 
-### Delete a specific course ID[DELETE]
+### Delete a specific course for a user[DELETE]
 
 + Response 201 (application/json)
 
@@ -460,13 +455,13 @@ Delete the user with user_id
             "details": "Course_id 2048 not found"
         }
 
-## Module Collection [/labs/{lab_id}/modules/{module_id}]
+## Single Module Group [/labs/{lab_id}/modules/{module_id}]
 
 + Parameters
-    + lab_id: "345" (int, required) - user id to return data for
-    + module_id: "345" (int, required) - user id to return data for
+    + lab_id: "2048" (int, required)
+    + module_id: "345" (int, required)
     
-### Get a particular module [GET]
+### Get a module [GET]
 
 + Response 200 (application/json)
 
@@ -486,7 +481,7 @@ Delete the user with user_id
             "details": "lab_id 2048 or module_id 27 not found"
         }
 
-### Update a particular module [PUT]
+### Update a module [PUT]
 
 + Request (application/json)
 
@@ -509,7 +504,7 @@ Delete the user with user_id
             "details": "lab_id 2048 or module_id 27 not found"
         }
 
-### DELETE a particular module [DELETE]
+### Delete a module [DELETE]
 
 + Response 201 (application/json)
 
