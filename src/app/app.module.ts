@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 
 import { DirectoryModule } from './directory';
 
-const defaultRoute = 'lab-generator';
+const defaultRoute = 'landing-page';
 
 @NgModule({
   imports: [

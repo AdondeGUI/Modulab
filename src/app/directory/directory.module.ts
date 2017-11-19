@@ -10,6 +10,7 @@ import { AccountModule } from '../account';
 import { LoginModule } from '../login';
 import { LabDirectoryComponent } from '../lab-directory/lab-directory.component';
 import { LabGeneratorComponent } from '../lab-generator/lab-generator.component';
+import { LandingPageComponent } from '../landing-page/landing-page.component';
 
 @NgModule({
   imports: [
@@ -20,11 +21,13 @@ import { LabGeneratorComponent } from '../lab-generator/lab-generator.component'
   ],
   declarations: [
     LabDirectoryComponent,
-    LabGeneratorComponent
+    LabGeneratorComponent,
+    LandingPageComponent
   ],
   exports: [
     LabDirectoryComponent,
-    LabGeneratorComponent
+    LabGeneratorComponent,
+    LandingPageComponent
   ]
 })
 export class DirectoryModule { }

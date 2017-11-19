@@ -1,0 +1,34 @@
+.bg { 
+    /* The image used */
+    /*background-image: url(../../images/background.jpg);*/
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.brand {
+  font-family: 'PT Sans', sans-serif;
+  font-weight: bold;
+  font-size: 4.5em;
+}
+
+.thick-border {
+  border-width: 3px;
+}
+
+.big {
+  font-size: 1.5em;
+}
+
+.sorta-big {
+  font-size: 1.2em;
+}
+
+.bold {
+  font-weight: bold;
+}
