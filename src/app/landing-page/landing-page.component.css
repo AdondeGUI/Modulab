@@ -1,24 +1,19 @@
 .bg { 
-    /* The image used */
-    /*background-image: url(../../images/background.jpg);*/
-
-    /* Full height */
-    height: 100%; 
-
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  z-index: -1;
+  position: absolute;
+  top: 0;
 }
 
 .header-custom {
   font-family: 'PT Sans', sans-serif;
   font-weight: bold;
   font-size: 4.5em;
+  color: #F8F8F8;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 .thick-border {
-  border-width: 3px;
+  border-width: 4px;
 }
 
 .big {
@@ -36,4 +31,8 @@
 .adj-1 {
   position: relative;
   top: 100px;
+}
+
+.bg-white-custom {
+  background-color: rgba(255, 255, 255, 0.8);
 }

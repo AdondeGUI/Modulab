@@ -8,6 +8,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 
 export class LandingPageComponent {
+  private imageName = "background.jpg";
+
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute
