@@ -20,19 +20,18 @@ export class LoginExistingComponent {
 
   private getUser() {
     this.http.get('http://52.15.171.47/login/'+this.loginAttempt.email).subscribe(data => {
-      console.log(data);
-      //var returnUser = data[0]
-      // this.user.email = data[0].email
-      // this.user.firstname = data[0].first_name
-      // this.user.lastname = data[0].last_name
-      // this.user.role = data[0].role
-      // this.user.password = data[0].password
+      var returnUser = data[0]
+      this.user = returnUser
+      this.user.id = returnUser.id
+      console.log(returnUser)
+      // this.user.email = returnUser.email
+      // this.user.firstname = returnUser.first_name
+      // this.user.lastname = returnUser.last_name
+      // this.user.role = returnUser.role
+      // this.user.password = returnUser.password
       //this.router.navigateByUrl('directory');
     });
-    // if(!this.user.email){
-    //   alert("User does not exist")
-    // }
-    //console.log(this.user)
     console.log(this.user)
+    console.log(this.user.password)
   }
 }
