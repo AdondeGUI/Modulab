@@ -5,7 +5,7 @@
     min-height: 100%;
 }
 
-.jumbotron {
+.jumbotron-custom {
     border: 2em;
     width: 40em;
     margin: auto;
@@ -23,4 +23,36 @@ a:hover {
 
 .link-custom {
     cursor: pointer;
+}
+
+.header-custom {
+  font-family: 'PT Sans', sans-serif;
+  font-weight: bold;
+  font-size: 2.6em;
+}
+
+.thick-border {
+  border-width: 3px;
+}
+
+.big {
+  font-size: 1.5em;
+}
+
+.sorta-big {
+  font-size: 1.2em;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.bg { 
+  z-index: -1;
+  position: absolute;
+  top: 0;
+}
+
+.bg-white-custom {
+  background-color: rgba(255, 255, 255, 0.8);
 }

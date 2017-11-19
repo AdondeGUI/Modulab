@@ -1,0 +1,31 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+
+<img [src]="'src/images/background.jpg'" alt="background" class="img-fluid bg" />
+
+<div class="container mt-3 adj-2">
+
+  <div class="col-5 m-auto d-block adj-1">
+
+    <div class="row justify-content-md-center header-custom">Modulab</div>
+
+    <div class="container border border-info rounded bg-white-custom thick-border">
+
+      <div class="row justify-content-md-center text-center text-dark mt-3 big bold">
+        New to Modulab?
+      </div>
+
+      <div class="row justify-content-md-center text-center text-dark sorta-big">
+        Create a new Student or Professor account.
+      </div>
+
+      <button class="btn btn-info d-block mx-auto my-3 btn-lg btn-block px-3" (click)="navigateToNewLogin()">
+        Create Account
+      </button>
+
+      <button class="row btn btn-info d-block mx-auto my-3 btn-lg btn-block px-3" (click)="navigateToLogin()">
+        Sign In
+      </button>
+    </div>
+  </div>
+</div>

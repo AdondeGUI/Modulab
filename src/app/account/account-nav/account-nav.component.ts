@@ -22,7 +22,7 @@ export class AccountNavComponent {
   }
 
   private logOut() {
-  
+    this.router.navigateByUrl('landing-page');
   }
 
   private addFileFromNav() {

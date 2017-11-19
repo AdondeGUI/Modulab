@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../../domain/index';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'login-existing',
@@ -11,8 +12,11 @@ export class LoginExistingComponent {
   private loginAttempt = new User();
   private user = new User();
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   private getUser() {
     this.http.get('http://52.15.171.47/login/'+this.loginAttempt.email).subscribe(data => {
@@ -25,6 +29,7 @@ export class LoginExistingComponent {
       // this.user.lastname = returnUser.last_name
       // this.user.role = returnUser.role
       // this.user.password = returnUser.password
+      //this.router.navigateByUrl('directory');
     });
     console.log(this.user)
     console.log(this.user.password)

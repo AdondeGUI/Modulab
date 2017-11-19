@@ -8,7 +8,7 @@ import { User } from './domain'
 
 import { DirectoryModule } from './routing';
 
-const defaultRoute = 'lab-generator';
+const defaultRoute = 'landing-page';
 
 @NgModule({
   imports: [
