@@ -16,34 +16,23 @@ Modulab is a web app for generating modular lab reports from scratch or from tea
 + Response 200 (application/json)
 
         {
-            "exists": 1
+            [
+                {
+                    "first_name": "Jane",
+                    "last_name": "Smith",
+                    "email": "jsmith@gmail.com",
+                    "user_id": 1,
+                    "password": "passw0rd"
+                }
+            ]
         }
 
 + Response 400 (application/json)
 
         {
-            "exists": 0
+            "details": "User with email jsmith@gmail.com not found"
         }
         
-## Login Verification Group [/login/{email}/{password}]
-
-+ Parameters
-    + email: "jsmith@gmail.com" (string, required) 
-    + password: "p4ssw0rd" (string, required)
-
-### Confirm login information is correct [GET]
-
-+ Response 200 (application/json)
-
-        {
-            "correct": 1
-        }
-
-+ Response 400 (application/json)
-
-        {
-            "correct": 0
-        }
 
 ## Users Group [/users]
 
