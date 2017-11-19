@@ -21,7 +21,7 @@ Modulab is a web app for generating modular lab reports from scratch or from tea
                     "first_name": "Jane",
                     "last_name": "Smith",
                     "email": "jsmith@gmail.com",
-                    "user_id": 1,
+                    "ID": 1,
                     "password": "passw0rd"
                 }
             ]
@@ -46,13 +46,15 @@ Modulab is a web app for generating modular lab reports from scratch or from tea
                     "first_name": "Bob",
                     "last_name": "Smith",
                     "email": "email@gmail.com",
-                    "user_id": 1,
+                    "type": 1,
+                    "ID": 1,
                 },
                 {
                     "first_name": "Jane",
                     "last_name": "Doe",
                     "email": "jane@gmail.com",
-                    "user_id": 4,
+                    "type": 0,
+                    "ID": 4,
                 }
             ]
         }
@@ -65,7 +67,8 @@ Modulab is a web app for generating modular lab reports from scratch or from tea
             "first_name": "Jeff",
             "last_name": "Coulter",
             "email": "liame@liamg.moc",
-            "password": "passw0rd"
+            "password": "passw0rd",
+            "type": 0
         }
 
 + Response 201 (application/JSON)
@@ -90,7 +93,8 @@ Modulab is a web app for generating modular lab reports from scratch or from tea
                     "first_name": "Bob",
                     "last_name": "Smith",
                     "email": "email@gmail.com",
-                    "user_id": 1,
+                    "type": 0,
+                    "ID": 1,
                 }
             ]
         }
@@ -306,9 +310,9 @@ Modulab is a web app for generating modular lab reports from scratch or from tea
 + Request (application/JSON)
 
         {
-            "course_id": 
-            "type": "text",
-            "data": {"Sample text my guy"}
+            "course_id": 2048,
+            "title": "Painting",
+            "instructor": "Bob Ross",
         }
 
 + Response 201 (application/JSON)
@@ -322,7 +326,7 @@ Modulab is a web app for generating modular lab reports from scratch or from tea
 + Parameters
     + ID: "1" (int, required)
 
-### Get all courses for a user ID[GET]
+### Get all courses for a user[GET]
     
 + Response 200 (application/json)
 
@@ -349,7 +353,7 @@ Modulab is a web app for generating modular lab reports from scratch or from tea
             "details": "ID not found"
         }
         
-### Delete all courses for a user ID[DELETE]
+### Delete all courses for a user [DELETE]
 
 + Response 201 (application/json)
 
@@ -369,7 +373,7 @@ Modulab is a web app for generating modular lab reports from scratch or from tea
     + ID: "1" (int, required)
     + course_id: "345" (int, required)
 
-### Get all courses for a user [GET]
+### Get a course for a user [GET]
 
 + Response 200 (application/json)
 
