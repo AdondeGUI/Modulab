@@ -1,0 +1,23 @@
+<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+
+<img [src]="'src/images/background.jpg'" alt="background" class="img-fluid bg" />
+
+<div class="d-flex flex-column mt-3" id="loginContainer">
+    <div class="jumbotron-custom border border-info rounded bg-white-custom thick-border">
+        <div class="header-custom">Sign In</div>
+        <br>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" [(ngModel)]="loginAttempt.email">
+        </div>
+        <br>
+        <div class="input-group">
+            <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" [(ngModel)]="loginAttempt.password">
+        </div>
+        <br>
+        <p class="lead float-right">
+            <a class="btn btn-info btn-lg link-custom text-white" role="button" (click)="getUser()">Log In</a>
+        </p>
+        <br>
+        <p id="newAccount"><a href routerLink="/newlogin" class="text-info">Create new account</a></p>
+    </div>
+</div>

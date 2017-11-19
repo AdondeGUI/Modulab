@@ -1,0 +1,18 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="container">
+  <h4>Title</h4>
+  <h5>Authors: </h5>
+  <h5>Template: </h5>
+  <ng-container class="module" *ngFor="let module of modules;">
+  <!--<lab-module></lab-module>-->
+<div class="d-flex mb-2">
+  <h4 class="pt-3"></h4>
+  <button class="btn btn-primary ml-md-auto" (click)="addModule()">
+    <h6 class="adjust-up d-inline" >Add New Module
+    <i class="material-icons adjust-down">add_circle_outline</i></h6>
+  </button>
+</div>
+ </ng-container>
+ 
+</div>

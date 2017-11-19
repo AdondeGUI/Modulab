@@ -1,0 +1,38 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<account-nav></account-nav>
+
+<div class="container col-4">
+    <h4><i class="material-icons d-inline adj-1 pb-3">settings</i> Account Settings</h4>
+    <hr>
+    <div class="col-6 pl-0">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="First Name" aria-label="Firstname" aria-describedby="basic-addon1">
+        </div>
+        <br>
+        <div>
+            <input type="text" class="form-control" placeholder="Last Name" aria-label="Lastname" aria-describedby="basic-addon1">
+        </div>
+        <br>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+        </div>
+        <br>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+        </div>
+    </div>
+    <hr>
+    <div id="settings-delete d-inline m-auto" class="">
+        <button class="btn btn-danger d-inline" (click)="deleteUser()">
+      Delete This Account
+    </button>
+        <span class="ml-3">This will delete <strong>all</strong> of your data and files.</span>
+    </div>
+    <hr>
+    <div id="settings-save" class="clearfix" (click)="updateUser()">
+        <button class="btn btn-info float-right">
+      Save Changes
+    </button>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+#loginContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+}
+
+.jumbotron-custom {
+    border: 2em;
+    width: 40em;
+    margin: auto;
+    padding-top: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 2rem;
+    position: relative;
+    bottom: 4rem;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.link-custom {
+    cursor: pointer;
+}
+
+.header-custom {
+  font-family: 'PT Sans', sans-serif;
+  font-weight: bold;
+  font-size: 2.6em;
+}
+
+.thick-border {
+  border-width: 3px;
+}
+
+.big {
+  font-size: 1.5em;
+}
+
+.sorta-big {
+  font-size: 1.2em;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.bg { 
+  z-index: -1;
+  position: absolute;
+  top: 0;
+}
+
+.bg-white-custom {
+  background-color: rgba(255, 255, 255, 0.8);
+}

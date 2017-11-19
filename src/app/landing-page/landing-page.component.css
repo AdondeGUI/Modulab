@@ -1,0 +1,38 @@
+.bg { 
+  z-index: -1;
+  position: absolute;
+  top: 0;
+}
+
+.header-custom {
+  font-family: 'PT Sans', sans-serif;
+  font-weight: bold;
+  font-size: 4.5em;
+  color: #F8F8F8;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.thick-border {
+  border-width: 4px;
+}
+
+.big {
+  font-size: 1.5em;
+}
+
+.sorta-big {
+  font-size: 1.2em;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.adj-1 {
+  position: relative;
+  top: 100px;
+}
+
+.bg-white-custom {
+  background-color: rgba(255, 255, 255, 0.8);
+}

@@ -1,0 +1,62 @@
+.adj-1 {
+  position: relative;
+  bottom: 0.08em;
+}
+
+.adj-2 {
+  position: relative;
+  top: 0.08em;
+}
+
+.nav {
+  font-size: 1.18rem;
+}
+
+.nav-link {
+  color: #e0f0f8;
+}
+
+.nav-item.active .nav-link {
+  color: #fff;
+}
+
+.nav-link i {
+  color: #fff;
+}
+
+.big-icon {
+  font-size: 2em;
+}
+
+.navbar-brand {
+  font-weight: 500;
+  color: #fff;
+  font-size: 1.5em;
+  padding-left: 0.5em;
+}
+
+.nav-item-text {
+  padding-top: 0.2em;
+  font-weight: 400;
+  font-size: 1.05em;
+}
+
+.navbar .dropdown-menu:after, .navbar .dropdown-menu:before {
+    display:none;
+}
+
+.dropdown-menu {
+  left: -40px;
+}
+
+.navbar-brand {
+  font-family: 'PT Sans', sans-serif;
+  font-weight: bold;
+  font-size: 1.7em;
+  padding-top: 0.23em;
+  padding-left: 1em;
+}
+
+.link-custom {
+  cursor: pointer;
+}
