@@ -6,10 +6,14 @@ import { AccountSettingsComponent } from '../account/account-settings/account-se
 import { LabGeneratorComponent } from '../lab-generator/lab-generator.component';
 
 import { Routes } from "@angular/router";
+import { LoginNewComponent } from '../login/login-new/login-new.component';
+import { LoginExistingComponent } from '../login/login-existing/login-existing.component';
 
-export const DIRECTORY_ROUTES : Routes = [
+export const ROUTES : Routes = [
     { path: 'directory', component: LabDirectoryComponent },
     { path: 'settings', component: AccountSettingsComponent },
     { path: 'lab-generator', component: LabGeneratorComponent },
-    { path: '**', redirectTo: '/lab-generator', pathMatch: 'full'}
+    { path: 'newlogin', component: LoginNewComponent },
+    { path: 'login', component: LoginExistingComponent },
+    //{ path: '**', redirectTo: '/lab-generator', pathMatch: 'full'}
 ];

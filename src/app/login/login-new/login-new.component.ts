@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './login-new.component.html',
   styleUrls: ['./login-new.component.css']
 })
-export class loginNewComponent{
+export class LoginNewComponent{
 
   private newUser = new User();
 
@@ -19,21 +19,16 @@ export class loginNewComponent{
   
 
   constructor(private http: HttpClient) { 
-
-    this.http.get('http://52.15.171.47/users').subscribe(data => {
-      // Read the result field from the JSON response.
-      //this.results = data;
-      console.log(data);
-    });
-    // $("[name='my-checkbox']").bootstrapSwitch();
   }
 
   private addUser() {
-    if(!this.newUser.email || !this.newUser.password || !this.newUser.userName){
+    if(!this.newUser.email || !this.newUser.password || !this.newUser.firstname || !this.newUser.lastname || !this.newUser.role){
       alert("Please fill out all fields to proceed");
     }
     else{
-      this.users.push(this.newUser);
+      // this.users.push(this.newUser);
+      const body = {first_name: this.newUser.firstname, last_name: this.newUser.lastname, email: this.newUser.email, password: this.newUser.password, role: this.newUser.role}
+      this.http.post('http://52.15.171.47/users', body).subscribe()
       this.newUser = new User();
     }
   }

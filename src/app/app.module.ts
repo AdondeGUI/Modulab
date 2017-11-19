@@ -4,8 +4,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { User } from './domain'
 
-import { DirectoryModule } from './directory';
+import { DirectoryModule } from './routing';
 
 const defaultRoute = 'lab-generator';
 
@@ -27,4 +28,6 @@ const defaultRoute = 'lab-generator';
   ]
 })
 
-export class AppModule { }
+export class AppModule { 
+  public appUser = new User();
+}

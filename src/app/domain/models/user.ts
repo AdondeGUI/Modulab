@@ -1,6 +1,7 @@
 export class User{
     email?: string;
-    userName?: string;
+    firstname?: string;
+    lastname?: string;
     password?: string;
-    type?: number;
+    role?: number;
 }

@@ -3,11 +3,12 @@
         <h1>New User</h1>
         <br>
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" [(ngModel)]="newUser.email">
+            <input type="text" class="form-control" placeholder="First Name" aria-label="Firstname" aria-describedby="basic-addon1" [(ngModel)]="newUser.firstname">
+            <input type="text" class="form-control" placeholder="Last Name" aria-label="Lastname" aria-describedby="basic-addon1" [(ngModel)]="newUser.lastname">
         </div>
         <br>
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="newUser.userName">
+            <input type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" [(ngModel)]="newUser.email">
         </div>
         <br>
         <div class="input-group">
@@ -20,20 +21,16 @@
         <br>
 
         <p class="lead float-right">
-            <a class="btn btn-primary btn-lg" href="#" role="button" (click)="addUser()">Create Account</a>
+            <a class="btn btn-info btn-lg" href="/newlogin" role="button" (click)="addUser()">Create Account</a>
         </p>
         <div>
             <form #f="ngForm">
-                <input type="radio" value="0" name="studentTeacher" [(ngModel)]="newUser.type" required #genderControl="ngModel"> Student
-                <input type="radio" value="1" name="studentTeacher" [(ngModel)]="newUser.type" required> Teacher
+                <input type="radio" value="0" name="studentTeacher" [(ngModel)]="newUser.role" required #genderControl="ngModel"> Student
+                <input type="radio" value="1" name="studentTeacher" [(ngModel)]="newUser.role" required> Teacher
             </form>
         </div>
         <div>
-            <p id="existingAccount">Already have an account? <a href="#">Log in</a></p>
+            <p id="existingAccount">Already have an account? <a href routerLink="/login" class="text-info">Log in</a></p>
         </div>
-        <!-- <input type="checkbox" name="my-checkbox" checked> -->
-    </div>
-    <div>
-        <p>Type: {{newUser.type}}</p>
     </div>
 </div>
