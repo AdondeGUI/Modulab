@@ -13,10 +13,12 @@ export class LandingPageComponent {
     private activatedRoute: ActivatedRoute
   ) { }
 
-  private navigateToCreateAccount() {
+  private navigateToNewLogin() {
+    this.router.navigateByUrl('newlogin');
   }
 
   private navigateToLogin() {
+    this.router.navigateByUrl('login');
   }
 
 }

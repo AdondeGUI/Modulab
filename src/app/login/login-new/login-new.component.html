@@ -1,39 +1,36 @@
 <div class="d-flex flex-column" id="loginContainer">
-    <div class="jumbotron">
-        <h1>New User</h1>
+    <div class="jumbotron-custom border border-info rounded bg-white thick-border">
+        <div class="header-custom">New User</div>
+        <br>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="First Name" aria-label="Firstname" aria-describedby="basic-addon1" [(ngModel)]="newUser.firstname">
+            <input type="text" class="form-control" placeholder="Last Name" aria-label="Lastname" aria-describedby="basic-addon1" [(ngModel)]="newUser.lastname">
+        </div>
         <br>
         <div class="input-group">
             <input type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" [(ngModel)]="newUser.email">
         </div>
         <br>
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="newUser.userName">
+            <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" [(ngModel)]="newUser.password">
         </div>
         <br>
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" [(ngModel)]="newUser.password">
-        </div>
-        <br>
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Confirm Password" aria-label="ConfirmPassword" aria-describedby="basic-addon1">
+            <input type="password" class="form-control" placeholder="Confirm Password" aria-label="ConfirmPassword" aria-describedby="basic-addon1" [(ngModel)]="passwordConfirm">
         </div>
         <br>
 
         <p class="lead float-right">
-            <a class="btn btn-primary btn-lg" href="#" role="button" (click)="addUser()">Create Account</a>
+            <a class="btn btn-info btn-lg link-custom text-white" role="button" (click)="addUser()">Create Account</a>
         </p>
-        <div>
+        <div class="pl-1">
             <form #f="ngForm">
-                <input type="radio" value="0" name="studentTeacher" [(ngModel)]="newUser.type" required #genderControl="ngModel"> Student
-                <input type="radio" value="1" name="studentTeacher" [(ngModel)]="newUser.type" required> Teacher
+                <input type="radio" value="0" name="studentTeacher" [(ngModel)]="newUser.role" required #genderControl="ngModel"> Student
+                <input class="ml-2" type="radio" value="1" name="studentTeacher" [(ngModel)]="newUser.role" required> Teacher
             </form>
         </div>
-        <div>
-            <p id="existingAccount">Already have an account? <a href="#">Log in</a></p>
+        <div class="pl-1">
+            <p id="existingAccount">Already have an account? <a href routerLink="/login" class="text-info">Log in</a></p>
         </div>
-        <!-- <input type="checkbox" name="my-checkbox" checked> -->
-    </div>
-    <div>
-        <p>Type: {{newUser.type}}</p>
     </div>
 </div>

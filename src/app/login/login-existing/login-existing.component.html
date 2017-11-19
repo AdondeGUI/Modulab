@@ -1,19 +1,21 @@
+<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+
 <div class="d-flex flex-column" id="loginContainer">
-    <div class="jumbotron">
-        <h1>Sign In</h1>
+    <div class="jumbotron-custom border border-info rounded bg-white thick-border">
+        <div class="header-custom">Sign In</div>
         <br>
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            <input type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" [(ngModel)]="loginAttempt.email">
         </div>
         <br>
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+            <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" [(ngModel)]="loginAttempt.password">
         </div>
         <br>
         <p class="lead float-right">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Log In</a>
+            <a class="btn btn-info btn-lg link-custom text-white" role="button" (click)="getUser()">Log In</a>
         </p>
         <br>
-        <p id="newAccount"><a href="#">Create new account</a></p>
+        <p id="newAccount"><a href routerLink="/newlogin" class="text-info">Create new account</a></p>
     </div>
 </div>

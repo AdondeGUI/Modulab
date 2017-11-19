@@ -3,23 +3,27 @@
 
 <div class="container mt-5">
 
-<div class="row justify-content-md-center brand text-info">Modulab</div>
+  <div class="col-5 m-auto d-block adj-1">
 
-<div class="col-5 border border-info rounded bg-white thick-border mx-auto">
+    <div class="row justify-content-md-center header-custom text-info">Modulab</div>
 
-  <div class="row justify-content-md-center text-center text-dark mt-3 big bold">
-    New to Modulab?
+    <div class="container border border-info rounded bg-white thick-border">
+
+      <div class="row justify-content-md-center text-center text-dark mt-3 big bold">
+        New to Modulab?
+      </div>
+
+      <div class="row justify-content-md-center text-center text-dark sorta-big">
+        Create a new Student or Professor account.
+      </div>
+
+      <button class="btn btn-info d-block mx-auto my-3 btn-lg btn-block px-3" (click)="navigateToNewLogin()">
+        Create Account
+      </button>
+
+      <button class="row btn btn-info d-block mx-auto my-3 btn-lg btn-block px-3" (click)="navigateToLogin()">
+        Sign In
+      </button>
+    </div>
   </div>
-
-  <div class="row justify-content-md-center text-center text-dark sorta-big">
-    Create a new Student or Professor account.
-  </div>
-
-  <button class="btn btn-info d-block mx-auto my-3 btn-lg btn-block px-3" (click)="navigateToCreateAccount()">
-    Create Account
-  </button>
-
-  <button class="row btn btn-info d-block mx-auto my-3 btn-lg btn-block px-3" (click)="navigateToLogin()">
-    Log In
-  </button>
 </div>

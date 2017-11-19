@@ -2,16 +2,47 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 50%;
+    min-height: 100%;
 }
 
-.jumbotron {
+.jumbotron-custom {
     border: 2em;
     width: 40em;
     margin: auto;
-    padding: 2rem;
+    padding-top: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 2rem;
+    position: relative;
+    bottom: 4rem;
 }
 
 a:hover {
     text-decoration: none;
+}
+
+.link-custom {
+    cursor: pointer;
+}
+
+.header-custom {
+  font-family: 'PT Sans', sans-serif;
+  font-weight: bold;
+  font-size: 2.6em;
+}
+
+.thick-border {
+  border-width: 3px;
+}
+
+.big {
+  font-size: 1.5em;
+}
+
+.sorta-big {
+  font-size: 1.2em;
+}
+
+.bold {
+  font-weight: bold;
 }
