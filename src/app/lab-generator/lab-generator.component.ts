@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Module } from '../domain/index';
+import { Module, User } from '../domain/index';
 import { Lab } from '../domain/index';
 import { LabModulesModule } from '../LabModules';
 import { LabModuleComponent } from '../LabModules/lab-module.component'
+import { HttpClient } from '@angular/common/http';
+import { Course } from '../domain/models/course';
 
 @Component({
   selector: 'lab-generator',
@@ -18,8 +20,9 @@ export class LabGeneratorComponent {
   @Input()
   public modules : Module[] = [];
 
-  constructor() {
+  constructor(private http: HttpClient) {
       this.modules.push(this.newModule);
+
   }
 
   private addModule() {
