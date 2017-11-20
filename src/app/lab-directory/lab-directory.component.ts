@@ -9,17 +9,25 @@ import { AccountModule } from '../account';
 })
 
 export class LabDirectoryComponent {
-  private newFile = "";
+  private newCourse = "";
+  private newTemplate = "";
 
   @Input()
-  public files : string[] = [];
+  public courses : string[] = [];
+  public templates : string[] = [];
 
   constructor() {
-    this.files = ["File 1", "File 2"];
+    this.courses = ["Course 1", "Course 2"];
+    this.templates = ["Template 1", "Template 2"];
   }
 
-  private addFile() {
-    this.files.push(this.newFile);
-    this.newFile = "";
+  private addCourse() {
+    this.courses.push(this.newCourse);
+    this.newCourse = "";
+  }
+
+  private addTemplate() {
+    this.templates.push(this.newTemplate);
+    this.newTemplate = "";
   }
 }

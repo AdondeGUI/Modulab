@@ -37,3 +37,11 @@ a:hover {
 .text-info-custom:hover {
   color: rgb(100,165,200);
 }
+
+.header-custom {
+  font-size: 1.15em;
+}
+
+.font-weight-500 {
+  font-weight: 500;
+}
