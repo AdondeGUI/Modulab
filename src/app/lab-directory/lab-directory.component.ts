@@ -23,7 +23,6 @@ export class LabDirectoryComponent {
   public templateNames : string[] = [];
   
   constructor(private http: HttpClient) {
-    this.files = ["File 1", "File 2"];
     this.user.id = 1;
     this.newCourse.course_id = 3345;
     this.newCourse.instructor = "Fontenot";

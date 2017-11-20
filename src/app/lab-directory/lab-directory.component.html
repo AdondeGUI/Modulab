@@ -13,7 +13,7 @@
     </div>
 
     <ul class="list-group mb-0">
-      <li class="list-group-item bg-light clearfix" *ngFor="let course of courses; let i = index;">
+      <li class="list-group-item bg-light clearfix" *ngFor="let course of courseNames; let i = index;">
         <a href="#" class="text-info-custom">
           {{course}}
         <i class="material-icons d-inline float-right text-info">chevron_right</i>
@@ -32,7 +32,7 @@
     </div>
 
     <ul class="list-group mb-0">
-      <li class="list-group-item bg-light clearfix" *ngFor="let template of templates; let i = index;">
+      <li class="list-group-item bg-light clearfix" *ngFor="let template of templateNames; let i = index;">
         <a href="#" class="text-info-custom">
           {{template}}
         </a>
@@ -61,11 +61,11 @@
         <input type="text"
          class="form-control"
          placeholder="Template Name"
-         [(ngModel)]="newTemplate" />
+         [(ngModel)]="newTemplateName" />
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-info" (click)="addTemplate()" [disabled]="!newTemplate" onclick="$('#addModal').modal('hide')">Add Template</button>
+        <button type="button" class="btn btn-info" (click)="addTemplateName()" [disabled]="!newTemplateName" onclick="$('#addModal').modal('hide')">Add Template</button>
       </div>
     </div>
 
