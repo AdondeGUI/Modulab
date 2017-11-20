@@ -11,25 +11,35 @@ import { Course } from '../domain/models/course';
 })
 
 export class LabDirectoryComponent {
-  private newFile = "";
   private user = new User();
   private newCourse = new Course();
+  private newCourseName = "";
+  private newTemplateName = "";
 
   @Input()
-  public files : string[] = [];
+
   public courses : Course[] = [];
+  public courseNames : string[] = [];
+  public templateNames : string[] = [];
   
   constructor(private http: HttpClient) {
     this.files = ["File 1", "File 2"];
     this.user.id = 1;
     this.newCourse.course_id = 3345;
     this.newCourse.instructor = "Fontenot";
-    this.newCourse.title = "Ass Eating 101";
+    this.newCourse.title = "DB";
+    this.courseNames = ["Course 1", "Course 2"];
+    this.templateNames = ["Template 1", "Template 2"];
   }
 
-  private addFile() {
-    this.files.push(this.newFile);
-    this.newFile = "";
+  private addCourseName() {
+    this.courseNames.push(this.newCourseName);
+    this.newCourseName = "";
+  }
+
+  private addTemplateName() {
+    this.templateNames.push(this.newTemplateName);
+    this.newTemplateName = "";
   }
 
   private createCourse(){
