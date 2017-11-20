@@ -4,44 +4,48 @@
 
 <div class="container col-6">
 
-  <div class="d-flex mb-2">
-    <h4 class="pt-3"><i class="material-icons d-inline adj-4">folder</i> Lab Directory</h4>
-    <button class="btn btn-info ml-md-auto" data-toggle="modal" data-target="#addModal">
+    <div class="d-flex mb-2">
+        <h4 class="pt-3"><i class="material-icons d-inline adj-4">folder</i> Lab Directory</h4>
+        <button class="btn btn-info ml-md-auto" data-toggle="modal" data-target="#addModal">
       <span class="adj-1 adj-3 d-inline">Add New</span>
       <i class="material-icons adj-2">add_circle_outline</i>
     </button>
-  </div>
+    </div>
 
-  <ul class="list-group mb-0">
-    <li class="list-group-item bg-light clearfix" *ngFor="let file of files; let i = index;">
-      <a href="#" class="text-info-custom">
+    <ul class="list-group mb-0">
+        <li class="list-group-item bg-light clearfix" *ngFor="let file of files; let i = index;">
+            <a href="#" class="text-info-custom">
         {{file}}
       <i class="material-icons d-inline float-right text-info">insert_drive_file</i>
       </a>
-    </li>
-  </ul>
+        </li>
+    </ul>
 </div>
 
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add New Report</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add New Report</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
-      <div class="modal-body">
-        <input type="text"
-         class="form-control"
-         placeholder="Filename"
-         [(ngModel)]="newFile" />
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-info" (click)="addFile()" [disabled]="!newFile" onclick="$('#addModal').modal('hide')">Add File</button>
-      </div>
+            </div>
+            <div class="modal-body">
+                <input type="text" class="form-control" placeholder="Filename" [(ngModel)]="newFile" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-info" (click)="addFile()" [disabled]="!newFile" onclick="$('#addModal').modal('hide')">Add File</button>
+            </div>
+        </div>
     </div>
-  </div>
 
+</div>
+
+<div>
+    <button type="button" class="btn btn-info" (click)="createCourse()">Add Course</button>
+</div>
+<div>
+    <button type="button" class="btn btn-info" (click)="deleteCourse()">Delete Course</button>
 </div>
