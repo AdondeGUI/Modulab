@@ -8,8 +8,8 @@
             <h4 class="text-center">Title</h4>
 
             <h5 class="text-center">Template: </h5>
-            <ng-container class="module mx-auto d-block" *ngFor="let module of modules;">
-                <a href class="text-danger close-icon float-right"><i class="material-icons">remove_circle</i></a>
+            <ng-container class="module mx-auto d-block" *ngFor="let module of modules; let i = index;">
+                <a href="javascript:void(0);" class="text-danger close-icon float-right" (click)="removeModule(i)"><i class="material-icons">remove_circle</i></a>
                 <lab-module></lab-module>
                 <div class="d-flex mb-2">
                     <h4 class="pt-3"></h4>

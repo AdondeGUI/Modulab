@@ -41,6 +41,14 @@ export class LabDirectoryComponent {
     this.newTemplateName = "";
   }
 
+  private removeCourse(index: number) {
+    this.courseNames.splice(index, 1);
+  }
+
+  private removeTemplate(index: number) {
+    this.templateNames.splice(index, 1);
+  }
+
   private createCourse(){
     const body = {ID: this.user.id, course_id: this.newCourse.course_id, instructor: this.newCourse.instructor, title: this.newCourse.title}
     this.http.post('http://52.15.171.47/courses', body).subscribe();

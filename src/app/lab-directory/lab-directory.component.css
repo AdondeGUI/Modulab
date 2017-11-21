@@ -45,3 +45,7 @@ a:hover {
 .font-weight-500 {
   font-weight: 500;
 }
+
+.remove-icon:hover {
+  color: #EE5858 !important;
+}

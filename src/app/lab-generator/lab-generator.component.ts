@@ -36,6 +36,10 @@ export class LabGeneratorComponent {
     this.modules.push(this.newModule);
   }
 
+  private removeModule(index: number) {
+    this.modules.splice(index, 1);
+  }
+
   private save() {
     this.router.navigateByUrl('directory');
   }
