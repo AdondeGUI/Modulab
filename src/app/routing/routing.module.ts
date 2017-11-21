@@ -19,6 +19,7 @@ import { LabGeneratorComponent } from '../lab-generator/lab-generator.component'
     BrowserModule,
     FormsModule,
     AccountModule,
+    LabModulesModule,
     RouterModule.forChild(ROUTES)
   ],
   declarations: [

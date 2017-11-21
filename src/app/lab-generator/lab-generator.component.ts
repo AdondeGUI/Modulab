@@ -5,6 +5,7 @@ import { LabModulesModule } from '../LabModules';
 import { LabModuleComponent } from '../LabModules/lab-module.component'
 import { HttpClient } from '@angular/common/http';
 import { Course } from '../domain/models/course';
+import { AccountModule } from '../account';
 
 @Component({
   selector: 'lab-generator',
