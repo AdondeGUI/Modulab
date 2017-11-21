@@ -2,20 +2,31 @@
 
 <account-nav></account-nav>
 
-<div class="container">
-  <h4>Title</h4>
-  <h5>Authors: </h5>
-  <h5>Template: </h5>
-  <ng-container class="module" *ngFor="let module of modules;">
-    <lab-module></lab-module>
-    <div class="d-flex mb-2">
-      <h4 class="pt-3"></h4>
+<div class="main-container-custom">
+    <div class="container-fluid pt-4">
+        <div class="container col-8 bg-white rounded p-4">
+            <h4 class="text-center">Title</h4>
+
+            <h5 class="text-center">Template: </h5>
+            <ng-container class="module mx-auto d-block" *ngFor="let module of modules;">
+                <a href class="text-danger close-icon float-right"><i class="material-icons">remove_circle</i></a>
+                <lab-module></lab-module>
+                <div class="d-flex mb-2">
+                    <h4 class="pt-3"></h4>
+                </div>
+                <hr>
+            </ng-container>
+
+            <button class="btn btn-info float-right" (click)="addModule()">
+                <h6 class="adjust-up d-inline">Add New Module
+                <i class="material-icons adjust-down">add_circle_outline</i></h6>
+            </button>
+            <div class="spacer-custom clearfix my-1"></div>
+            <button class="btn btn-success float-right" (click)="save()">
+                <span class="my-2 py-2">Save Report</span>
+            </button>
+            <div class="spacer-custom clearfix"></div>
+        </div>
     </div>
-  </ng-container>
-
-  <button class="btn btn-info ml-md-auto" (click)="addModule()">
-    <h6 class="adjust-up d-inline" >Add New Module
-    <i class="material-icons adjust-down">add_circle_outline</i></h6>
-  </button>
-
+    <div class="m-3 spacer-custom clearfix"></div>
 </div>

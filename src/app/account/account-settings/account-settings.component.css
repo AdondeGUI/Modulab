@@ -2,3 +2,16 @@
   position: relative;
   top: 0.2rem;
 }
+
+.label-custom {
+  font-weight: 500;
+}
+
+.double-layer {
+  height: 2.33rem;
+}
+
+.adj-2 {
+  position: relative;
+  top: -.9rem;
+}

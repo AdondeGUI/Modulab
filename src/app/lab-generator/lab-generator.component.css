@@ -24,3 +24,16 @@ a:hover {
   border: 1px;
   background-color:
 }
+
+.main-container-custom {
+  min-height: 100%;
+  background-color: #EEE;
+}
+
+.spacer-custom {
+  height: 3em;
+}
+
+.close-icon::hover {
+  color: #f00 !important;
+}

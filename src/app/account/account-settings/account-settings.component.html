@@ -2,33 +2,42 @@
 
 <account-nav></account-nav>
 
-<div class="container col-6">
+<div class="container col-6 mt-4">
     <h4><i class="material-icons d-inline adj-1 pb-3">settings</i> Account Settings</h4>
     <hr>
-    <div class="col-6 pl-2">
+    <div class="mx-auto px-5">
         <!--Add Labels to these Things-->
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="First Name" aria-label="Firstname" aria-describedby="basic-addon1">
+        <div class="d-flex">
+            <span class="d-inline-block label-custom mt-2 mr-3 col-3">First Name</span>
+            <input type="text" class="form-control d-inline-block" placeholder="" aria-label="Firstname" aria-describedby="basic-addon1">
         </div>
         <br>
-        <div>
-            <input type="text" class="form-control" placeholder="Last Name" aria-label="Lastname" aria-describedby="basic-addon1">
+        <div class="d-flex">
+            <span class="d-inline-block label-custom mt-2 mr-3 col-3">Last Name</span>
+            <input type="text" class="form-control" placeholder="" aria-label="Lastname" aria-describedby="basic-addon1">
         </div>
         <br>
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+        <div class="d-flex">
+            <span class="d-inline-block label-custom mt-2 mr-3 col-3">Email Name</span>
+            <input type="text" class="form-control" placeholder="" aria-label="Email" aria-describedby="basic-addon1">
         </div>
         <br>
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+        <div class="d-flex">
+            <span class="d-inline-block label-custom mt-2 mr-3 col-3">New Password</span>
+            <input type="text" class="form-control" placeholder="" aria-label="Password" aria-describedby="basic-addon1">
+        </div>
+        <br>
+        <div class="d-flex">
+            <span class="d-inline-block adj-2 label-custom mt-2 mr-3 col-3">Confirm New Password</span>
+            <input type="text" class="form-control double-layer" placeholder="" aria-label="Confirmpassword" aria-describedby="basic-addon1">
         </div>
     </div>
     <hr>
-    <div id="settings-delete d-inline m-auto" class="">
+    <div id="settings-delete d-inline m-auto" class="d-flex justify-content-center">
         <button class="btn btn-danger d-inline" (click)="deleteUser()">
       Delete This Account
     </button>
-        <span class="ml-3">This will delete <strong>all</strong> of your data and files.</span>
+        <span class="ml-3 mt-2">This will delete <strong>all</strong> of your data and files.</span>
     </div>
     <hr>
     <div id="settings-save" class="clearfix" (click)="updateUser()">
