@@ -30,6 +30,10 @@ a:hover {
   top: 0.1em;
 }
 
+.adj-5 {
+  padding-top: 0.475rem;
+}
+
 .text-info-custom {
   color: rgb(18,135,165);
 }
@@ -48,4 +52,10 @@ a:hover {
 
 .remove-icon:hover {
   color: #EE5858 !important;
+}
+
+.enroll-button {
+  border-width: 1.8px;
+  margin: -1rem 0;
+  font-weight: 500;
 }
