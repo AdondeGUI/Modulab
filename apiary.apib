@@ -164,7 +164,7 @@ Modulab is a web app for generating modular lab reports from scratch or from tea
 + Response 404 (application/JSON)
 
         {
-            "error": "User 1 not found"
+            "details": "User 1 not found"
         }
 
 ### Create a new lab [POST]
@@ -182,7 +182,7 @@ Modulab is a web app for generating modular lab reports from scratch or from tea
 + Response 404 (application/JSON)
 
         {
-            "error": "User 1 not found"
+            "details": "User 1 not found"
         }
 
 ## Single Lab Group [/users/{ID}/labs/{lab_id}]
@@ -208,7 +208,7 @@ Modulab is a web app for generating modular lab reports from scratch or from tea
 + Response 404 (application/JSON)
 
         {
-            "error": "User 1 or lab 2048 not found"
+            "details": "User 1 or lab 2048 not found"
         }
 
 ### Update a lab[PUT]
@@ -281,7 +281,7 @@ Modulab is a web app for generating modular lab reports from scratch or from tea
 + Response 404 (application/JSON)
 
         {
-            "error": "User 1 or lab 2048 not found"
+            "details": "User 1 or lab 2048 not found"
         }
         
 ### Update a module on a lab[POST]
