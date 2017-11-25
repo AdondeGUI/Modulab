@@ -2,11 +2,10 @@
 
 <account-nav></account-nav>
 
-<div class="container col-6">
+<div class="container col-6 mt-4">
     <h4><i class="material-icons d-inline adj-1 pb-3">settings</i> Account Settings</h4>
     <hr>
-    <div class="col-6 pl-2">
-        <!--Add Labels to these Things-->
+    <div class="mx-auto px-5">
         <div>
             <label>First Name</label>
             <input type="text" class="form-control" placeholder="{{this.userManager.user.first_name}}" aria-label="Firstname" aria-describedby="basic-addon1">
@@ -28,15 +27,15 @@
         </div>
     </div>
     <hr>
-    <div id="settings-delete d-inline m-auto" class="">
+    <div id="settings-delete d-inline m-auto" class="d-flex justify-content-center">
         <button class="btn btn-danger d-inline" (click)="deleteUser()">
       Delete This Account
     </button>
-        <span class="ml-3">This will delete <strong>all</strong> of your data and files.</span>
+        <span class="ml-3 mt-2">This will delete <strong>all</strong> of your data and files.</span>
     </div>
     <hr>
     <div id="settings-save" class="clearfix" (click)="updateUser()">
-        <button class="btn btn-info float-right">
+    <button class="btn btn-info float-right">
       Save Changes
     </button>
     </div>

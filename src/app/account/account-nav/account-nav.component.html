@@ -1,7 +1,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
 
-<nav class="navbar navbar-expand-lg navbar-info bg-info mb-4">
+<nav class="navbar navbar-expand-lg navbar-info bg-info">
   <a class="navbar-brand" href="#">Modulab</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -25,27 +25,3 @@
     </ul>
   </div>
 </nav>
-
-<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add New Report</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <input type="text"
-         class="form-control"
-         placeholder="Filename"
-         [(ngModel)]="newFile" />
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-info" (click)="addFileFromNav()" [disabled]="!newFile" onclick="$('#addModal').modal('hide')">Add File</button>
-      </div>
-    </div>
-  </div>
-
-</div>

@@ -2,6 +2,7 @@
   z-index: -1;
   position: absolute;
   top: 0;
+  max-height: 100%;
 }
 
 .header-custom {

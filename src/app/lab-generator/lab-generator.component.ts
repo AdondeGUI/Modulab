@@ -5,6 +5,8 @@ import { LabModulesModule } from '../LabModules';
 import { LabModuleComponent } from '../LabModules/lab-module.component'
 import { HttpClient } from '@angular/common/http';
 import { Course } from '../domain/models/course';
+import { AccountModule } from '../account';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'lab-generator',
@@ -20,9 +22,12 @@ export class LabGeneratorComponent {
   @Input()
   public modules : Module[] = [];
 
-  constructor(private http: HttpClient) {
-      this.modules.push(this.newModule);
-
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {
+    this.modules.push(this.newModule);
   }
 
   private addModule() {
@@ -31,4 +36,11 @@ export class LabGeneratorComponent {
     this.modules.push(this.newModule);
   }
 
+  private removeModule(index: number) {
+    this.modules.splice(index, 1);
+  }
+
+  private save() {
+    this.router.navigateByUrl('directory');
+  }
 }
