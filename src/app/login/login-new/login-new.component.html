@@ -4,39 +4,68 @@
     <img [src]="'src/images/background.jpg'" alt="background" class="bg" />
 </div>
 
-<div class="d-flex flex-column mt-3" id="loginContainer">
+<div class="d-flex flex-column" id="loginContainer">
     <div class="jumbotron-custom border border-info rounded bg-white-custom thick-border">
         <div class="header-custom">New User</div>
         <br>
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="First Name" aria-label="Firstname" aria-describedby="basic-addon1" [(ngModel)]="newUser.firstname">
-            <input type="text" class="form-control" placeholder="Last Name" aria-label="Lastname" aria-describedby="basic-addon1" [(ngModel)]="newUser.lastname">
-        </div>
-        <br>
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" [(ngModel)]="newUser.email">
-        </div>
-        <br>
-        <div class="input-group">
-            <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" [(ngModel)]="newUser.password">
-        </div>
-        <br>
-        <div class="input-group">
-            <input type="password" class="form-control" placeholder="Confirm Password" aria-label="ConfirmPassword" aria-describedby="basic-addon1" [(ngModel)]="passwordConfirm">
-        </div>
-        <br>
+        <form (ngSubmit)="addUser()" #accountForm="ngForm">
+            <div class="form-group d-flex align-items-stretch my-3">
+                <div class="flex-column form-column pr-1">
+                    <label for="first_name">First Name</label>
+                    <input id="first_name" type="text" name="First Name" class="form-control text-input" [(ngModel)]="newUser.first_name" required #first_name="ngModel">
+                    <div [hidden]="first_name.valid || first_name.pristine"
+                        class="alert alert-danger">
+                        Please enter a first name.
+                    </div>
+                </div>
 
-        <p class="lead float-right">
-            <a class="btn btn-info btn-lg link-custom text-white" role="button" (click)="addUser()">Create Account</a>
-        </p>
-        <div class="pl-1">
-            <form #f="ngForm">
-                <input type="radio" value="0" name="studentTeacher" [(ngModel)]="newUser.role" required #genderControl="ngModel"> Student
-                <input class="ml-2" type="radio" value="1" name="studentTeacher" [(ngModel)]="newUser.role" required> Teacher
-            </form>
-        </div>
-        <div class="pl-1">
-            <p id="existingAccount">Already have an account? <a href routerLink="/login" class="text-info">Log in</a></p>
-        </div>
+                <div class="flex-column form-column pl-1">
+                    <label for="last_name">Last Name</label>
+                    <input id="last_name" type="text" name="Last Name" class="form-control text-input" [(ngModel)]="newUser.last_name" required #last_name="ngModel">
+                    <div [hidden]="last_name.valid || last_name.pristine"
+                        class="alert alert-danger">
+                        Please enter a last name.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group my-3">
+                <label for="email">Email</label>
+                <input id="email" type="email" name="Email" class="form-control text-input" [(ngModel)]="newUser.email" pattern="[\w.]+[@]\w+[.][\w.]+" required #email="ngModel">
+                <div [hidden]="email.valid || !email.touched"
+                    class="alert alert-danger">
+                    Please enter a valid email.
+                </div>
+            </div>
+
+            <div class="form-group my-3">
+                <label for="password">Password</label>
+                <input id="password" type="password" name="Password" class="form-control text-input" [(ngModel)]="newUser.password" pattern="[.\S]{6,}" required #password="ngModel">
+                <div [hidden]="password.valid || !password.touched"
+                    class="alert alert-danger">
+                    Please enter a password of at least 6 characters.
+                </div>
+            </div>
+            
+            <div class="form-group my-3">
+                <label for="confirm_password">Confirm Password</label>
+                <input id="confirm_password" type="password" name="Confirm Password" class="form-control text-input" [(ngModel)]="passwordConfirm" required>
+                <div class="alert alert-danger" *ngIf="!passwordMismatch">
+                    Passwords do not match.
+                </div>
+            </div>
+            <div class="d-flex justify-content-between">
+                <div class="form-group mb-0 d-inline-block">
+                    <label for="select_role">Select Role</label>
+                    <div>
+                        <input type="radio" value="0" name="studentTeacher" [(ngModel)]="newUser.role" required #genderControl="ngModel"> Student
+                        <input class="ml-2" type="radio" value="1" name="studentTeacher" [(ngModel)]="newUser.role" required> Teacher
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-info btn-lg link-custom text-white d-inline-block" [disabled]="!accountForm.form.valid">Create Account</button>
+            </div>
+        </form>
+
+        <div id="existingAccount" class="alert alert-info mb-0 mt-3">Already have an account? <a href routerLink="/login" class="text-info">Log in</a></div>
     </div>
 </div>

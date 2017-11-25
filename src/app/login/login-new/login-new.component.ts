@@ -12,6 +12,7 @@ export class LoginNewComponent{
 
   private newUser = new User();
   private passwordConfirm = "";
+  private passwordMismatch = 1;
 
   @Input()
   public users : User[] = [];
@@ -29,7 +30,7 @@ export class LoginNewComponent{
       alert("Please fill out all fields to proceed.");
     }
     else if (this.newUser.password != this.passwordConfirm) {
-      alert("Passwords do not match.")
+      this.passwordMismatch = 0;
     }
     else{
       // this.users.push(this.newUser);
