@@ -60,6 +60,19 @@ a:hover {
   font-weight: 500;
 }
 
+.enroll-button-transform:hover span {
+  display: none;
+}
+
+.enroll-button-transform:hover {
+  background-color: rgb(220,53,69);
+  border-color: rgb(220,53,69);
+}
+
+.enroll-button-transform:hover:before {
+  content: "Drop";
+}
+
 .btn-custom {
   padding-right: 0.48rem;
 }
