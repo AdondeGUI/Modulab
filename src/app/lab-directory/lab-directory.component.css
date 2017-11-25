@@ -50,10 +50,6 @@ a:hover {
   font-weight: 500;
 }
 
-.remove-icon:hover {
-  color: #EE5858 !important;
-}
-
 .enroll-button {
   border-width: 1.8px;
   margin: -1rem 0;
@@ -75,4 +71,53 @@ a:hover {
 
 .btn-custom {
   padding-right: 0.48rem;
+}
+
+.btn-icon-custom:hover {
+  color: #aa4477 !important;
+}
+
+.btn-outline-custom {
+  background-color: rgba(0,0,0,0) !important;
+  border-color: #aa4477 !important;
+  color: #aa4477 !important;
+}
+
+.btn-outline-custom:hover {
+  background-color: #aa4477 !important;
+  color: #FFF !important;
+}
+
+.bg-container {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: rgb(92,55,74);
+}
+
+.main-container {
+  height: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+.col-left {
+  border-right: 1px solid #EEE
+}
+.col-right {
+  border-left: 1px solid #EEE
+}
+.footer {
+  position: absolute;
+  margin-left: -15px;
+  height: 3.5rem;
+  bottom: 4.2rem;
+  width: 100%;
+  border-top: 1px solid #EEE;
+}
+.view-div {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
