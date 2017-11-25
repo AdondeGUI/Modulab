@@ -9,12 +9,13 @@ import { LandingPageComponent } from '../landing-page/landing-page.component';
 import { Routes } from "@angular/router";
 import { LoginNewComponent } from '../login/login-new/login-new.component';
 import { LoginExistingComponent } from '../login/login-existing/login-existing.component';
+import { AuthGuard } from '../auth-guard.service';
 
 export const ROUTES : Routes = [
-    { path: 'landing-page', component: LandingPageComponent },
-    { path: 'directory', component: LabDirectoryComponent },
-    { path: 'settings', component: AccountSettingsComponent },
-    { path: 'lab-generator', component: LabGeneratorComponent },
+    { path: 'landing-page', component: LandingPageComponent},
+    { path: 'directory', component: LabDirectoryComponent, canActivate: [AuthGuard] },
+    { path: 'settings', component: AccountSettingsComponent, canActivate: [AuthGuard] },
+    { path: 'lab-generator', component: LabGeneratorComponent, canActivate: [AuthGuard] },
     { path: 'newlogin', component: LoginNewComponent },
     { path: 'login', component: LoginExistingComponent },
     { path: '**', redirectTo: '/landing-page', pathMatch: 'full'}

@@ -6,30 +6,24 @@
     <h4><i class="material-icons d-inline adj-1 pb-3">settings</i> Account Settings</h4>
     <hr>
     <div class="mx-auto px-5">
-        <!--Add Labels to these Things-->
-        <div class="d-flex">
-            <span class="d-inline-block label-custom mt-2 mr-3 col-3">First Name</span>
-            <input type="text" class="form-control d-inline-block" placeholder="" aria-label="Firstname" aria-describedby="basic-addon1">
+        <div>
+            <label>First Name</label>
+            <input type="text" class="form-control" placeholder="{{this.userManager.user.first_name}}" aria-label="Firstname" aria-describedby="basic-addon1">
         </div>
         <br>
-        <div class="d-flex">
-            <span class="d-inline-block label-custom mt-2 mr-3 col-3">Last Name</span>
-            <input type="text" class="form-control" placeholder="" aria-label="Lastname" aria-describedby="basic-addon1">
+        <div>
+            <label>Last Name</label>
+            <input type="text" class="form-control" placeholder="{{this.userManager.user.last_name}}" aria-label="Lastname" aria-describedby="basic-addon1">
         </div>
         <br>
-        <div class="d-flex">
-            <span class="d-inline-block label-custom mt-2 mr-3 col-3">Email Name</span>
-            <input type="text" class="form-control" placeholder="" aria-label="Email" aria-describedby="basic-addon1">
+        <div>
+            <label>Email</label>
+            <input type="text" class="form-control" placeholder="{{this.userManager.user.email}}" aria-label="Email" aria-describedby="basic-addon1">
         </div>
         <br>
-        <div class="d-flex">
-            <span class="d-inline-block label-custom mt-2 mr-3 col-3">New Password</span>
-            <input type="text" class="form-control" placeholder="" aria-label="Password" aria-describedby="basic-addon1">
-        </div>
-        <br>
-        <div class="d-flex">
-            <span class="d-inline-block adj-2 label-custom mt-2 mr-3 col-3">Confirm New Password</span>
-            <input type="text" class="form-control double-layer" placeholder="" aria-label="Confirmpassword" aria-describedby="basic-addon1">
+        <div>
+            <label>Password</label>
+            <input type="text" class="form-control" placeholder="{{this.userManager.user.password}}" aria-label="Password" aria-describedby="basic-addon1">
         </div>
     </div>
     <hr>
