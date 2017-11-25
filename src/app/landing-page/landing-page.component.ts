@@ -22,20 +22,20 @@ export class LandingPageComponent {
     private http: HttpClient,
     private userManager: UserManager
   ) {     
-    this.user.firstname = "Bob";
-    this.user.lastname = "Smith";
-    this.user.email = "newemail@mail.com";
-    this.user.password = "newpassword";
-    this.user.id = 1;
+    // this.user.firstname = "Bob";
+    // this.user.lastname = "Smith";
+    // this.user.email = "newemail@mail.com";
+    // this.user.password = "newpassword";
+    // this.user.id = 1;
     
-    this.lab.title = "Testpost";
-    this.lab.course_id = 1234;
-    this.lab.lab_id = 1;
+    // this.lab.title = "Testpost";
+    // this.lab.course_id = 1234;
+    // this.lab.lab_id = 1;
 
-    this.module.type = "text";
-    this.module.lab_id = this.lab.lab_id;
-    this.module.module_id = 22;
-    this.module.data = {xyz: "TESTTEST"};
+    // this.module.type = "text";
+    // this.module.lab_id = this.lab.lab_id;
+    // this.module.module_id = 22;
+    // this.module.data = {xyz: "TESTTEST"};
   }
 
   public ngOnInit(){

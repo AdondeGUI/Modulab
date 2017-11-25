@@ -13,20 +13,31 @@ export class CourseRepository {
         private userManager: UserManager
     ) {}
 
+    //Get all courses
+    public getAllCourses(): Observable<Course[]>{
+        return this.http.get<Course[]>(this.endpoint).catch(x => this.handleException(x));
+    }
+
     //create a new course
-    public postCourse(courseid: number, coursetitle: string): Observable<Course[]>{
-        const body = {course_id: courseid, title: coursetitle, instructor: this.userManager.user.firstname + ' ' + this.userManager.user.lastname};
+    public createCourse(courseid: number, coursetitle: string): Observable<Course[]>{
+        const body = {course_id: courseid, title: coursetitle, instructor: this.userManager.user.first_name + ' ' + this.userManager.user.last_name};
+        return this.http.post<Course[]>(this.endpoint, body).catch(x => this.handleException(x));
+    }
+
+    //enroll in a particular course
+    public enrollCourse(courseid: number, coursetitle: string, courseInstructor: string): Observable<Course[]>{
+        const body = {"course_id": courseid, "title": coursetitle, "instructor": courseInstructor, "ID": this.userManager.user.ID};
         return this.http.post<Course[]>(this.endpoint, body).catch(x => this.handleException(x));
     }
 
     //Get all courses for a user
     public  getUserCourses(): Observable<Course[]>{
-        return this.http.get<Course[]>(this.endpoint + '/' + this.userManager.user.id).catch(x => this.handleException(x));
+        return this.http.get<Course[]>(this.endpoint + '/' + String(this.userManager.user.ID)).catch(x => this.handleException(x));
     }
 
-    //Get all courses for a user
+    //delete all courses for a user
     public  deleteUserCourses(): Observable<Course[]>{
-        return this.http.get<Course[]>(this.endpoint + '/' + this.userManager.user.id).catch(x => this.handleException(x));
+        return this.http.get<Course[]>(this.endpoint + '/' + this.userManager.user.ID).catch(x => this.handleException(x));
     }
 
     //Get a particular course
@@ -36,7 +47,7 @@ export class CourseRepository {
 
     //delete a course for a user
     public deleteUserCourse(courseid: number): Observable<void>{
-        return this.http.delete<void>(this.endpoint + '/' + this.userManager.user.id + '/' + courseid).catch(x => this.handleException(x));
+        return this.http.delete<void>(this.endpoint + '/' + this.userManager.user.ID + '/' + courseid).catch(x => this.handleException(x));
     }
 
     protected handleException(exception: any) {

@@ -6,7 +6,7 @@ import { UserManager } from "../../user-manager.service"
 
 @Injectable()
 export class LabRepository {
-    protected endpoint = 'http://52.15.171.47/users/' + this.userManager.user.id + '/labs';
+    protected endpoint = 'http://52.15.171.47/users/' + this.userManager.user.ID + '/labs';
     
     constructor(
         protected http: HttpClient,
@@ -14,7 +14,7 @@ export class LabRepository {
     ) {}
 
     //get all labs for a particular user
-    public getLabs(): Observable<Lab[]> {
+    public getAllLabs(): Observable<Lab[]> {
         return this.http.get<Lab[]>(this.endpoint).catch(x => this.handleException(x));
     }
 

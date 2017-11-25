@@ -25,7 +25,7 @@ export class LoginNewComponent{
   ) { }
 
   private addUser() {
-    if(!this.newUser.email || !this.newUser.password || !this.newUser.firstname || !this.newUser.lastname || !this.newUser.role){
+    if(!this.newUser.email || !this.newUser.password || !this.newUser.first_name || !this.newUser.last_name || !this.newUser.role){
       alert("Please fill out all fields to proceed.");
     }
     else if (this.newUser.password != this.passwordConfirm) {
@@ -33,7 +33,7 @@ export class LoginNewComponent{
     }
     else{
       // this.users.push(this.newUser);
-      const body = {first_name: this.newUser.firstname, last_name: this.newUser.lastname, email: this.newUser.email, password: this.newUser.password, role: this.newUser.role}
+      const body = {first_name: this.newUser.first_name, last_name: this.newUser.last_name, email: this.newUser.email, password: this.newUser.password, role: this.newUser.role}
       this.http.post('http://52.15.171.47/users', body).subscribe()
       this.newUser = new User();
       this.router.navigateByUrl('directory');

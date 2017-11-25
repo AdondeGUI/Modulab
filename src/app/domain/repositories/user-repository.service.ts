@@ -31,12 +31,12 @@ export class UserRepository {
 
     public updateUser(firstname: string, lastname: string, emailAddress: string, pwd: string): Observable<User[]> {
         const body = {first_name: firstname, last_name:lastname, email: emailAddress, password: pwd}
-        return this.http.put('http://52.15.171.47/users/'+this.userManager.user.id, body).catch(x => this.handleException(x));
+        return this.http.put('http://52.15.171.47/users/'+this.userManager.user.ID, body).catch(x => this.handleException(x));
     }
     
     
     public deleteUser(): Observable<void> {
-        return this.http.delete<void>('http://52.15.171.47/users/'+this.userManager.user.id).catch(x => this.handleException(x));
+        return this.http.delete<void>('http://52.15.171.47/users/'+this.userManager.user.ID).catch(x => this.handleException(x));
     }
 
     protected handleException(exception: any) {
