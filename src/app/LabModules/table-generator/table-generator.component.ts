@@ -13,13 +13,10 @@ export class TableGeneratorComponent {
   colNum: number = 1;
   constructor() {
   }
+  @Input()
+  public data : string;
 
   private adjustTableSize() {
-    console.log('Cols: ' + this.cols.length);
-    console.log('Rows: ' + this.rows.length);
-    console.log('ColNum: ' + this.colNum);
-    console.log('RowNum: ' + this.rowNum);
-
     while(this.colNum != this.cols.length || this.rowNum != this.rows.length)
     {
       var col = {'one':this.colNum}

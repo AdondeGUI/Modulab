@@ -14,16 +14,9 @@ export class LabModuleComponent {
   private moduleTypes = ['Image','Table','Hypothesis','Conclusion','Appendix','Process','Method','Text']
 
   @Input()
+  public module : Module;
   public modules : Module[] = [];
 
   constructor() {
   }
-
-  private addModule() {
-    this.newModule = new Module();
-    this.newModule.type = "hypothesis";
-    this.modules.push(this.newModule);
-  }
-
-
 }
