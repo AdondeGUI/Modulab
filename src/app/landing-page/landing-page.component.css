@@ -13,13 +13,13 @@
 .header-custom {
   font-family: 'PT Sans', sans-serif;
   font-weight: bold;
-  font-size: 4.5em;
+  font-size: 6em;
   color: #F8F8F8;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 .thick-border {
-  border-width: 4px;
+  border-width: 3px !important;
 }
 
 .big {
@@ -41,4 +41,15 @@
 
 .bg-white-custom {
   background-color: rgba(255, 255, 255, 0.8);
+}
+
+.btn-custom {
+  background-color: #aa4477 !important;
+  border-color: #aa4477;
+  color: #FFF;
+}
+
+.btn-custom:hover {
+  background-color: #834061 !important;
+  border-color: #834061;
 }

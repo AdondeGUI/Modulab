@@ -32,7 +32,7 @@ a:hover {
 }
 
 .thick-border {
-  border-width: 3px;
+  border-width: 2px !important;
 }
 
 .big {

@@ -32,7 +32,7 @@ a:hover {
 }
 
 .thick-border {
-  border-width: 3px;
+  border-width: 2px !important;
 }
 
 .big {
@@ -57,6 +57,23 @@ a:hover {
 }
 .bg { 
   width: 100%;
+}
+
+label {
+  font-weight: 500;
+}
+
+input.text-input {
+  border-radius: 0;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-bottom: 2px solid rgb(40,167,69);
+}
+
+#newAccount {
+  width: fit-content;
 }
 
 .bg-white-custom {
