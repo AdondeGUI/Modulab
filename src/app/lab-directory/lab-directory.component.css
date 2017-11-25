@@ -59,3 +59,7 @@ a:hover {
   margin: -1rem 0;
   font-weight: 500;
 }
+
+.btn-custom {
+  padding-right: 0.48rem;
+}

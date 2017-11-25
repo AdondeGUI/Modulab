@@ -15,6 +15,8 @@ export class LabDirectoryComponent {
   private newCourse = new Course();
   private newCourseName = "";
   private newTemplateName = "";
+  private newReportName = "";
+  public newTemplateSelect = "";
 
   @Input()
 
@@ -27,6 +29,10 @@ export class LabDirectoryComponent {
     this.newCourse.course_id = 3345;
     this.newCourse.instructor = "Fontenot";
     this.newCourse.title = "DB";
+    this.courses = [{ID:1, course_id:1301, title:'Basket-Weaving', instructor:'Mark Fontenot'},
+                    {ID:2, course_id:1302, title:'Basket-Weaving II', instructor:'Mark Fontenot'},
+                    {ID:3, course_id:3205, title:'Ethics of Spongebob', instructor:'Frank Coyle'},
+                    {ID:4, course_id:4303, title:'Painting: Just Don\'t', instructor:'Donald Evans'}]
     this.courseNames = ["Course 1", "Course 2"];
     this.templateNames = ["Template 1", "Template 2"];
   }
@@ -39,6 +45,15 @@ export class LabDirectoryComponent {
   private addTemplateName() {
     this.templateNames.push(this.newTemplateName);
     this.newTemplateName = "";
+  }
+
+  private addReportName() {
+    this.templateNames.push(this.newReportName);
+    this.newReportName = "";
+  }
+
+  private enrollInCourse(index: number) {
+    this.courseNames.push(this.courses[index].title);
   }
 
   private removeCourse(index: number) {
