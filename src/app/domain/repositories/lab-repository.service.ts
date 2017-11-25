@@ -19,14 +19,14 @@ export class LabRepository {
     }
 
     //post a new lab
-    public postLab(bodytitle: string, bodycourse_id: number) {
+    public postLab(bodytitle: string, bodycourse_id: number): Observable<Lab[]>  {
         const body = {title: bodytitle, course_id: bodycourse_id};
-        this.http.post(this.endpoint, body).catch(x => this.handleException(x));
+        return this.http.post(this.endpoint, body).catch(x => this.handleException(x));
     }
 
     //get an individual lab
     public getIndLab(labid: number): Observable<Lab[]>{
-        return this.http.get<Lab[]>(this.endpoint + labid).catch(x => this.handleException(x));
+        return this.http.get<Lab[]>(this.endpoint + "/" + String(labid)).catch(x => this.handleException(x));
     }
 
       //update a individual lab

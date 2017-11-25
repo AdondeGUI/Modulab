@@ -1,20 +1,22 @@
 <div>
-  <h5>Table</h5>
-  <label for="tableRows">Rows</label>
-  <input type="number" name="tableRows" min="1" [(ngModel)]="rowNum" (click)="adjustTableSize()"/>
-  <label for="tableCols">Cols</label>
-  <input type="number" name="tableCols" min="1" [(ngModel)]="colNum" (click)="adjustTableSize()"/>
-  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="fall2017-tab">
-    <table class="table table-striped">
-      <thead id="dataTableHead">
-        <tr>
-          <th *ngFor="let item of cols">
-            Head 1
-          </th>
-        </tr>
-      </thead>
-    <tbody id="dataTableBody" >
-      <tr *ngFor="let item of rows"><td *ngFor="let item of cols"><input type="text" /></td></tr>
-    </tbody>
-  </table>
-</div>
+    <h5>Table</h5>
+    <label for="tableRows">Rows</label>
+    <input type="number" name="tableRows" min="1" [(ngModel)]="rowNum" (click)="adjustTableSize()" />
+    <label for="tableCols">Cols</label>
+    <input type="number" name="tableCols" min="1" [(ngModel)]="colNum" (click)="adjustTableSize()" />
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="fall2017-tab">
+        <table class="table table-striped">
+            <thead id="dataTableHead">
+                <tr>
+                    <th *ngFor="let item of cols">
+                        Head 1
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="dataTableBody">
+                <tr *ngFor="let item of rows">
+                    <td *ngFor="let item of cols"><input type="text" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>

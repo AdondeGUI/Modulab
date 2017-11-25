@@ -15,7 +15,7 @@ export const ROUTES : Routes = [
     { path: 'landing-page', component: LandingPageComponent},
     { path: 'directory', component: LabDirectoryComponent, canActivate: [AuthGuard] },
     { path: 'settings', component: AccountSettingsComponent, canActivate: [AuthGuard] },
-    { path: 'lab-generator', component: LabGeneratorComponent, canActivate: [AuthGuard] },
+    { path: 'lab-generator/:id', component: LabGeneratorComponent},
     { path: 'newlogin', component: LoginNewComponent },
     { path: 'login', component: LoginExistingComponent },
     { path: '**', redirectTo: '/landing-page', pathMatch: 'full'}

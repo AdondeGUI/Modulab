@@ -4,6 +4,8 @@ import { AccountModule } from '../account';
 import { HttpClient } from '@angular/common/http';
 import { Course } from '../domain/models/course';
 import { UserManager } from '../user-manager.service';
+import { Router } from '@angular/router';
+import { String } from 'core-js/library/web/timers';
 
 @Component({
   selector: 'lab-directory',
@@ -12,9 +14,8 @@ import { UserManager } from '../user-manager.service';
 })
 
 export class LabDirectoryComponent {
-  private user = new User();
-  private newCourse = new Course();
-  // private newCourseName = "";
+  // private user = new User();
+  // private newCourse = new Course();
   private newTemplateName = "";
   private newReportName = "";
   public newTemplateSelect: Lab;
@@ -30,25 +31,12 @@ export class LabDirectoryComponent {
     private http: HttpClient,
     private courseRepository: CourseRepository,
     private labRepository: LabRepository,
+    private router: Router,
     private userManager: UserManager ) 
     {
       this.newTemplateSelectCourse = {};
       this.newTemplateSelect = {};
-    // this.user.id = 1;
-    // this.newCourse.course_id = 3345;
-    // this.newCourse.instructor = "Fontenot";
-    // this.newCourse.title = "DB";
-    // this.courses = [{ID:1, course_id:1301, title:'Basket-Weaving', instructor:'Mark Fontenot'},
-    //                 {ID:2, course_id:1302, title:'Basket-Weaving II', instructor:'Mark Fontenot'},
-    //                 {ID:3, course_id:3205, title:'Ethics of Spongebob', instructor:'Frank Coyle'},
-    //                 {ID:4, course_id:4303, title:'Painting: Just Don\'t', instructor:'Donald Evans'}];
-    // this.templateNames = ["Template 1", "Template 2"];
     }
-
-  // private addCourseName() {
-  //   this.courseNames.push(this.newCourseName);
-  //   this.newCourseName = "";
-  // }
 
   public ngOnInit(){
     this.courseRepository.getUserCourses().subscribe(x => this.enrolledCourses = x);
@@ -65,6 +53,16 @@ export class LabDirectoryComponent {
     this.courseRepository.deleteUserCourse(this.courses[index].course_id).subscribe();
     this.courseRepository.getUserCourses().subscribe(x => this.enrolledCourses = x);
     // this.courseNames.splice(index, 1);
+  }
+
+  private createLab(){
+    this.labRepository.postLab(this.newReportName, this.newTemplateSelectCourse.course_id).subscribe(
+      data => this.router.navigateByUrl('/lab-generator/' + ""+data[0].lab_id)
+    );
+  }
+
+  private testLab(){
+    this.router.navigateByUrl('/lab-generator/1');
   }
 
   // private removeTemplate(index: number) {

@@ -27,7 +27,7 @@ export class CourseRepository {
     //enroll in a particular course
     public enrollCourse(courseid: number, coursetitle: string, courseInstructor: string): Observable<Course[]>{
         const body = {"course_id": courseid, "title": coursetitle, "instructor": courseInstructor, "ID": this.userManager.user.ID};
-        return this.http.post<Course[]>(this.endpoint, body).catch(x => this.handleException(x));
+        return this.http.post(this.endpoint, body).catch(x => this.handleException(x));
     }
 
     //Get all courses for a user

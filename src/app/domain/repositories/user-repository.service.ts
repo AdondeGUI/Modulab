@@ -13,28 +13,25 @@ export class UserRepository {
         private userManager: UserManager
     ) {}
 
-    // public getUser(attempt: string) {
-    //     this.http.get('http://52.15.171.47/login/'+attempt).subscribe(data => {
-    //       this.userManager.user = data[0];
-    //       this.router.navigateByUrl('/directory');
-    //     });
-    // }
-
-    
     //get a particular user
     public getUser(attempt: string): Observable<User[]> {
         return this.http.get<User[]>(this.endpoint + attempt)
         .catch(x => this.handleException(x));
     }
 
-    //create functions in components
+    //create a new user
+    public postUser(firstname: string, lastname: string, emailAddress: string, pwd: string, userRole: number): Observable<User[]>{
+        const body = {first_name: firstname, last_name: lastname, email: emailAddress, password: pwd, role: userRole};
+        return this.http.post('http://52.15.171.47/users', body).catch(x => this.handleException(x));
+    }
 
+    //update a users information
     public updateUser(firstname: string, lastname: string, emailAddress: string, pwd: string): Observable<User[]> {
         const body = {first_name: firstname, last_name:lastname, email: emailAddress, password: pwd}
         return this.http.put('http://52.15.171.47/users/'+this.userManager.user.ID, body).catch(x => this.handleException(x));
     }
     
-    
+    //delete a user
     public deleteUser(): Observable<void> {
         return this.http.delete<void>('http://52.15.171.47/users/'+this.userManager.user.ID).catch(x => this.handleException(x));
     }
