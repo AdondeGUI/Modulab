@@ -132,7 +132,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="templateModalLabel">Add New Template (This should just go straight to Lab Generator.)</h5>
+                <h5 class="modal-title" id="templateModalLabel">Add New Template</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -141,9 +141,24 @@
             <div class="modal-body">
                 <input type="text" class="form-control" placeholder="Template Name" [(ngModel)]="newTemplateName" />
             </div>
+
+            <div class="form-group mt-3 mb-0 d-inline-block">
+                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+          {{ newTemplateSelectCourse || 'Select Course' }}
+          <span class="caret"></span>
+        </button>
+                <ul class="dropdown-menu">
+                    <li *ngFor="let courseName of courseNames" class="px-3">
+                        <a href="javascript:void(0);" (click)="newTemplateSelectCourse = courseName">
+               {{ courseName }}
+            </a>
+                    </li>
+                </ul>
+            </div>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-info" (click)="addTemplateName()" [disabled]="!newTemplateName" onclick="$('#addTemplateModal').modal('hide')">Add Template</button>
+                <button type="button" class="btn btn-info" (click)="addTemplateName()" [disabled]="!newTemplateName || !newTemplateSelectCourse" onclick="$('#addTemplateModal').modal('hide')">Add Template</button>
             </div>
         </div>
     </div>
@@ -155,30 +170,48 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="reportModalLabel">Add New Report</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+            <span aria-hidden="true">&times;</span>
         </button>
-
             </div>
             <div class="modal-body">
                 <input type="text" class="form-control" placeholder="Report Name" [(ngModel)]="newReportName" />
 
-                <div class="form-group mt-3 mb-0">
+                <div class="form-group mt-3 mb-0 d-inline-block">
                     <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-              {{ newTemplateSelect || 'Select Template' }}
-              <span class="caret"></span>
+                {{ newTemplateSelectCourse || 'Select Course' }}
+                <span class="caret"></span>
             </button>
                     <ul class="dropdown-menu">
-                        <li *ngFor="let templateName of labs" class="px-3">
+                        <li *ngFor="let courseName of courseNames" class="px-3">
+                            <a href="javascript:void(0);" (click)="newTemplateSelectCourse = courseName">
+                        {{ courseName }}
+                    </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="form-group mt-3 mb-0 d-inline-block">
+                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                        {{ newTemplateSelect || 'Select Template' }}
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li class="px-3">
+                            <a href="javascript:void(0);" (click)="newTemplateSelect = 'New Report'">
+                                New Report
+                            </a>
+                        </li>
+                        <li *ngFor="let templateName of templateNames" class="px-3">
                             <a href="javascript:void(0);" (click)="newTemplateSelect = templateName">
-                   {{ templateName }}
-                </a>
+                                {{ templateName }}
+                            </a>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-info" (click)="addReportName()" [disabled]="!newReportName" onclick="$('#addReportModal').modal('hide')">Add Report</button>
+                <button type="button" class="btn btn-info" (click)="addReportName()" [disabled]="!newReportName || !newTemplateSelect || !newTemplateSelectCourse" onclick="$('#addReportModal').modal('hide')">Add Report</button>
             </div>
         </div>
     </div>
