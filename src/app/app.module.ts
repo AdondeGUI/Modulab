@@ -4,9 +4,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { User } from './domain'
-
+import { User, DomainModule } from './domain'
+import { LabModulesModule } from './LabModules/LabModules.module'
 import { DirectoryModule } from './routing';
+import { UserManager } from './user-manager.service';
+import { AuthGuard } from './auth-guard.service';
 
 const defaultRoute = 'landing-page';
 
@@ -16,6 +18,8 @@ const defaultRoute = 'landing-page';
     FormsModule,
     HttpClientModule,
     DirectoryModule,
+    LabModulesModule,
+    DomainModule,
     RouterModule.forRoot([
       { path: '', redirectTo: defaultRoute, pathMatch: 'full' }
     ])
@@ -25,6 +29,10 @@ const defaultRoute = 'landing-page';
   ],
   bootstrap: [
     AppComponent
+  ],
+  providers: [
+    UserManager,
+    AuthGuard
   ]
 })
 

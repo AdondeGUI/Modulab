@@ -5,16 +5,17 @@ import { LoginExistingComponent } from './login-existing/login-existing.componen
 import { LoginNewComponent } from './login-new/login-new.component';
 import {HttpClientModule} from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { DomainModule, UserRepository } from "../domain"
 
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
-        HttpClientModule,
+        DomainModule,
+        HttpClientModule
     ],
     declarations: [
-
         LoginExistingComponent,
         LoginNewComponent
     ],
@@ -22,6 +23,7 @@ import { RouterModule } from '@angular/router';
         LoginExistingComponent,
         LoginNewComponent
     ]
+    
 })
 export class LoginModule {
 

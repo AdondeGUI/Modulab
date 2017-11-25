@@ -7,20 +7,24 @@
     <hr>
     <div class="col-6 pl-2">
         <!--Add Labels to these Things-->
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="First Name" aria-label="Firstname" aria-describedby="basic-addon1">
+        <div>
+            <label>First Name</label>
+            <input type="text" class="form-control" placeholder="{{this.userManager.user.first_name}}" aria-label="Firstname" aria-describedby="basic-addon1">
         </div>
         <br>
         <div>
-            <input type="text" class="form-control" placeholder="Last Name" aria-label="Lastname" aria-describedby="basic-addon1">
+            <label>Last Name</label>
+            <input type="text" class="form-control" placeholder="{{this.userManager.user.last_name}}" aria-label="Lastname" aria-describedby="basic-addon1">
         </div>
         <br>
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+        <div>
+            <label>Email</label>
+            <input type="text" class="form-control" placeholder="{{this.userManager.user.email}}" aria-label="Email" aria-describedby="basic-addon1">
         </div>
         <br>
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+        <div>
+            <label>Password</label>
+            <input type="text" class="form-control" placeholder="{{this.userManager.user.password}}" aria-label="Password" aria-describedby="basic-addon1">
         </div>
     </div>
     <hr>

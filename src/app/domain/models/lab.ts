@@ -3,7 +3,7 @@ import{ User } from './User';
 
 export class Lab{
     id?: number;
-    authors?: User[];
+    course_id?: number;
+    lab_id?: number;
     title?: string;
-    modules?: Module[];
 }
