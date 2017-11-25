@@ -32,12 +32,11 @@ export class LoginNewComponent{
       this.passwordMismatch = 0;
     }
     else{
-      this.userRepository.postUser(this.newUser.first_name, this.newUser.last_name, this.newUser.email, this.newUser.password, this.newUser.role).subscribe();
-      this.userRepository.getUser(this.newUser.email).subscribe(data => { 
+      this.userRepository.postUser(this.newUser.first_name, this.newUser.last_name, this.newUser.email, this.newUser.password, this.newUser.role).subscribe(data => { 
         this.userManager.user = data[0];
-        console.log("HERE!");
-        this.router.navigateByUrl('/directory');
       });
+      console.log("HERE!");
+      this.router.navigateByUrl('/directory');
     }
   }
 }

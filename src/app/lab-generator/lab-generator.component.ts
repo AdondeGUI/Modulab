@@ -42,7 +42,6 @@ export class LabGeneratorComponent {
     this.modules.splice(index, 1);
   }
 
-
   public ngOnInit(){
     this.activatedRoute.params.subscribe(x => this.loadRoute(x));
     // this.modules.push(this.newModule);

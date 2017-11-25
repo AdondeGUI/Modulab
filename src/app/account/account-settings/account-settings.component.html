@@ -8,22 +8,22 @@
     <div class="mx-auto px-5">
         <div>
             <label>First Name</label>
-            <input type="text" class="form-control" placeholder="{{this.userManager.user.first_name}}" aria-label="Firstname" aria-describedby="basic-addon1">
+            <input type="text" class="form-control" aria-label="Firstname" aria-describedby="basic-addon1" [(ngModel)]="updatedUser.first_name">
         </div>
         <br>
         <div>
             <label>Last Name</label>
-            <input type="text" class="form-control" placeholder="{{this.userManager.user.last_name}}" aria-label="Lastname" aria-describedby="basic-addon1">
+            <input type="text" class="form-control" aria-label="Lastname" aria-describedby="basic-addon1" [(ngModel)]="updatedUser.last_name">
         </div>
         <br>
         <div>
             <label>Email</label>
-            <input type="text" class="form-control" placeholder="{{this.userManager.user.email}}" aria-label="Email" aria-describedby="basic-addon1">
+            <input type="text" class="form-control" aria-label="Email" aria-describedby="basic-addon1" [(ngModel)]="updatedUser.email">
         </div>
         <br>
         <div>
             <label>Password</label>
-            <input type="text" class="form-control" placeholder="{{this.userManager.user.password}}" aria-label="Password" aria-describedby="basic-addon1">
+            <input type="text" class="form-control" aria-label="Password" aria-describedby="basic-addon1" [(ngModel)]="updatedUser.password">
         </div>
     </div>
     <hr>
@@ -34,9 +34,13 @@
         <span class="ml-3 mt-2">This will delete <strong>all</strong> of your data and files.</span>
     </div>
     <hr>
-    <div id="settings-save" class="clearfix" (click)="updateUser()">
-    <button class="btn btn-info float-right">
+    <div id="settings-save" class="clearfix" (click)="save()">
+        <button class="btn btn-info float-right">
       Save Changes
     </button>
     </div>
+</div>
+
+<div>
+    <p>{{updatedUser.first_name}}</p>
 </div>

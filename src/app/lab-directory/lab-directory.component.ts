@@ -52,7 +52,7 @@ export class LabDirectoryComponent {
   private removeCourse(index: number) {
     this.courseRepository.deleteUserCourse(this.courses[index].course_id).subscribe();
     this.courseRepository.getUserCourses().subscribe(x => this.enrolledCourses = x);
-    // this.courseNames.splice(index, 1);
+
   }
 
   private createLab(){
@@ -61,12 +61,13 @@ export class LabDirectoryComponent {
     );
   }
 
+  private removeLab(index: number){
+    this.labRepository.deleteIndLab(this.labs[index].lab_id).subscribe();
+    this.labRepository.getAllLabs().subscribe(x => this.labs = x);
+  }
+
   private testLab(){
     this.router.navigateByUrl('/lab-generator/1');
   }
-
-  // private removeTemplate(index: number) {
-  //   this.templateNames.splice(index, 1);
-  // }
 
 }
