@@ -17,7 +17,8 @@ export class LabDirectoryComponent {
   // private newCourseName = "";
   private newTemplateName = "";
   private newReportName = "";
-  public newTemplateSelect = "";
+  public newTemplateSelect: Lab;
+  public newTemplateSelectCourse: Course;
 
   @Input()
 
@@ -31,6 +32,8 @@ export class LabDirectoryComponent {
     private labRepository: LabRepository,
     private userManager: UserManager ) 
     {
+      this.newTemplateSelectCourse = {};
+      this.newTemplateSelect = {};
     // this.user.id = 1;
     // this.newCourse.course_id = 3345;
     // this.newCourse.instructor = "Fontenot";

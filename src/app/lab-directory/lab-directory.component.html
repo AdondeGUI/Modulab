@@ -153,13 +153,13 @@
 
       <div class="form-group mt-3 mb-0 d-inline-block">
         <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-          {{ newTemplateSelectCourse || 'Select Course' }}
+          {{ newTemplateSelectCourse.title || 'Select Course' }}
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu">
-          <li *ngFor="let courseName of courseNames" class="px-3">
+          <li *ngFor="let course of enrolledCourses" class="px-3">
             <a href="javascript:void(0);" (click)="newTemplateSelectCourse = courseName">
-              {{ courseName }}
+              {{ course.title }}
             </a>
           </li>
         </ul>
@@ -167,7 +167,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-info" (click)="addTemplateName()" [disabled]="!newTemplateName || !newTemplateSelectCourse" onclick="$('#addTemplateModal').modal('hide')">Add Template</button>
+        <button type="button" class="btn btn-info" (click)="addTemplateName()" [disabled]="!newTemplateName || !newTemplateSelectCourse.title" onclick="$('#addTemplateModal').modal('hide')">Add Template</button>
       </div>
     </div>
   </div>
@@ -187,12 +187,12 @@
 
         <div class="form-group mt-3 mb-0 d-inline-block">
           <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-            {{ newTemplateSelectCourse || 'Select Course' }}
+            {{ newTemplateSelectCourse.title || 'Select Course' }}
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
             <li *ngFor="let course of enrolledCourses" class="px-3">
-              <a href="javascript:void(0);" (click)="newTemplateSelectCourse = course.title">
+              <a href="javascript:void(0);" (click)="newTemplateSelectCourse = course">
                 {{ course.title }}
               </a>
             </li>
@@ -201,17 +201,12 @@
 
         <div class="form-group mt-3 mb-0 d-inline-block">
           <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-            {{ newTemplateSelect || 'Select Template' }}
+            {{ newTemplateSelect.title || 'Select Template' }}
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
-            <li class="px-3">
-              <a href="javascript:void(0);" (click)="newTemplateSelect = 'New Report'">
-                New Report
-              </a>
-            </li>
             <li *ngFor="let template of labs" class="px-3">
-              <a href="javascript:void(0);" (click)="newTemplateSelect = template.title">
+              <a href="javascript:void(0);" (click)="newTemplateSelect = template">
                 {{ template.title }}
               </a>
             </li>
@@ -220,7 +215,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-info" (click)="addReportName()" [disabled]="!newReportName || !newTemplateSelect || !newTemplateSelectCourse" onclick="$('#addReportModal').modal('hide')">Add Report</button>
+        <button type="button" class="btn btn-info" (click)="addReportName()" [disabled]="!newReportName || !newTemplateSelect.title || !newTemplateSelectCourse.title" onclick="$('#addReportModal').modal('hide')">Add Report</button>
       </div>
     </div>
   </div>
