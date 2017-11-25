@@ -11,6 +11,9 @@ export class TextModuleComponent {
 
   private newTextData = new TextData();
 
+  @Input()
+  public data : string;
+  
   constructor() {
   }
 

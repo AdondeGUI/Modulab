@@ -1,20 +1,19 @@
-<div class="col-10">
+<div class="col-10" >
     <label for="moduleType">Module Type</label>
-    <select class="form-control" id="moduleType" [(ngModel)]="newModule.type">
+    <select class="form-control" id="moduleType" [(ngModel)]="module.type">
       <ng-container *ngFor="let level of moduleTypes">
         <option [value]="level" > {{ level }}</option>
       </ng-container>
     </select>
-    <div class="module-body" [ngSwitch]="newModule.type">
+    <div class="module-body" [ngSwitch]="module.type">
       <ng-container *ngSwitchCase="'Image'">
-         <image-module></image-module>
+         <image-module [data]="module.data"></image-module>
       </ng-container>
       <ng-container *ngSwitchCase="'Table'">
-         <table-generator></table-generator>
+         <table-generator [data]="module.data"></table-generator>
       </ng-container>
       <ng-container *ngSwitchDefault>
-         <text-module></text-module>
+         <text-module [data]="module.data"></text-module>
       </ng-container>
     </div>
-
 </div>
