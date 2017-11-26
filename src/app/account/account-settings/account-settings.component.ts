@@ -12,6 +12,8 @@ import { UserManager } from '../../user-manager.service';
 
 export class AccountSettingsComponent {
   private updatedUser = new User();
+  private passwordConfirm = "";
+  private passwordMismatch = 1;
 
   constructor(
     private router: Router,
@@ -28,6 +30,9 @@ export class AccountSettingsComponent {
   private save() {
     if(!this.updatedUser.first_name || !this.updatedUser.last_name || !this.updatedUser.email || !this.updatedUser.password){
       alert("All fields must be filled");
+    }
+    else if (this.updatedUser.password != this.passwordConfirm) {
+      this.passwordMismatch = 0;
     }
     else{
       this.userRepository.putUser(this.updatedUser.first_name, this.updatedUser.last_name, this.updatedUser.email,this.updatedUser.password).subscribe(x => this.userManager.user = x[0]);
