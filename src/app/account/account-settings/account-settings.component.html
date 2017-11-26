@@ -5,40 +5,49 @@
 <div class="container col-6 mt-4">
     <h4><i class="material-icons d-inline adj-1 pb-3">settings</i> Account Settings</h4>
     <hr>
-    <div class="mx-auto px-5">
-        <div>
-            <label>First Name</label>
-            <input type="text" class="form-control" aria-label="Firstname" aria-describedby="basic-addon1" [(ngModel)]="updatedUser.first_name">
+    <form (ngSubmit)="save()" #settingsForm="ngForm">
+        <div class="form-group d-flex align-items-stretch">
+            <div class="flex-column form-column pr-1">
+                <label for="first_name">First Name</label>
+                <input id="first_name" type="text" name="First Name" class="form-control text-input" [(ngModel)]="updatedUser.first_name" required #first_name="ngModel">
+                <div [hidden]="first_name.valid || first_name.pristine"class="alert alert-danger">
+                    Please enter a first name.
+                </div>
+            </div>
+
+            <div class="flex-column form-column pl-1">
+                <label for="last_name">Last Name</label>
+                <input id="last_name" type="text" name="Last Name" class="form-control text-input" [(ngModel)]="updatedUser.last_name" required #last_name="ngModel">
+                <div [hidden]="last_name.valid || last_name.pristine" class="alert alert-danger">
+                    Please enter a last name.
+                </div>
+            </div>
         </div>
-        <br>
-        <div>
-            <label>Last Name</label>
-            <input type="text" class="form-control" aria-label="Lastname" aria-describedby="basic-addon1" [(ngModel)]="updatedUser.last_name">
+        <div class="form-group my-3">
+            <label for="email">Email</label>
+            <input id="email" type="email" name="Email" class="form-control text-input" [(ngModel)]="updatedUser.email" pattern="[\w.]+[@]\w+[.][\w.]+" required #email="ngModel">
+            <div [hidden]="email.valid || !email.touched"class="alert alert-danger">
+                Please enter a valid email.
+            </div>
         </div>
-        <br>
-        <div>
-            <label>Email</label>
-            <input type="text" class="form-control" aria-label="Email" aria-describedby="basic-addon1" [(ngModel)]="updatedUser.email">
+
+        <div class="form-group my-3">
+            <label for="password">Password</label>
+            <input id="password" type="password" name="Password" class="form-control text-input" [(ngModel)]="updatedUser.password" pattern="[.\S]{6,}" required #password="ngModel">
+            <div [hidden]="password.valid || !password.touched"class="alert alert-danger">
+                Please enter a password of at least 6 characters.
+            </div>
         </div>
-        <br>
-        <div>
-            <label>Password</label>
-            <input type="text" class="form-control" aria-label="Password" aria-describedby="basic-addon1" [(ngModel)]="updatedUser.password">
+        <hr>
+        <div id="settings-delete d-inline" class="ml-3">
+            <button class="btn btn-danger d-inline" (click)="deleteUser()">
+                Delete This Account
+            </button>
+            <span class="ml-3 mt-2">This will delete <strong>all</strong> of your data and files.</span>
         </div>
-    </div>
-    <hr>
-    <div id="settings-delete d-inline m-auto" class="d-flex justify-content-center">
-        <button class="btn btn-danger d-inline" (click)="deleteUser()">
-      Delete This Account
-    </button>
-        <span class="ml-3 mt-2">This will delete <strong>all</strong> of your data and files.</span>
-    </div>
-    <hr>
-    <div id="settings-save" class="clearfix" (click)="save()">
-        <button class="btn btn-info float-right">
-      Save Changes
-    </button>
-    </div>
+        <hr>
+        <button type="submit" class="btn btn-info btn-lg link-custom text-white d-inline-block float-right" [disabled]="!settingsForm.form.valid">Save Changes</button>
+    </form>
 </div>
 
 <div>

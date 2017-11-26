@@ -52,6 +52,7 @@ export class LabDirectoryComponent {
 
   private removeCourse(index: number) {
     this.courseRepository.deleteUserCourse(this.courses[index].course_id).subscribe();
+    console.log(this.courses);
     this.courseRepository.getUserCourses().subscribe(x => this.enrolledCourses = x);
   }
 
