@@ -36,3 +36,34 @@ input.text-input {
 #existingAccount {
   width: fit-content;
 }
+
+.bg-container {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: rgb(92, 55, 74);
+}
+
+.main-container {
+    height: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+
+.view-div {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.footer {
+    position: absolute;
+    margin-left: -15px;
+    height: 3.5rem;
+    bottom: 4.2rem;
+    width: 100%;
+    border-top: 1px solid #EEE;
+}

@@ -12,11 +12,6 @@ import { UserManager } from '../../user-manager.service';
 
 export class AccountSettingsComponent {
   private updatedUser = new User();
-<<<<<<< Updated upstream
-  private passwordConfirm = "";
-  private passwordMismatch = 1;
-=======
->>>>>>> Stashed changes
 
   constructor(
     private router: Router,
@@ -37,8 +32,11 @@ export class AccountSettingsComponent {
     else{
       this.userRepository.putUser(this.updatedUser.first_name, this.updatedUser.last_name, this.updatedUser.email,this.updatedUser.password).subscribe(x => this.userManager.user = x[0]);
       alert("User settings updated");
-      this.router.navigateByUrl("/settings");
     }
   }
 
+  private cancel() {
+    alert("You hit the cancel button.");
+    location.reload();
+  }
 }

@@ -12,9 +12,9 @@
                     <div class="pt-4 font-weight-500 header-custom mb-1">Courses</div>
                     <div class="ml-auto">
                         <button class="btn btn-info btn-custom" data-toggle="modal" data-target="#addCourseModal" *ngIf="this.userManager.user.role == 1">
-              <span class="adj-1 adj-3 d-inline">Create New Course</span>
-              <i class="material-icons adj-2">add_circle_outline</i>
-            </button>
+                            <span class="adj-1 adj-3 d-inline">Create New Course</span>
+                            <i class="material-icons adj-2">add_circle_outline</i>
+                        </button>
                         <button class="btn btn-info btn-custom" data-toggle="modal" data-target="#enrollCourseModal" *ngIf="this.userManager.user.role == 0">
               <span class="adj-1 adj-3 d-inline" (click)="trimCourses()">Enroll</span>
               <i class="material-icons adj-2">add_circle_outline</i>
@@ -24,26 +24,28 @@
 
                 <div class="alert alert-warning" *ngIf="(enrolledCourses$ | async)?.length==0">
                     <span *ngIf="this.userManager.user.role == 1">
-            No courses found - try <a href="javascript:void(0);" data-toggle="modal" data-target="#addCourseModal">creating one</a>.
-          </span>
+                        No courses found - try <a href="javascript:void(0);" data-toggle="modal" data-target="#addCourseModal">creating one</a>.
+                    </span>
                     <span *ngIf="this.userManager.user.role == 0">
-            You aren't enrolled in anything! Try <a href="javascript:void(0);" data-toggle="modal" data-target="#addCourseModal">adding a course</a>.
-          </span>
+                        You aren't enrolled in anything! Try <a href="javascript:void(0);" data-toggle="modal" data-target="#addCourseModal">adding a course</a>.
+                    </span>
                 </div>
                 <ul class="list-group mb-0">
                     <li class="list-group-item bg-light clearfix" *ngFor="let course of enrolledCourses; let i = index;">
                         <button class="btn btn-outline-custom float-right px-2 ml-3 my-0 enroll-button" (click)="removeCourse(i)" *ngIf="this.userManager.user.role == 0">
-              Drop
-            </button>
+                            Drop
+                        </button>
                         <div class="adj-5">
                             <a href="javascript:void(0);" (click)="removeCourse(i)" *ngIf="this.userManager.user.role == 1">
                                 <i class="remove-icon material-icons d-inline float-right text-secondary pl-2 btn-icon-custom">remove_circle_outline</i>
                             </a>
+                            <a href="javascript:void(0);" (click)="viewLabs(i)" *ngIf="this.userManager.user.role == 1" data-toggle="modal" data-target="#viewLabsModal">
+                                <i class="material-icons d-inline float-right text-secondary pl-2 btn-icon-custom">insert_drive_file</i>
+                            </a>
 
                             <a href="javascript:void(0);" class="text-info-custom">
-                {{course.title}} {{course.course_id}} - {{course.instructor}}
-                <i class="material-icons d-inline float-right">chevron_right</i>
-              </a>
+                                {{course.title}} {{course.course_id}}<span *ngIf="this.userManager.user.role == 0"> - {{course.instructor}}</span>
+                            </a>
                         </div>
                     </li>
                 </ul>
@@ -55,31 +57,31 @@
                     <div class="pt-4 font-weight-500 header-custom mb-1" *ngIf="this.userManager.user.role == 0">Reports</div>
                     <div class="ml-auto">
                         <button class="btn btn-info btn-custom" data-toggle="modal" data-target="#addTemplateModal" *ngIf="this.userManager.user.role == 1">
-              <span class="adj-1 adj-3 d-inline">Create a New Template</span>
-              <i class="material-icons adj-2">add_circle_outline</i>
-            </button>
+                            <span class="adj-1 adj-3 d-inline">Create a New Template</span>
+                            <i class="material-icons adj-2">add_circle_outline</i>
+                        </button>
                         <button class="btn btn-info btn-custom" data-toggle="modal" data-target="#addReportModal" *ngIf="this.userManager.user.role == 0">
-              <span class="adj-1 adj-3 d-inline">Create a New Report</span>
-              <i class="material-icons adj-2">add_circle_outline</i>
-            </button>
+                            <span class="adj-1 adj-3 d-inline">Create a New Report</span>
+                            <i class="material-icons adj-2">add_circle_outline</i>
+                        </button>
                     </div>
                 </div>
 
                 <div class="alert alert-warning" *ngIf="(labs$ | async)?.length==0">
                     <span *ngIf="this.userManager.user.role == 1">
-            No templates found - try <a href="javascript:void(0);" data-toggle="modal" data-target="#addTemplateModal">creating one</a>.
-          </span>
+                        No templates found - try <a href="javascript:void(0);" data-toggle="modal" data-target="#addTemplateModal">creating one</a>.
+                    </span>
                     <span *ngIf="this.userManager.user.role == 0">
-            No reports found - try <a href="javascript:void(0);" data-toggle="modal" data-target="#addReportModal">creating one</a>.
-          </span>
+                        No reports found - try <a href="javascript:void(0);" data-toggle="modal" data-target="#addReportModal">creating one</a>.
+                    </span>
                 </div>
                 <ul class="list-group mb-0">
                     <li class="list-group-item bg-light clearfix" *ngFor="let template of labs; let i = index;">
                         <a (click)="loadLab(i)" class="text-info-custom link-custom">
-              {{template.title}}
-            </a>
+                            {{template.title}}
+                        </a>
                         <a href="javascript:void(0);" (click)="removeTemplate(i)">
-                            <i class="remove-icon material-icons d-inline float-right text-secondary pl-2">remove_circle_outline</i>
+                            <i class="remove-icon btn-icon-custom material-icons d-inline float-right text-secondary pl-2">remove_circle_outline</i>
                         </a>
                     </li>
                 </ul>
@@ -97,13 +99,14 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="courseModalLabel">Add New Course</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+                    <span aria-hidden="true">&times;</span>
+                </button>
 
                 <!--CHANGED HERE-->
             </div>
             <div class="modal-body">
                 <input type="text" class="form-control" placeholder="Course Name" [(ngModel)]="newCourseName" />
+                <br>
                 <input type="text" class="form-control" placeholder="Course Number" [(ngModel)]="newCourseNumber" />
             </div>
             <div class="modal-footer">
@@ -120,32 +123,52 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="enrollModalLabel">Add New Course</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <ul class="list-group mb-0 rounded-0 border-0">
                 <li class="list-group-item bg-light clearfix" *ngFor="let course of enrolledCourses; let i = index;">
                     <button class="btn btn-success float-right px-2 ml-3 my-0 enroll-button enroll-button-transform">
-            <span>
-              Enrolled
-            </span>
-          </button>
+                        <span>Enrolled</span>
+                    </button>
                     <div class="adj-5">
                         <a href="javascript:void(0);" class="text-info-custom">
-              {{course.title}} {{course.course_id}} - {{course.instructor}}
-            </a>
+                            {{course.title}} {{course.course_id}} - {{course.instructor}}
+                        </a>
                     </div>
                 </li>
                 <li class="list-group-item bg-light clearfix" *ngFor="let course of courses; let i = index;">
                     <button class="btn btn-outline-success float-right px-2 ml-3 my-0 enroll-button" (click)="enrollInCourse(i)">
-            Enroll
-          </button>
+                        Enroll
+                    </button>
                     <div class="adj-5">
                         <a href="javascript:void(0);" class="text-info-custom">
-              {{course.title}} {{course.course_id}} - {{course.instructor}}
-            </a>
+                            {{course.title}} {{course.course_id}} - {{course.instructor}}
+                        </a>
                     </div>
+                </li>
+            </ul>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Done</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="viewLabsModal" tabindex="-1" role="dialog" aria-labelledby="labsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="enrollModalLabel">View Labs for {{viewLabCourse.title}} {{viewLabCourse.course_id}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <ul class="list-group mb-0">
+                <li class="list-group-item bg-light clearfix" *ngFor="let lab of labsToView; let i = index;">
+                    <a (click)="loadLab(i)" class="text-info-custom link-custom" data-dismiss="modal">
+                        {{lab.title}}
+                    </a>
                 </li>
             </ul>
             <div class="modal-footer">
@@ -161,8 +184,8 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="templateModalLabel">Add New Template</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+                  <span aria-hidden="true">&times;</span>
+              </button>
 
             </div>
             <div class="modal-body">
@@ -170,14 +193,14 @@
 
                 <div class="form-group mt-3 mb-0 d-inline-block">
                     <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-            {{ newTemplateSelectCourse.title || 'Select Course' }}
-            <span class="caret"></span>
-          </button>
+                    {{ newTemplateSelectCourse.title || 'Select Course' }}
+                    <span class="caret"></span>
+                </button>
                     <ul class="dropdown-menu">
                         <li *ngFor="let course of enrolledCourses" class="px-3">
                             <a href="javascript:void(0);" (click)="newTemplateSelectCourse = courseName">
-                {{ course.title }}
-              </a>
+                            {{ course.title }}
+                        </a>
                         </li>
                     </ul>
                 </div>
@@ -197,36 +220,36 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="reportModalLabel">Add New Report</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+                  <span aria-hidden="true">&times;</span>
+              </button>
             </div>
             <div class="modal-body">
                 <input type="text" class="form-control" placeholder="Report Name" [(ngModel)]="newReportName" />
 
                 <div class="form-group mt-3 mb-0 d-inline-block">
                     <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-            {{ newTemplateSelectCourse.title || 'Select Course' }}
-            <span class="caret"></span>
-          </button>
+                    {{ newTemplateSelectCourse.title || 'Select Course' }}
+                    <span class="caret"></span>
+                </button>
                     <ul class="dropdown-menu">
                         <li *ngFor="let course of enrolledCourses" class="px-3">
                             <a href="javascript:void(0);" (click)="newTemplateSelectCourse = course">
-                {{ course.title }}
-              </a>
+                            {{ course.title }}
+                        </a>
                         </li>
                     </ul>
                 </div>
 
                 <div class="form-group mt-3 mb-0 d-inline-block">
                     <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-            {{ newTemplateSelect.title || 'Select Template' }}
-            <span class="caret"></span>
-          </button>
+                    {{ newTemplateSelect.title || 'Select Template' }}
+                    <span class="caret"></span>
+                </button>
                     <ul class="dropdown-menu">
                         <li *ngFor="let template of labs" class="px-3">
                             <a href="javascript:void(0);" (click)="newTemplateSelect = template">
-                {{ template.title }}
-              </a>
+                            {{ template.title }}
+                        </a>
                         </li>
                     </ul>
                 </div>
@@ -236,5 +259,9 @@
                 <button type="button" class="btn btn-info" (click)="createLab()" [disabled]="!newReportName || !newTemplateSelect.title || !newTemplateSelectCourse.title" onclick="$('#addReportModal').modal('hide')">Add Report</button>
             </div>
         </div>
+        <<<<<<< HEAD=======< /div>
     </div>
-</div>
+
+    <div>
+        <button type="button" class="btn btn-info" (click)="testLab()"> Test Lab </button> >>>>>>> a88b7ad0923af2a11b557ba1b2e35083bd577b3a
+    </div>

@@ -35,11 +35,11 @@ a:hover {
 }
 
 .text-info-custom {
-    color: rgb(18, 135, 165);
+    color: rgb(18, 135, 165) !important;
 }
 
 .text-info-custom:hover {
-    color: rgb(100, 165, 200);
+    color: rgb(100, 165, 200) !important;
 }
 
 .header-custom {
@@ -127,5 +127,5 @@ a:hover {
 }
 
 .link-custom {
-    cursor: pointer;
+    cursor: pointer !important;
 }
