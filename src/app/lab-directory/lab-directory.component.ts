@@ -15,7 +15,8 @@ import { String } from 'core-js/library/web/timers';
 
 export class LabDirectoryComponent {
   // private user = new User();
-  // private newCourse = new Course();
+  private newCourseName = "";
+  private newCourseNumber: number;
   private newTemplateName = "";
   private newReportName = "";
   public newTemplateSelect: Lab;
@@ -51,6 +52,12 @@ export class LabDirectoryComponent {
 
   private removeCourse(index: number) {
     this.courseRepository.deleteUserCourse(this.courses[index].course_id).subscribe();
+    this.courseRepository.getUserCourses().subscribe(x => this.enrolledCourses = x);
+  }
+
+  //create a new course with the given information
+  private createCourse(){
+    this.courseRepository.createCourse(this.newCourseNumber, this.newCourseName).subscribe();
     this.courseRepository.getUserCourses().subscribe(x => this.enrolledCourses = x);
   }
 

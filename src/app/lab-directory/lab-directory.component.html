@@ -86,7 +86,7 @@
             </div>
         </div>
         <div class="footer bg-light">
-            <p class="float-right text-secondary m-3"> ® Modulab Inc., 2017.</p>
+            <p class="float-right text-secondary m-3"> ® Modulab Inc., 2017. {{ enrolledCourses | json }}</p>
         </div>
     </div>
 </div>
@@ -100,13 +100,15 @@
           <span aria-hidden="true">&times;</span>
         </button>
 
+                <!--CHANGED HERE-->
             </div>
             <div class="modal-body">
                 <input type="text" class="form-control" placeholder="Course Name" [(ngModel)]="newCourseName" />
+                <input type="text" class="form-control" placeholder="Course Number" [(ngModel)]="newCourseNumber" />
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-info" (click)="addCourseName()" [disabled]="!newCourseName" onclick="$('#addCourseModal').modal('hide')">Add Course</button>
+                <button type="button" class="btn btn-info" (click)="createCourse()" [disabled]="!newCourseName || !newCourseNumber" onclick="$('#addCourseModal').modal('hide')">Add Course</button>
             </div>
         </div>
     </div>
