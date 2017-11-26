@@ -52,18 +52,25 @@ export class LabDirectoryComponent {
   private removeCourse(index: number) {
     this.courseRepository.deleteUserCourse(this.courses[index].course_id).subscribe();
     this.courseRepository.getUserCourses().subscribe(x => this.enrolledCourses = x);
-
   }
 
   private createLab(){
     this.labRepository.postLab(this.newReportName, this.newTemplateSelectCourse.course_id).subscribe(
-      data => this.router.navigateByUrl('/lab-generator/' + ""+data[0].lab_id)
+      data => this.navigateToLab(data[0].lab_id)
     );
   }
 
   private removeLab(index: number){
     this.labRepository.deleteIndLab(this.labs[index].lab_id).subscribe();
     this.labRepository.getAllLabs().subscribe(x => this.labs = x);
+  }
+
+  private loadLab(index: number){
+    this.navigateToLab(this.labs[index].lab_id);
+  }
+
+  private navigateToLab(labid: number){
+    this.router.navigateByUrl('/lab-generator/' + ""+labid);
   }
 
   private testLab(){

@@ -1,123 +1,131 @@
 .collapse {
-  margin-bottom: -1px;
+    margin-bottom: -1px;
 }
 
 a {
-  color: #15F;
+    color: #15F;
 }
 
 a:hover {
-  color: #026;
+    color: #026;
 }
 
 .adj-1 {
-  position: relative;
-  bottom: 0.24em;
+    position: relative;
+    bottom: 0.24em;
 }
 
 .adj-2 {
-  position: relative;
-  top: 0.08em;
+    position: relative;
+    top: 0.08em;
 }
 
 .adj-3 {
-  position: relative;
-  left: 0.06em;
+    position: relative;
+    left: 0.06em;
 }
 
 .adj-4 {
-  position: relative;
-  top: 0.1em;
+    position: relative;
+    top: 0.1em;
 }
 
 .adj-5 {
-  padding-top: 0.475rem;
+    padding-top: 0.475rem;
 }
 
 .text-info-custom {
-  color: rgb(18,135,165);
+    color: rgb(18, 135, 165);
 }
 
 .text-info-custom:hover {
-  color: rgb(100,165,200);
+    color: rgb(100, 165, 200);
 }
 
 .header-custom {
-  font-size: 1.15em;
+    font-size: 1.15em;
 }
 
 .font-weight-500 {
-  font-weight: 500;
+    font-weight: 500;
 }
 
 .enroll-button {
-  border-width: 1.8px;
-  margin: -1rem 0;
-  font-weight: 500;
+    border-width: 1.8px;
+    margin: -1rem 0;
+    font-weight: 500;
 }
 
 .enroll-button-transform:hover span {
-  display: none;
+    display: none;
 }
 
 .enroll-button-transform:hover {
-  background-color: rgb(220,53,69);
-  border-color: rgb(220,53,69);
+    background-color: rgb(220, 53, 69);
+    border-color: rgb(220, 53, 69);
 }
 
 .enroll-button-transform:hover:before {
-  content: "Drop";
+    content: "Drop";
 }
 
 .btn-custom {
-  padding-right: 0.48rem;
+    padding-right: 0.48rem;
 }
 
 .btn-icon-custom:hover {
-  color: #aa4477 !important;
+    color: #aa4477 !important;
 }
 
 .btn-outline-custom {
-  background-color: rgba(0,0,0,0) !important;
-  border-color: #aa4477 !important;
-  color: #aa4477 !important;
+    background-color: rgba(0, 0, 0, 0) !important;
+    border-color: #aa4477 !important;
+    color: #aa4477 !important;
 }
 
 .btn-outline-custom:hover {
-  background-color: #aa4477 !important;
-  color: #FFF !important;
+    background-color: #aa4477 !important;
+    color: #FFF !important;
 }
 
 .bg-container {
-  z-index: -1;
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  background-color: rgb(92,55,74);
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: rgb(92, 55, 74);
 }
 
 .main-container {
-  height: 100%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    height: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
 }
+
 .col-left {
-  border-right: 1px solid #EEE
+    border-right: 1px solid #EEE
 }
+
 .col-right {
-  border-left: 1px solid #EEE
+    border-left: 1px solid #EEE
 }
+
 .footer {
-  position: absolute;
-  margin-left: -15px;
-  height: 3.5rem;
-  bottom: 4.2rem;
-  width: 100%;
-  border-top: 1px solid #EEE;
+    position: absolute;
+    margin-left: -15px;
+    height: 3.5rem;
+    bottom: 4.2rem;
+    width: 100%;
+    border-top: 1px solid #EEE;
 }
+
 .view-div {
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.link-custom {
+    cursor: pointer;
 }
