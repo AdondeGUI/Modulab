@@ -16,7 +16,7 @@
               <i class="material-icons adj-2">add_circle_outline</i>
             </button>
                         <button class="btn btn-info btn-custom" data-toggle="modal" data-target="#enrollCourseModal" *ngIf="this.userManager.user.role == 0">
-              <span class="adj-1 adj-3 d-inline">Enroll</span>
+              <span class="adj-1 adj-3 d-inline" (click)="trimCourses()">Enroll</span>
               <i class="material-icons adj-2">add_circle_outline</i>
             </button>
                     </div>
@@ -86,7 +86,7 @@
             </div>
         </div>
         <div class="footer bg-light">
-            <p class="float-right text-secondary m-3"> ® Modulab Inc., 2017. {{ enrolledCourses | json }}</p>
+            <p class="float-right text-secondary m-3"> ® Modulab Inc., 2017. {{ courses | json }}</p>
         </div>
     </div>
 </div>
@@ -237,8 +237,4 @@
             </div>
         </div>
     </div>
-</div>
-
-<div>
-    <button type="button" class="btn btn-info" (click)="testLab()"> Test Lab </button>
 </div>

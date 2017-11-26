@@ -10,7 +10,7 @@
             <div class="flex-column form-column pr-1">
                 <label for="first_name">First Name</label>
                 <input id="first_name" type="text" name="First Name" class="form-control text-input" [(ngModel)]="updatedUser.first_name" required #first_name="ngModel">
-                <div [hidden]="first_name.valid || first_name.pristine"class="alert alert-danger">
+                <div [hidden]="first_name.valid || first_name.pristine" class="alert alert-danger">
                     Please enter a first name.
                 </div>
             </div>
@@ -26,7 +26,7 @@
         <div class="form-group my-3">
             <label for="email">Email</label>
             <input id="email" type="email" name="Email" class="form-control text-input" [(ngModel)]="updatedUser.email" pattern="[\w.]+[@]\w+[.][\w.]+" required #email="ngModel">
-            <div [hidden]="email.valid || !email.touched"class="alert alert-danger">
+            <div [hidden]="email.valid || !email.touched" class="alert alert-danger">
                 Please enter a valid email.
             </div>
         </div>
@@ -34,7 +34,7 @@
         <div class="form-group my-3">
             <label for="password">Password</label>
             <input id="password" type="password" name="Password" class="form-control text-input" [(ngModel)]="updatedUser.password" pattern="[.\S]{6,}" required #password="ngModel">
-            <div [hidden]="password.valid || !password.touched"class="alert alert-danger">
+            <div [hidden]="password.valid || !password.touched" class="alert alert-danger">
                 Please enter a password of at least 6 characters.
             </div>
         </div>
@@ -48,8 +48,4 @@
         <hr>
         <button type="submit" class="btn btn-info btn-lg link-custom text-white d-inline-block float-right" [disabled]="!settingsForm.form.valid">Save Changes</button>
     </form>
-</div>
-
-<div>
-    <p>{{updatedUser.first_name}}</p>
 </div>

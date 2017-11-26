@@ -21,13 +21,6 @@ export class LoginExistingComponent {
     private userRepository : UserRepository
   ) {  }
 
-  // private getUser() {
-  //   this.http.get('http://52.15.171.47/login/'+this.loginAttempt.email).subscribe(data => {
-  //     this.userManager.user = data[0];
-  //     this.router.navigateByUrl('/directory');
-  //   });
-  // }
-
   private login(){
     this.userRepository.getUser(this.loginAttempt.email).subscribe(data => {
       let returnUser = data[0];

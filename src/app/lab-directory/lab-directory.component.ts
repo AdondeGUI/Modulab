@@ -48,6 +48,7 @@ export class LabDirectoryComponent {
   private enrollInCourse(index: number) {
     this.courseRepository.enrollCourse(this.courses[index].course_id, this.courses[index].title, this.courses[index].instructor).subscribe();
     this.courseRepository.getUserCourses().subscribe(x => this.enrolledCourses = x);
+    this.trimCourses();
     this.router.navigateByUrl("/directory");
   }
 
@@ -55,6 +56,7 @@ export class LabDirectoryComponent {
     this.courseRepository.deleteUserCourse(this.courses[index].course_id).subscribe();
     console.log(this.courses);
     this.courseRepository.getUserCourses().subscribe(x => this.enrolledCourses = x);
+    this.router.navigateByUrl("/directory");
   }
 
   //create a new course with the given information
@@ -82,8 +84,14 @@ export class LabDirectoryComponent {
     this.router.navigateByUrl('/lab-generator/' + ""+labid);
   }
 
-  private testLab(){
-    this.router.navigateByUrl('/lab-generator/1');
+  private trimCourses(){
+    for(let item of this.enrolledCourses){
+      for(var _i = 0; _i < this.courses.length; _i++){
+        if(item.title == this.courses[_i].title){
+          this.courses.splice(_i,1);
+        }
+      }
+    }
   }
 
 }
