@@ -5,6 +5,7 @@
 <div class="container col-6 mt-4">
     <h4><i class="material-icons d-inline adj-1 pb-3">settings</i> Account Settings</h4>
     <hr>
+<<<<<<< Updated upstream
     <form (ngSubmit)="save()" #settingsForm="ngForm">
         <div class="form-group d-flex align-items-stretch">
             <div class="flex-column form-column pr-1">
@@ -48,4 +49,44 @@
         <hr>
         <button type="submit" class="btn btn-info btn-lg link-custom text-white d-inline-block float-right" [disabled]="!settingsForm.form.valid">Save Changes</button>
     </form>
+=======
+    <div class="mx-auto px-5">
+        <div>
+            <label>First Name</label>
+            <input type="text" class="form-control" aria-label="Firstname" aria-describedby="basic-addon1" [(ngModel)]="updatedUser.first_name">
+        </div>
+        <br>
+        <div>
+            <label>Last Name</label>
+            <input type="text" class="form-control" aria-label="Lastname" aria-describedby="basic-addon1" [(ngModel)]="updatedUser.last_name">
+        </div>
+        <br>
+        <div>
+            <label>Email</label>
+            <input type="text" class="form-control" aria-label="Email" aria-describedby="basic-addon1" [(ngModel)]="updatedUser.email">
+        </div>
+        <br>
+        <div>
+            <label>Password</label>
+            <input type="text" class="form-control" aria-label="Password" aria-describedby="basic-addon1" [(ngModel)]="updatedUser.password">
+        </div>
+    </div>
+    <hr>
+    <div id="settings-delete d-inline m-auto" class="d-flex justify-content-center">
+        <button class="btn btn-danger d-inline" (click)="deleteUser()">
+      Delete This Account
+    </button>
+        <span class="ml-3 mt-2">This will delete <strong>all</strong> of your data and files.</span>
+    </div>
+    <hr>
+    <div id="settings-save" class="clearfix" (click)="save()">
+        <button class="btn btn-info float-right">
+      Save Changes
+    </button>
+    </div>
+</div>
+
+<div>
+    <p>{{updatedUser.first_name}}</p>
+>>>>>>> Stashed changes
 </div>

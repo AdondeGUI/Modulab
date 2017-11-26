@@ -12,8 +12,11 @@ import { UserManager } from '../../user-manager.service';
 
 export class AccountSettingsComponent {
   private updatedUser = new User();
+<<<<<<< Updated upstream
   private passwordConfirm = "";
   private passwordMismatch = 1;
+=======
+>>>>>>> Stashed changes
 
   constructor(
     private router: Router,
