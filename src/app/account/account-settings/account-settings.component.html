@@ -1,119 +1,60 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<<<<<<< HEAD <account-nav>
-    </account-nav>
+<div class="bg-container">
+    <img [src]="'src/images/pattern.png'" alt="background" class="bg" />
+</div>
 
-    <div class="container col-6 mt-4">
+<div class="view-div">
+    <account-nav></account-nav>
+    <div class="container col-6 pt-4 main-container bg-white">
         <h4><i class="material-icons d-inline adj-1 pb-3">settings</i> Account Settings</h4>
         <hr>
-        <<<<<<< Updated upstream <form (ngSubmit)="save()" #settingsForm="ngForm">
+        <form (ngSubmit)="save()" #settingsForm="ngForm">
             <div class="form-group d-flex align-items-stretch">
                 <div class="flex-column form-column pr-1">
                     <label for="first_name">First Name</label>
                     <input id="first_name" type="text" name="First Name" class="form-control text-input" [(ngModel)]="updatedUser.first_name" required #first_name="ngModel">
                     <div [hidden]="first_name.valid || first_name.pristine" class="alert alert-danger">
-                        Please enter a first name. =======
-                        <div class="bg-container">
-                            <img [src]="'src/images/pattern.png'" alt="background" class="bg" />
-                        </div>
-                        <div class="view-div">
-                            <account-nav></account-nav>
-                            <div class="container col-6 pt-4 bg-white main-container">
-                                <h4 class="px-5"><i class="material-icons d-inline adj-1 pb-3">settings</i> Account Settings</h4>
-                                <hr>
-                                <form (ngSubmit)="save()" #settingsForm="ngForm">
-                                    <div class="px-5">
-                                        <div class="form-group d-flex align-items-stretch">
-                                            <div class="flex-column form-column pr-1">
-                                                <label for="first_name">First Name</label>
-                                                <input id="first_name" type="text" name="First Name" class="form-control text-input" [(ngModel)]="updatedUser.first_name" required #first_name="ngModel">
-                                                <div [hidden]="first_name.valid || first_name.pristine" class="alert alert-danger">
-                                                    Please enter a first name.
-                                                </div>
-                                                >>>>>>> a88b7ad0923af2a11b557ba1b2e35083bd577b3a
-                                            </div>
+                        Please enter a first name.
+                    </div>
+                </div>
 
-                                            <div class="flex-column form-column pl-1">
-                                                <label for="last_name">Last Name</label>
-                                                <input id="last_name" type="text" name="Last Name" class="form-control text-input" [(ngModel)]="updatedUser.last_name" required #last_name="ngModel">
-                                                <div [hidden]="last_name.valid || last_name.pristine" class="alert alert-danger">
-                                                    Please enter a last name.
-                                                </div>
-                                            </div>
-                                        </div>
+                <div class="flex-column form-column pl-1">
+                    <label for="last_name">Last Name</label>
+                    <input id="last_name" type="text" name="Last Name" class="form-control text-input" [(ngModel)]="updatedUser.last_name" required #last_name="ngModel">
+                    <div [hidden]="last_name.valid || last_name.pristine" class="alert alert-danger">
+                        Please enter a last name.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group my-3">
+                <label for="email">Email</label>
+                <input id="email" type="email" name="Email" class="form-control text-input" [(ngModel)]="updatedUser.email" pattern="[\w.]+[@]\w+[.][\w.]+" required #email="ngModel">
+                <div [hidden]="email.valid || !email.touched" class="alert alert-danger">
+                    Please enter a valid email.
+                </div>
+            </div>
 
-                                    </div>
-                                    <div class="form-group my-3">
-                                        <label for="email">Email</label>
-                                        <input id="email" type="email" name="Email" class="form-control text-input" [(ngModel)]="updatedUser.email" pattern="[\w.]+[@]\w+[.][\w.]+" required #email="ngModel">
-                                        <div [hidden]="email.valid || !email.touched" class="alert alert-danger">
-                                            Please enter a valid email.
-                                        </div>
-
-                                        <div class="form-group my-3">
-                                            <label for="password">Password</label>
-                                            <input id="password" type="password" name="Password" class="form-control text-input" [(ngModel)]="updatedUser.password" pattern="[.\S]{6,}" required #password="ngModel">
-                                            <div [hidden]="password.valid || !password.touched" class="alert alert-danger">
-                                                Please enter a password of at least 6 characters.
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div id="settings-delete d-inline" class="ml-5 px-5">
-                                            <button class="btn btn-danger d-inline" (click)="deleteUser()">
+            <div class="form-group my-3">
+                <label for="password">Password</label>
+                <input id="password" type="password" name="Password" class="form-control text-input" [(ngModel)]="updatedUser.password" pattern="[.\S]{6,}" required #password="ngModel">
+                <div [hidden]="password.valid || !password.touched" class="alert alert-danger">
+                    Please enter a password of at least 6 characters.
+                </div>
+            </div>
+            <hr>
+            <div id="settings-delete d-inline" class="ml-5 px-5">
+                <button class="btn btn-danger d-inline" (click)="deleteUser()">
                     Delete This Account
                 </button>
-                                            <span class="ml-3 mt-2">This will delete <strong>all</strong> of your data and files.</span>
-                                        </div>
-                                        <hr>
-                                        <button type="submit" class="btn btn-info btn-lg link-custom text-white d-inline-block float-right mr-5" [disabled]="!settingsForm.form.valid">Save Changes</button>
-                                        <button class="btn btn-secondary btn-lg d-inline-block float-right mr-1" type="button" (click)="cancel()">Cancel</button>
-                                </form>
-                                <div class="footer bg-light">
-                                    <p class="float-right text-secondary m-3"> ® Modulab Inc., 2017. {{ enrolledCourses | json }}</p>
-                                </div>
-                                <<<<<<< HEAD <hr>
-                                    <button type="submit" class="btn btn-info btn-lg link-custom text-white d-inline-block float-right" [disabled]="!settingsForm.form.valid">Save Changes</button>
-                                    </form>
-                                    =======
-                                    <div class="mx-auto px-5">
-                                        <div>
-                                            <label>First Name</label>
-                                            <input type="text" class="form-control" aria-label="Firstname" aria-describedby="basic-addon1" [(ngModel)]="updatedUser.first_name">
-                                        </div>
-                                        <br>
-                                        <div>
-                                            <label>Last Name</label>
-                                            <input type="text" class="form-control" aria-label="Lastname" aria-describedby="basic-addon1" [(ngModel)]="updatedUser.last_name">
-                                        </div>
-                                        <br>
-                                        <div>
-                                            <label>Email</label>
-                                            <input type="text" class="form-control" aria-label="Email" aria-describedby="basic-addon1" [(ngModel)]="updatedUser.email">
-                                        </div>
-                                        <br>
-                                        <div>
-                                            <label>Password</label>
-                                            <input type="text" class="form-control" aria-label="Password" aria-describedby="basic-addon1" [(ngModel)]="updatedUser.password">
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div id="settings-delete d-inline m-auto" class="d-flex justify-content-center">
-                                        <button class="btn btn-danger d-inline" (click)="deleteUser()">
-      Delete This Account
-    </button>
-                                        <span class="ml-3 mt-2">This will delete <strong>all</strong> of your data and files.</span>
-                                    </div>
-                                    <hr>
-                                    <div id="settings-save" class="clearfix" (click)="save()">
-                                        <button class="btn btn-info float-right">
-      Save Changes
-    </button>
-                                    </div>
-                                    </div>
-
-                                    <div>
-                                        <p>{{updatedUser.first_name}}</p>
-                                        >>>>>>> Stashed changes =======
-                                    </div>
-                                    >>>>>>> a88b7ad0923af2a11b557ba1b2e35083bd577b3a
-                            </div>
+                <span class="ml-3 mt-2">This will delete <strong>all</strong> of your data and files.</span>
+            </div>
+            <hr>
+            <button type="submit" class="btn btn-info btn-lg link-custom text-white d-inline-block float-right mr-5" [disabled]="!settingsForm.form.valid">Save Changes</button>
+            <button class="btn btn-secondary btn-lg d-inline-block float-right mr-1" type="button" (click)="cancel()">Cancel</button>
+        </form>
+        <div class="footer bg-light">
+            <p class="float-right text-secondary m-3"> ® Modulab Inc., 2017. {{ enrolledCourses | json }}</p>
+        </div>
+    </div>
+</div>

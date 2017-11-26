@@ -36,7 +36,6 @@ export class AccountSettingsComponent {
   }
 
   private cancel() {
-    alert("You hit the cancel button.");
     location.reload();
   }
 }
