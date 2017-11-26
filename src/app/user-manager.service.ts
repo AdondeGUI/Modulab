@@ -6,9 +6,13 @@ export class UserManager {
     private _user : User;
 
     public get user() : User {
-        return this._user; 
+        var value = localStorage.getItem("_user");
+        return (value
+            ? JSON.parse(value) as User
+            : undefined
+        )
     }
-    public set user(value: User){
-        this._user = value; 
+    public set user(value: User){ 
+        localStorage.setItem("_user", JSON.stringify(value));
     }
 }
