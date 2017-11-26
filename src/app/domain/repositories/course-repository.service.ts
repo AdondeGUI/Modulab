@@ -15,7 +15,7 @@ export class CourseRepository {
 
     //Get all courses
     public getAllCourses(): Observable<Course[]>{
-        return this.http.get<Course[]>(this.endpoint).catch(x => this.handleException(x));
+        return this.http.get<Course[]>("http://52.15.171.47/role").catch(x => this.handleException(x));
     }
 
     //create a new course
@@ -26,7 +26,7 @@ export class CourseRepository {
 
     //enroll in a particular course
     public enrollCourse(courseid: number, coursetitle: string, courseInstructor: string): Observable<Course[]>{
-        const body = {"course_id": courseid, "title": coursetitle, "instructor": courseInstructor, "ID": this.userManager.user.ID};
+        const body = {"course_id": courseid, "title": coursetitle, "instructor": courseInstructor, "ID": this.userManager.user.ID, "role": 0};
         return this.http.post(this.endpoint, body).catch(x => this.handleException(x));
     }
 
