@@ -21,12 +21,14 @@ export class LabDirectoryComponent {
   private newReportName = "";
   public newTemplateSelect: Lab;
   public newTemplateSelectCourse: Course;
+  private viewLabCourse : Course = {ID: 1, title: " ", instructor:" ", course_id: 1};
 
   @Input()
 
   public courses : Course[];
   public enrolledCourses : Course[];
   public labs : Lab[];
+  public labsToView : Lab[];
   
   constructor(
     private http: HttpClient,
@@ -54,6 +56,11 @@ export class LabDirectoryComponent {
     this.courseRepository.deleteUserCourse(this.courses[index].course_id).subscribe();
     console.log(this.courses);
     this.courseRepository.getUserCourses().subscribe(x => this.enrolledCourses = x);
+  }
+
+  private viewLabs(index: number) {
+    this.labRepository.getAllLabs().subscribe(x => this.labsToView = x);
+    this.viewLabCourse = this.courses[index];
   }
 
   //create a new course with the given information
