@@ -21,7 +21,7 @@ export class LabDirectoryComponent {
   private newReportName = "";
   public newTemplateSelect: Lab;
   public newTemplateSelectCourse: Course;
-  private viewLabCourse : Course = {ID: 1, title: " ", instructor:" ", course_id: 1};
+  private viewLabCourse : Course = {ID: 1, title: " ", instructor:" ", course_id: 1, role: 0};
 
   @Input()
 
@@ -37,8 +37,8 @@ export class LabDirectoryComponent {
     private router: Router,
     private userManager: UserManager ) 
     {
-      this.newTemplateSelectCourse = {};
-      this.newTemplateSelect = {};
+      this.newTemplateSelectCourse = new Course();
+      this.newTemplateSelect = new Lab();
     }
 
   public ngOnInit(){
@@ -48,15 +48,19 @@ export class LabDirectoryComponent {
   }
 
   private enrollInCourse(index: number) {
-    this.courseRepository.enrollCourse(this.courses[index].course_id, this.courses[index].title, this.courses[index].instructor).subscribe(x => this.enrolledCourses = x);
-    // this.courseRepository.getUserCourses().subscribe();
+    this.courseRepository.enrollCourse(this.courses[index].course_id, this.courses[index].title, this.courses[index].instructor).subscribe(data => {
+      this.courseRepository.getUserCourses().subscribe(x => this.enrolledCourses = x);
+    });
     this.trimCourses();
     this.router.navigateByUrl("/directory");
+    // this.courseRepository.getUserCourses().subscribe();
+    
   }
 
   private removeCourse(index: number) {
-    this.courseRepository.deleteUserCourse(this.enrolledCourses[index].course_id).subscribe();
-    this.courseRepository.getUserCourses().subscribe(x => this.enrolledCourses = x);
+    this.courseRepository.deleteUserCourse(this.enrolledCourses[index].course_id).subscribe(data => {
+      this.courseRepository.getUserCourses().subscribe(x => this.enrolledCourses = x);
+    });
     this.router.navigateByUrl("/directory");
   }
 

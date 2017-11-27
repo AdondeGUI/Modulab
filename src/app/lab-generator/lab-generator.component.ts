@@ -47,28 +47,22 @@ export class LabGeneratorComponent {
 
   public ngOnInit(){
     this.activatedRoute.params.subscribe(x => this.loadRoute(x));
-    // this.modules.push(this.newModule);
-    console.log(this.modules);
   }
 
   private loadRoute(params: any) {
       if (params.id) {
-        this.labRepository.getIndLab(+params.id).subscribe(x => this.lab = x);
+        this.labRepository.getIndLab(+params.id).subscribe(x => this.lab = x[0]);
         this.moduleRepository.getLabModules(+params.id).subscribe(x => this.modules = x);
       }
   }
 
   private saveLab(){
     //delete all modules currently associated with the lab_id
-    var currModules: Module[];
-    this.moduleRepository.getLabModules(this.lab.lab_id).subscribe(x => currModules = x);
-    
-    //for loop post all modules both old and new
-    this.moduleRepository.deleteAllModules(this.lab.lab_id);
+    this.moduleRepository.deleteAllModules(this.lab.lab_id).subscribe();
 
     //add all the new lab modules
     for(var newMod of this.modules){
-      this.moduleRepository.postModule(this.lab.lab_id, newMod.type, newMod.data);
+      this.moduleRepository.postModule(this.lab.lab_id, newMod.type, newMod.data).subscribe();
     }
   }
 }
