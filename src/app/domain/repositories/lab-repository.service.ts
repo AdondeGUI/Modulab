@@ -20,7 +20,7 @@ export class LabRepository {
 
     //post a new lab
     public postLab(bodytitle: string, bodycourse_id: number): Observable<Lab[]>  {
-        const body = {title: bodytitle, course_id: bodycourse_id};
+        const body = {title: bodytitle, course_id: bodycourse_id, role: this.userManager.user.role};
         return this.http.post(this.endpoint, body).catch(x => this.handleException(x));
     }
 

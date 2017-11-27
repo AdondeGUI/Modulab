@@ -19,83 +19,84 @@
                           <span class="adj-1 adj-3 d-inline">Enroll</span>
                           <i class="material-icons adj-2">add_circle_outline</i>
                       </button>
-                  </div>
-              </div>
+                    </div>
+                </div>
 
-              <div class="alert alert-custom" *ngIf="enrolledCourses.length==0">
-                <span *ngIf="this.userManager.user.role == 1">
+                <div class="alert alert-custom" *ngIf="enrolledCourses.length==0">
+                    <span *ngIf="this.userManager.user.role == 1">
                     No courses found - try <a href="javascript:void(0);" data-toggle="modal" data-target="#addCourseModal">creating one</a>.
                 </span>
-                <span *ngIf="this.userManager.user.role == 0">
+                    <span *ngIf="this.userManager.user.role == 0">
                     You aren't enrolled in anything! Try <a href="javascript:void(0);" data-toggle="modal" data-target="#addCourseModal">adding a course</a>.
                 </span>
-            </div>
-            <ul class="list-group mb-0">
-                <li class="list-group-item bg-light clearfix" *ngFor="let course of enrolledCourses; let i = index;">
-                    <button class="btn btn-outline-custom float-right px-2 ml-3 my-0 enroll-button" (click)="removeCourse(i)" *ngIf="this.userManager.user.role == 0">
+                </div>
+                <ul class="list-group mb-0">
+                    <li class="list-group-item bg-light clearfix" *ngFor="let course of enrolledCourses; let i = index;">
+                        <button class="btn btn-outline-custom float-right px-2 ml-3 my-0 enroll-button" (click)="removeCourse(i)" *ngIf="this.userManager.user.role == 0">
                         Drop
                     </button>
-                    <div class="adj-5">
-                        <a href="javascript:void(0);" (click)="removeCourse(i)" *ngIf="this.userManager.user.role == 1">
-                            <i class="remove-icon material-icons d-inline float-right text-secondary pl-2 btn-icon-custom">remove_circle_outline</i>
-                        </a>
-                        <a href="javascript:void(0);" (click)="viewLabs(i)" *ngIf="this.userManager.user.role == 1" data-toggle="modal" data-target="#viewLabsModal">
-                            <i class="material-icons d-inline float-right text-secondary pl-2 btn-icon-custom">insert_drive_file</i>
-                        </a>
+                        <div class="adj-5">
+                            <a href="javascript:void(0);" (click)="removeCourse(i)" *ngIf="this.userManager.user.role == 1">
+                                <i class="remove-icon material-icons d-inline float-right text-secondary pl-2 btn-icon-custom">remove_circle_outline</i>
+                            </a>
+                            <a href="javascript:void(0);" (click)="viewLabs(i)" *ngIf="this.userManager.user.role == 1" data-toggle="modal" data-target="#viewLabsModal">
+                                <i class="material-icons d-inline float-right text-secondary pl-2 btn-icon-custom">insert_drive_file</i>
+                            </a>
 
-                        <a href="javascript:void(0);" class="text-info-custom">
+                            <a href="javascript:void(0);" class="text-info-custom">
                             {{course.title}} {{course.course_id}}<span *ngIf="this.userManager.user.role == 0"> - {{course.instructor}}</span>
                         </a>
-                    </div>
-                </li>
-            </ul>
-        </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
 
-        <div class="flex-column mx-auto col-6 mb-2 col-right">
-            <div class="d-flex justify-content-between">
-                <div class="pt-4 font-weight-500 header-custom mb-1" *ngIf="this.userManager.user.role == 1">Templates</div>
-                <div class="pt-4 font-weight-500 header-custom mb-1" *ngIf="this.userManager.user.role == 0">Reports</div>
-                <div class="ml-auto">
-                    <button class="btn btn-info btn-custom" data-toggle="modal" data-target="#addTemplateModal" *ngIf="this.userManager.user.role == 1">
+            <div class="flex-column mx-auto col-6 mb-2 col-right">
+                <div class="d-flex justify-content-between">
+                    <div class="pt-4 font-weight-500 header-custom mb-1" *ngIf="this.userManager.user.role == 1">Templates</div>
+                    <div class="pt-4 font-weight-500 header-custom mb-1" *ngIf="this.userManager.user.role == 0">Reports</div>
+                    <div class="ml-auto">
+                        <button class="btn btn-info btn-custom" data-toggle="modal" data-target="#addTemplateModal" *ngIf="this.userManager.user.role == 1">
                         <span class="adj-1 adj-3 d-inline">Create a New Template</span>
                         <i class="material-icons adj-2">add_circle_outline</i>
                     </button>
-                    <button class="btn btn-info btn-custom" data-toggle="modal" data-target="#addReportModal" *ngIf="this.userManager.user.role == 0">
+                        <button class="btn btn-info btn-custom" data-toggle="modal" data-target="#addReportModal" *ngIf="this.userManager.user.role == 0">
                         <span class="adj-1 adj-3 d-inline">Create a New Report</span>
                         <i class="material-icons adj-2">add_circle_outline</i>
                     </button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="alert alert-custom" *ngIf="labs==0">
-                <span *ngIf="this.userManager.user.role == 1">
+                <div class="alert alert-custom" *ngIf="labs==0">
+                    <span *ngIf="this.userManager.user.role == 1">
                     No templates found - try <a href="javascript:void(0);" data-toggle="modal" data-target="#addTemplateModal">creating one</a>.
                 </span>
-                <span *ngIf="this.userManager.user.role == 0">
+                    <span *ngIf="this.userManager.user.role == 0">
                     No reports found - try <a href="javascript:void(0);" data-toggle="modal" data-target="#addReportModal">creating one</a>.
                 </span>
-            </div>
-            <ul class="list-group mb-0">
-                <li class="list-group-item bg-light clearfix" *ngFor="let template of labs; let i = index;">
-                    <a (click)="loadLab(i)" class="text-info-custom link-custom">
+                </div>
+                <ul class="list-group mb-0">
+                    <li class="list-group-item bg-light clearfix" *ngFor="let template of labs; let i = index;">
+                        <a (click)="loadLab(i)" class="text-info-custom link-custom">
                         {{template.title}}
                     </a>
-                    <a href="javascript:void(0);" (click)="removeTemplate(i)">
-                        <i class="remove-icon btn-icon-custom material-icons d-inline float-right text-secondary pl-2">remove_circle_outline</i>
-                    </a>
-                </li>
-            </ul>
+                        <a href="javascript:void(0);" (click)="removeTemplate(i)">
+                            <i class="remove-icon btn-icon-custom material-icons d-inline float-right text-secondary pl-2">remove_circle_outline</i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer bg-light">
+            <p class="float-right text-secondary m-3"> ® Modulab Inc., 2017. {{ enrolledCourses | json}}</p>
         </div>
     </div>
     <div class="footer bg-light">
         <p class="float-right text-secondary m-3"> ® Modulab Inc., 2017.
-            <br>
-            Labs ({{labs.length}}): {{ labs | json }}
-            <br>
-            Enrolled ({{enrolledCourses.length}}): {{ enrolledCourses | json }}
+            <br> Labs ({{labs.length}}): {{ labs | json }}
+            <br> Enrolled ({{enrolledCourses.length}}): {{ enrolledCourses | json }}
         </p>
     </div>
-</div>
 </div>
 
 <div class="modal fade" id="addCourseModal" tabindex="-1" role="dialog" aria-labelledby="courseModalLabel" aria-hidden="true">
@@ -106,8 +107,6 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-
-                <!--CHANGED HERE-->
             </div>
             <div class="modal-body">
                 <input type="text" class="form-control" placeholder="Course Name" [(ngModel)]="newCourseName" />
@@ -192,31 +191,31 @@
                   <span aria-hidden="true">&times;</span>
               </button>
 
-          </div>
-          <div class="modal-body">
-            <input type="text" class="form-control" placeholder="Template Name" [(ngModel)]="newTemplateName" />
+            </div>
+            <div class="modal-body">
+                <input type="text" class="form-control" placeholder="Template Name" [(ngModel)]="newTemplateName" />
 
-            <div class="form-group mt-3 mb-0 d-inline-block">
-                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                <div class="form-group mt-3 mb-0 d-inline-block">
+                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
                     {{ newTemplateSelectCourse.title || 'Select Course' }}
                     <span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu">
-                    <li *ngFor="let course of enrolledCourses" class="px-3">
-                        <a href="javascript:void(0);" (click)="newTemplateSelectCourse = courseName">
+                    <ul class="dropdown-menu">
+                        <li *ngFor="let course of enrolledCourses" class="px-3">
+                            <a href="javascript:void(0);" (click)="newTemplateSelectCourse = courseName">
                             {{ course.title }}
                         </a>
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-info" (click)="addTemplateName()" [disabled]="!newTemplateName || !newTemplateSelectCourse.title" onclick="$('#addTemplateModal').modal('hide')">Add Template</button>
             </div>
         </div>
-
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-info" (click)="addTemplateName()" [disabled]="!newTemplateName || !newTemplateSelectCourse.title" onclick="$('#addTemplateModal').modal('hide')">Add Template</button>
-        </div>
     </div>
-</div>
 </div>
 
 <div class="modal fade" id="addReportModal" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel" aria-hidden="true">

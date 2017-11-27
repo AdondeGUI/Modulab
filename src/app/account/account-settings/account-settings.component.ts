@@ -30,8 +30,9 @@ export class AccountSettingsComponent {
       alert("All fields must be filled");
     }
     else{
-      this.userRepository.putUser(this.updatedUser.first_name, this.updatedUser.last_name, this.updatedUser.email,this.updatedUser.password).subscribe(x => this.userManager.user = x[0]);
+      this.userRepository.putUser(this.updatedUser.first_name, this.updatedUser.last_name, this.updatedUser.email,this.updatedUser.password).subscribe(data => this.userManager.user = data);
       alert("User settings updated");
+      this.router.navigateByUrl("/settings");
     }
   }
 

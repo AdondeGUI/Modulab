@@ -48,8 +48,8 @@ export class LabDirectoryComponent {
   }
 
   private enrollInCourse(index: number) {
-    this.courseRepository.enrollCourse(this.courses[index].course_id, this.courses[index].title, this.courses[index].instructor).subscribe();
-    this.courseRepository.getUserCourses().subscribe(x => this.enrolledCourses = x);
+    this.courseRepository.enrollCourse(this.courses[index].course_id, this.courses[index].title, this.courses[index].instructor).subscribe(x => this.enrolledCourses = x);
+    // this.courseRepository.getUserCourses().subscribe();
     this.trimCourses();
     this.router.navigateByUrl("/directory");
   }

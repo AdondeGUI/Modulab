@@ -26,8 +26,8 @@ export class UserRepository {
     }
 
     //update a users information
-    public putUser(firstname: string, lastname: string, emailAddress: string, pwd: string): Observable<User[]> {
-        const body = {first_name: firstname, last_name:lastname, email: emailAddress, password: pwd}
+    public putUser(firstname: string, lastname: string, emailAddress: string, pwd: string): Observable<User> {
+        const body = {first_name: firstname, last_name:lastname, email: emailAddress, password: pwd, role: this.userManager.user.role}
         return this.http.put('http://52.15.171.47/users/'+this.userManager.user.ID, body).catch(x => this.handleException(x));
     }
     

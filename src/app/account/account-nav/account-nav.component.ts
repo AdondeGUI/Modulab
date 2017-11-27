@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { UserManager } from '../../user-manager.service';
+import { User } from '../../domain/index';
 
 @Component({
   selector: 'account-nav',
@@ -10,7 +12,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class AccountNavComponent {
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private userManager: UserManager
   ) { }
 
   private navigateToDirectory() {
@@ -22,6 +25,7 @@ export class AccountNavComponent {
   }
 
   private logOut() {
+    this.userManager.user = new User();
     this.router.navigateByUrl('landing-page');
   }
 
