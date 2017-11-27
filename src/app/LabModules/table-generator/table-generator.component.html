@@ -8,8 +8,8 @@
         <table class="table table-striped">
             <thead id="dataTableHead">
                 <tr>
-                    <th *ngFor="let item of cols; ">
-                        Head 1
+                    <th *ngFor="let item of cols; let h = index;">
+                        Head {{h}}
                     </th>
                 </tr>
             </thead>
