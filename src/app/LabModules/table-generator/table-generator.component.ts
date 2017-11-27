@@ -39,22 +39,45 @@ export class TableGeneratorComponent {
         this.rows.pop();
       }
     }
-     console.log(this.rows);
-
+    this.saveTable();
   }
 
-  // private saveTable() {
-  //   for (var i=0;i<this.rowNum; i++){
-  //     var row : any [];
-  //     for (var j=0;j<this.colNum;j++){
-  //       var x = document.getElementById("i j").name;
-  //       row.push(id=["i j"]);
-  //     }
-  //     this.table.push(row);
-  //   }
-  // }
-  //
-  // private changeValue(i : number, j: number) {
-  //   this.table[i][j] = cellValue;
-  // }
+  private saveTable() {
+    var output2 = JSON.stringify(this.rows);
+    // var output = "[";
+    // for(var i=0;i<this.rowNum;i++)
+    // {
+    //   output += "[";
+    //   for(var j=0;j<this.colNum;j++){
+    //     output += (this.rows[i][j] != undefined) ? "\"" + this.rows[i][j] + "\"" : "\"0\"";
+    //     output += (j != this.colNum - 1) ? "," : "";
+    //   }
+    //   output += (i != this.rowNum - 1) ? "]," : "]";
+    // }
+    // output += "]";
+    console.log(output2);
+    this.data = output2;
+    this.loadTable(output2);
+   }
+
+  private loadTable(tableStr : string) {
+    this.rows = JSON.parse(tableStr);
+    // var tableTmp = [];
+    // var n =0;
+    // while(n<3)
+    // {
+    //   var rowTmp = tableStr.substr(tableStr.indexOf("["),tableStr.indexOf("]")+1);
+    //   console.log(rowTmp);
+    //   var m = 0;
+    //   while(rowTmp.indexOf("]") != 0 && rowTmp.indexOf("]") != 1 && m<10)
+    //   {
+    //     var colTmp = rowTmp.substr(0,rowTmp.indexOf(",")-1);
+    //     console.log(colTmp);
+    //     rowTmp = rowTmp.substr(rowTmp.indexOf(",")+1);
+    //     m++;
+    //   }
+    //   n++;
+    //   tableStr = tableStr.substr(tableStr.indexOf("]")+1);
+    // };
+  }
 }
