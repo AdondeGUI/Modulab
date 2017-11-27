@@ -27,17 +27,19 @@ export class TableGeneratorComponent {
         this.cols.push(col);
       else if(this.colNum < this.cols.length)
         this.cols.pop();
-      var row = ' ';
+      var row : any[] = [];
       if(this.rowNum > this.rows.length)
       {
-        console.log('Add Row');
         this.rows.push(row);
       }
       else if(this.rowNum < this.rows.length)
       {
-        console.log('Pop Row');
         this.rows.pop();
       }
+    }
+    if(this.rows.length == 4)
+    {
+      this.loadTable('[["4","7","6","3435.3"],["653.45","7.7","6445","3436.7"],["44.0","866","556","343.3"]]');
     }
     this.saveTable()
   }
