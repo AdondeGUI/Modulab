@@ -6,7 +6,7 @@
 
 <div class="view-div">
     <account-nav></account-nav>
-    <div class="container col-6 pt-5 main-container bg-white">
+    <div class="container col-6 pt-5 px-5 main-container bg-white">
         <h4 class="pb-3 px-5"><i class="material-icons d-inline adj-1">settings</i> Account Settings</h4>
         <hr>
         <form (ngSubmit)="save()" #settingsForm="ngForm">
@@ -43,15 +43,15 @@
                 </div>
             </div>
             <hr>
-            <div id="settings-delete d-inline" class="ml-5 px-5">
+            <div id="settings-delete" class="ml-5 d-block">
                 <button class="btn btn-danger d-inline" (click)="deleteUser()">
                     Delete This Account
                 </button>
                 <span class="ml-3 mt-2">This will delete <strong>all</strong> of your data and files.</span>
             </div>
             <hr>
-            <button type="submit" class="btn btn-info btn-lg link-custom text-white d-inline-block float-right mr-3" [disabled]="!settingsForm.form.valid">Save Changes</button>
-            <button class="btn btn-secondary btn-lg d-inline-block float-right mr-1" type="button" (click)="cancel()">Cancel</button>
+            <button type="submit" class="btn btn-info link-custom text-white d-inline-block float-right mr-5" [disabled]="!settingsForm.form.valid">Save Changes</button>
+            <button class="btn btn-secondary d-inline-block float-right mr-1" type="button" (click)="cancel()">Cancel</button>
         </form>
 
         <div class="footer bg-light">

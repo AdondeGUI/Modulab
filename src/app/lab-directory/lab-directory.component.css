@@ -2,6 +2,11 @@
     margin-bottom: -1px;
 }
 
+.alert-custom {
+  background-color: #f4d6e4;
+  border-color: #dd8fbf;
+}
+
 a {
     color: #15F;
 }
@@ -118,6 +123,7 @@ a:hover {
     bottom: 4.2rem;
     width: 100%;
     border-top: 1px solid #EEE;
+    bottom: 50%;
 }
 
 .view-div {

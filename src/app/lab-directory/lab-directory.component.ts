@@ -55,8 +55,7 @@ export class LabDirectoryComponent {
   }
 
   private removeCourse(index: number) {
-    this.courseRepository.deleteUserCourse(this.courses[index].course_id).subscribe();
-    console.log(this.courses);
+    this.courseRepository.deleteUserCourse(this.enrolledCourses[index].course_id).subscribe();
     this.courseRepository.getUserCourses().subscribe(x => this.enrolledCourses = x);
     this.router.navigateByUrl("/directory");
   }
@@ -73,8 +72,7 @@ export class LabDirectoryComponent {
   }
 
   private createLab(){
-  
-    this.labRepository.postLab(this.newReportName, this.newTemplateSelectCourse.course_id).subscribe(
+    this.labRepository.postLab(this.newReportName, this.newTemplateSelectCourse.course_id, this.userManager.user.role).subscribe(
       data => this.navigateToLab(data[0].lab_id)
     );
   }

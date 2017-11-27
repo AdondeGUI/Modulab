@@ -58,6 +58,10 @@ input.text-input {
     overflow: hidden;
 }
 
+#settings-delete {
+  width: fit-content;
+}
+
 .footer {
     position: absolute;
     margin-left: -15px;

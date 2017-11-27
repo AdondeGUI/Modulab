@@ -5,8 +5,8 @@
 </div>
 
 <div class="d-flex flex-column mt-3" id="loginContainer">
-    <div class="jumbotron-custom border border-info rounded bg-white-custom thick-border">
-        <div class="header-custom">Sign In</div>
+    <div class="jumbotron-custom border border-info rounded bg-white-custom thick-border pb-2">
+        <div class="header-custom">Log In</div>
         <br><form (ngSubmit)="login()" #loginForm="ngForm">
             <div class="form-group my-3">
                 <label for="email">Email</label>
@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="d-flex justify-content-between">
-                <div id="newAccount" class="alert alert-info mb-0">Need an account? <a href routerLink="/newlogin" class="text-info">Create one</a>.</div>
+                <div id="newAccount" class="alert alert-custom mb-0">Need an account? <a href routerLink="/newlogin" class="text-info">Create one</a>.</div>
                 <button type="submit" class="btn btn-info btn-lg link-custom text-white d-inline-block float-right" [disabled]="!loginForm.form.valid">Log In</button>
             </div>
         </form>        

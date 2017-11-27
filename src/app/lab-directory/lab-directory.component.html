@@ -15,14 +15,14 @@
                             <span class="adj-1 adj-3 d-inline">Create New Course</span>
                             <i class="material-icons adj-2">add_circle_outline</i>
                         </button>
-                        <button class="btn btn-info btn-custom" data-toggle="modal" data-target="#enrollCourseModal" *ngIf="this.userManager.user.role == 0">
-                          <span class="adj-1 adj-3 d-inline" (click)="trimCourses()">Enroll</span>
+                        <button class="btn btn-info btn-custom" (click)="trimCourses()" data-toggle="modal" data-target="#enrollCourseModal" *ngIf="this.userManager.user.role == 0">
+                          <span class="adj-1 adj-3 d-inline">Enroll</span>
                           <i class="material-icons adj-2">add_circle_outline</i>
                       </button>
                   </div>
               </div>
 
-              <div class="alert alert-warning" *ngIf="(enrolledCourses$ | async)?.length==0">
+              <div class="alert alert-custom" *ngIf="enrolledCourses.length==0">
                 <span *ngIf="this.userManager.user.role == 1">
                     No courses found - try <a href="javascript:void(0);" data-toggle="modal" data-target="#addCourseModal">creating one</a>.
                 </span>
@@ -67,7 +67,7 @@
                 </div>
             </div>
 
-            <div class="alert alert-warning" *ngIf="(labs$ | async)?.length==0">
+            <div class="alert alert-custom" *ngIf="labs==0">
                 <span *ngIf="this.userManager.user.role == 1">
                     No templates found - try <a href="javascript:void(0);" data-toggle="modal" data-target="#addTemplateModal">creating one</a>.
                 </span>
@@ -88,7 +88,12 @@
         </div>
     </div>
     <div class="footer bg-light">
-        <p class="float-right text-secondary m-3"> ® Modulab Inc., 2017. {{ courses | json }}</p>
+        <p class="float-right text-secondary m-3"> ® Modulab Inc., 2017.
+            <br>
+            Labs ({{labs.length}}): {{ labs | json }}
+            <br>
+            Enrolled ({{enrolledCourses.length}}): {{ enrolledCourses | json }}
+        </p>
     </div>
 </div>
 </div>
@@ -220,43 +225,44 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="reportModalLabel">Add New Report</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
-          <div class="modal-body">
-            <input type="text" class="form-control" placeholder="Report Name" [(ngModel)]="newReportName" />
-
-            <div class="form-group mt-3 mb-0 d-inline-block">
-                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                    {{ newTemplateSelectCourse.title || 'Select Course' }}
-                    <span class="caret"></span>
+                    <span aria-hidden="true">&times;</span>
                 </button>
-                <ul class="dropdown-menu">
-                    <li *ngFor="let course of enrolledCourses" class="px-3">
-                        <a href="javascript:void(0);" (click)="newTemplateSelectCourse = course">
-                            {{ course.title }}
-                        </a>
-                    </li>
-                </ul>
             </div>
+            <div class="modal-body">
+                <input type="text" class="form-control" placeholder="Report Name" [(ngModel)]="newReportName" />
 
-            <div class="form-group mt-3 mb-0 d-inline-block">
-                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
-                    {{ newTemplateSelect.title || 'Select Template (Optional)' }}
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li *ngFor="let template of labs" class="px-3">
-                        <a href="javascript:void(0);" (click)="newTemplateSelect = template">
-                            {{ template.title }}
-                        </a>
-                    </li>
-                </ul>
+                <div class="form-group mt-3 mb-0 d-inline-block">
+                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                        {{ newTemplateSelectCourse.title || 'Select Course' }}
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li *ngFor="let course of enrolledCourses" class="px-3">
+                            <a href="javascript:void(0);" (click)="newTemplateSelectCourse = course">
+                                {{ course.title }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="form-group mt-3 mb-0 d-inline-block">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
+                        {{ newTemplateSelect.title || 'Select Template (Optional)' }}
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li *ngFor="let template of labs" class="px-3">
+                            <a href="javascript:void(0);" (click)="newTemplateSelect = template">
+                                {{ template.title }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-info" (click)="createLab()" [disabled]="!newReportName || !newTemplateSelectCourse.title" onclick="$('#addReportModal').modal('hide')">Add Report</button>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-info" (click)="createLab()" [disabled]="!newReportName || !newTemplateSelectCourse.title" onclick="$('#addReportModal').modal('hide')">Add Report</button>
+            </div>
         </div>
     </div>
 </div>

@@ -5,6 +5,11 @@
     min-height: 100%;
 }
 
+.alert-custom {
+  background-color: #f4d6e4;
+  border-color: #dd8fbf;
+}
+
 .jumbotron-custom {
     border: 2em;
     width: 40em;
