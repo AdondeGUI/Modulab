@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { TextData } from '../../domain/models/text-data';
-import { LabModuleComponent } from '../lab-module.component';
+import { Module } from '../../domain/models/module';
+
 @Component({
   selector: 'text-module',
   templateUrl: './text-module.component.html',
@@ -9,10 +9,9 @@ import { LabModuleComponent } from '../lab-module.component';
 
 export class TextModuleComponent {
 
-  private newTextData = new TextData();
 
   @Input()
-  public data : string;
+  public module : Module;
 
   constructor() {
   }
