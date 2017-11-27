@@ -127,6 +127,10 @@ export class LabDirectoryComponent {
       this.router.navigateByUrl('/lab-generator/' + ""+labid);
   }
 
+  private deleteCourse(index: number) {
+      this.courseRepository.deleteIndCourse(this.enrolledCourses[index].course_id).subscribe();
+  }
+
   private trimCourses(){
     for(let item of this.enrolledCourses){
       for(var _i = 0; _i < this.courses.length; _i++){
