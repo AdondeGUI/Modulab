@@ -80,7 +80,7 @@
                         <a (click)="loadLab(i)" class="text-info-custom link-custom">
                         {{template.title}}
                     </a>
-                        <a href="javascript:void(0);" (click)="removeTemplate(i)">
+                        <a href="javascript:void(0);" (click)="removeLab(i)">
                             <i class="remove-icon btn-icon-custom material-icons d-inline float-right text-secondary pl-2">remove_circle_outline</i>
                         </a>
                     </li>
@@ -197,13 +197,13 @@
 
                 <div class="form-group mt-3 mb-0 d-inline-block">
                     <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                    {{ newTemplateSelectCourse.title || 'Select Course' }}
+                    {{ newTemplateSelectCourse.title || 'Select Course' }} {{newTemplateSelectCourse.course_id}}
                     <span class="caret"></span>
                 </button>
                     <ul class="dropdown-menu">
                         <li *ngFor="let course of enrolledCourses" class="px-3">
-                            <a href="javascript:void(0);" (click)="newTemplateSelectCourse = courseName">
-                            {{ course.title }}
+                            <a href="javascript:void(0);" (click)="newTemplateSelectCourse = course">
+                            {{ course.title }} {{ course.course_id}}
                         </a>
                         </li>
                     </ul>
@@ -212,7 +212,7 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-info" (click)="addTemplateName()" [disabled]="!newTemplateName || !newTemplateSelectCourse.title" onclick="$('#addTemplateModal').modal('hide')">Add Template</button>
+                <button type="button" class="btn btn-info" (click)="createLab()" [disabled]="!newTemplateName || !newTemplateSelectCourse.title" onclick="$('#addTemplateModal').modal('hide')">Add Template</button>
             </div>
         </div>
     </div>
@@ -232,7 +232,7 @@
 
                 <div class="form-group mt-3 mb-0 d-inline-block">
                     <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                        {{ newTemplateSelectCourse.title || 'Select Course' }}
+                        {{ newTemplateSelectCourse.title || 'Select Course' }} {{newTemplateSelectCourse.course_id}}
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
@@ -250,7 +250,7 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li *ngFor="let template of templates; let i = index;" class="px-3">
+                        <li *ngFor="let template of templates" class="px-3">
                             <a href="javascript:void(0);" (click)="newTemplateSelect = template">
                                 {{ template.title }}
                             </a>

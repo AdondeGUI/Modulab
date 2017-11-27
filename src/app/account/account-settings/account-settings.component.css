@@ -29,10 +29,6 @@ input.text-input {
   border: 1px solid rgba(0,0,0,0.1);
 }
 
-.ng-valid[required], .ng-valid.required  {
-  border-bottom: 2px solid rgb(40,167,69);
-}
-
 #existingAccount {
   width: fit-content;
 }

@@ -76,20 +76,20 @@ export class LabDirectoryComponent {
 
   //create a new course with the given information
   private createCourse(){
-    alert(this.newCourseName + this.newCourseNumber);
-    this.courseRepository.createCourse(this.newCourseNumber, this.newCourseName).subscribe();
-    this.courseRepository.getUserCourses().subscribe(x => this.enrolledCourses = x);
+    this.courseRepository.createCourse(this.newCourseNumber, this.newCourseName).subscribe(data => {
+      this.courseRepository.getUserCourses().subscribe(x => this.enrolledCourses = x);
+    });
   }
 
-  private createLab(){
+  private createLab(i: number){
     if(this.newTemplateSelect.title){
       //create empty lab for local template
-      let selTemp = new Lab();
-      let newLabID = 0;
+      // let selTemp = this.templates;
+      // let newLabID = 0;
       //get the template and store it locally
-      this.labRepository.getIndTemplate(this.newTemplateSelect.lab_id, this.newTemplateSelect.id).subscribe(data => {
-        selTemp = data[0];
-        console.log(data[0]);
+      
+        // selTemp = data[0];
+        // console.log(data[0]);
         //create lab with templates info
         // this.labRepository.postLab(selTemp.title, selTemp.course_id).subscribe(x => {
         //   console.log(x);
@@ -97,7 +97,7 @@ export class LabDirectoryComponent {
         //   this.labRepository.getLabid(x.title, x.course_id, x.role).subscribe(y => newLabID = y);
         //   console.log(newLabID);
         // })
-      });
+      // });
     }
     else{
     this.labRepository.postLab(this.newReportName.split(' ').join('_'), this.newTemplateSelectCourse.course_id).subscribe(

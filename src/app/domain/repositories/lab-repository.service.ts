@@ -56,7 +56,12 @@ export class LabRepository {
 
     //get an individual lab
     public getIndTemplate(labid: number, userID: number): Observable<Lab[]>{
-        return this.http.get<Lab[]>("http://52.15.171.47/users/" + userID+ "/labs/" + String(labid)).catch(x => this.handleException(x));
+        return this.http.get<Lab[]>("http://52.15.171.47/users/" + userID + "/labs/" + String(labid)).catch(x => this.handleException(x));
+    }
+
+    //get all student labs for a course
+    public getStudentLabs(courseid: number): Observable<Lab[]>{
+        return this.http.get<Lab[]>("http://52.15.171.47/labs/students/" + courseid).catch(x => this.handleException(x));
     }
 
     protected handleException(exception: any) {
