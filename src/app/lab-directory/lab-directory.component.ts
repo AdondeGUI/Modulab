@@ -73,8 +73,9 @@ export class LabDirectoryComponent {
 
   private createLab(){
     this.labRepository.postLab(this.newReportName, this.newTemplateSelectCourse.course_id).subscribe(
-      data => this.navigateToLab(data[0].lab_id)
-    );
+      data => {
+        this.labRepository.getLabid(data.title, data.course_id, data.role).subscribe(x => this.navigateToLab(x))
+      });
   }
 
   private removeLab(index: number){

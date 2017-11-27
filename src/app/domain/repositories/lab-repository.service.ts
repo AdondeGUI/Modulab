@@ -19,7 +19,7 @@ export class LabRepository {
     }
 
     //post a new lab
-    public postLab(bodytitle: string, bodycourse_id: number): Observable<Lab[]>  {
+    public postLab(bodytitle: string, bodycourse_id: number): Observable<Lab>  {
         const body = {title: bodytitle, course_id: bodycourse_id, role: this.userManager.user.role};
         return this.http.post(this.endpoint, body).catch(x => this.handleException(x));
     }
@@ -43,6 +43,11 @@ export class LabRepository {
     //delte all labs for a user
     public deleteAllLabs(): Observable<void>{
         return this.http.delete<void>(this.endpoint).catch(x => this.handleException(x));
+    }
+
+    //get a lab_id
+    public getLabid(labtitle: string, courseid: number, role: number): Observable<number>{
+        return this.http.get<number>("http://52.15.171.47/labs/" + this.userManager.user.ID + "/" + labtitle + "/" + courseid + "/" + role).catch(x => this.handleException(x));
     }
 
     protected handleException(exception: any) {
