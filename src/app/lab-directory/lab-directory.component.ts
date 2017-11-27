@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Folder, User, CourseRepository, LabRepository, Lab, ModuleRepository } from '../domain/index';
+import { Folder, User, CourseRepository, LabRepository, Lab, ModuleRepository, Labid } from '../domain/index';
 import { AccountModule } from '../account';
 import { HttpClient } from '@angular/common/http';
 import { Course } from '../domain/models/course';
@@ -87,21 +87,14 @@ export class LabDirectoryComponent {
       //create empty lab for local template
       let newLabID = 0;
       //get the template and store it locally
-      
-        // selTemp = data[0];
-        // console.log(data[0]);
-        //create lab with templates info
         this.labRepository.postLab(this.newTemplateSelectCourse.title, this.newTemplateSelectCourse.course_id).subscribe(data => {
           this.labRepository.getLabid(data.title, data.course_id, data.role).subscribe(x => {
-            let xlength = x[0].length-1
+            let xlength = x.length-1
             this.moduleRepository.getLabModules(this.newTemplateSelect.lab_id).subscribe(mods => {
               for(let item of mods){
-                console.log(item)
-                // console.log(x[xlength][0].lab_id)
-                
-                // this.moduleRepository.postModule(x, item.type, item.data).subscribe()
+                this.moduleRepository.postModule(x[xlength].lab_id, item.type, item.data).subscribe()
               }
-              // this.navigateToLab(x[xlength])
+              this.navigateToLab(x[xlength].lab_id)
             })
           })
         })

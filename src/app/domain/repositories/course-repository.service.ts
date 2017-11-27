@@ -45,11 +45,10 @@ export class CourseRepository {
         return this.http.get<Course[]>(this.endpoint + '/classes/' + courseid).catch(x => this.handleException(x));
     }
 
-    //Get a particular course
+    //delete a particular course
     public deleteIndCourse(courseid: number): Observable<void>{
         return this.http.delete<void>(this.endpoint + '/classes/' + courseid).catch(x => this.handleException(x));
     }
-
 
     //delete a course for a user
     public deleteUserCourse(courseid: number): Observable<void>{

@@ -7,6 +7,7 @@ export * from './models/folder';
 export * from './models/module';
 export * from './models/lab';
 export * from './models/course';
+export * from './models/labid';
 
 //services
 export * from './repositories/user-repository.service'
