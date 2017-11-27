@@ -34,8 +34,11 @@ export class LabGeneratorComponent {
 
   private addModule() {
     this.newModule = new Module();
-    this.newModule.type = "text";
+    this.newModule.type = "table";
     this.modules.push(this.newModule);
+    // var dataTmp = JSON.parse('[{"0":"234","1":"234234","2":"2443","one":1},{"0":"3344","1":"fffs","2":"s34","one":2},{"0":"342f","1":"gfde","2":"45ggf","one":3}]');
+    // this.moduleRepository.postModule(4, "1823", dataTmp);
+
   }
 
   private removeModule(index: number) {
@@ -52,11 +55,20 @@ export class LabGeneratorComponent {
       if (params.id) {
         this.labRepository.getIndLab(+params.id).subscribe(x => this.lab = x[0]);
         this.moduleRepository.getLabModules(+params.id).subscribe(x => this.modules = x);
-      } 
+      }
   }
 
   private saveLab(){
     //delete all modules currently associated with the lab_id
-    //for loop post all modules both old and new
-  }
+    // var currModules;
+    // this.moduleRepository.getLabModules(this.lab.lab_id).subscribe(x => currModules = x);
+    //
+    // //for loop post all modules both old and new
+    // for(var mod in currModules){
+    //   this.moduleRepository.deleteModule(this.lab.lab_id, mod.module_id)
+    // }
+    // for(var newMod in this.modules){
+    //   this.moduleRepository.postModule(this.lab.lab_id, newMod.module_id, newMod.data)
+    // }
+     }
 }

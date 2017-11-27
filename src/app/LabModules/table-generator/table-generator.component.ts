@@ -13,9 +13,11 @@ export class TableGeneratorComponent {
   rowNum: number = 1;
   colNum: number = 1;
   constructor() {
+    // this.loadTable(this.data);
   }
   @Input()
   public data : string;
+
   // obj = JSON.parse(this.data);
 
   private adjustTableSize() {
@@ -39,7 +41,10 @@ export class TableGeneratorComponent {
         this.rows.pop();
       }
     }
-    this.saveTable();
+    if(this.rows.length >= 4)
+    {
+      this.loadTable('[{"0":"234","1":"234234","2":"2443","one":1},{"0":"3344","1":"fffs","2":"s34","one":2},{"0":"342f","1":"gfde","2":"45ggf","one":3}]');
+    }
   }
 
   private saveTable() {
@@ -61,7 +66,13 @@ export class TableGeneratorComponent {
    }
 
   private loadTable(tableStr : string) {
-    this.rows = JSON.parse(tableStr);
+    var rowsTmp = JSON.parse(tableStr);
+    //  this.colNum = rowsTmp[0].length;
+    //  this.rowNum = rowsTmp.length;
+    //  this.adjustTableSize();
+     this.rows = rowsTmp;
+
+
     // var tableTmp = [];
     // var n =0;
     // while(n<3)
