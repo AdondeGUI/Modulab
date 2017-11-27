@@ -25,11 +25,11 @@ export class LabDirectoryComponent {
 
   @Input()
 
-  public courses : Course[];
-  public enrolledCourses : Course[];
-  public labs : Lab[];
-  public templates: Lab[];
-  public labsToView : Lab[];
+  public courses : Course[] = [];
+  public enrolledCourses : Course[] = [];
+  public labs : Lab[] = [];
+  public templates: Lab[] = [];
+  public labsToView : Lab[] = [];
 
   constructor(
     private http: HttpClient,
@@ -80,7 +80,6 @@ export class LabDirectoryComponent {
     this.courseRepository.createCourse(this.newCourseNumber, this.newCourseName).subscribe(data => {
       this.courseRepository.getUserCourses().subscribe(x => this.enrolledCourses = x);
     });
-    
   }
 
   private createLab(i: number){
@@ -108,7 +107,7 @@ export class LabDirectoryComponent {
         })
     }
     else{
-    this.labRepository.postLab(this.newReportName, this.newTemplateSelectCourse.course_id).subscribe(
+    this.labRepository.postLab(this.newReportName.split(' ').join('_'), this.newTemplateSelectCourse.course_id).subscribe(
       data => {
         this.labRepository.getLabid(data.title, data.course_id, data.role).subscribe(nav => this.navigateToLab(nav[0][0]))
       });
