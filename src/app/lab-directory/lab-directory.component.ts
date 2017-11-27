@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Folder, User, CourseRepository, LabRepository, Lab } from '../domain/index';
+import { Folder, User, CourseRepository, LabRepository, Lab, ModuleRepository } from '../domain/index';
 import { AccountModule } from '../account';
 import { HttpClient } from '@angular/common/http';
 import { Course } from '../domain/models/course';
@@ -35,6 +35,7 @@ export class LabDirectoryComponent {
     private http: HttpClient,
     private courseRepository: CourseRepository,
     private labRepository: LabRepository,
+    private moduleRepository: ModuleRepository,
     private router: Router,
     private userManager: UserManager )
     {
@@ -85,25 +86,31 @@ export class LabDirectoryComponent {
   private createLab(i: number){
     if(this.newTemplateSelect.title){
       //create empty lab for local template
-      // let selTemp = this.templates;
-      // let newLabID = 0;
+      let newLabID = 0;
       //get the template and store it locally
       
         // selTemp = data[0];
         // console.log(data[0]);
         //create lab with templates info
-        // this.labRepository.postLab(selTemp.title, selTemp.course_id).subscribe(x => {
-        //   console.log(x);
-        //   //get the lab id of the newly created lab
-        //   this.labRepository.getLabid(x.title, x.course_id, x.role).subscribe(y => newLabID = y);
-        //   console.log(newLabID);
-        // })
-      // });
+        this.labRepository.postLab(this.newTemplateSelectCourse.title, this.newTemplateSelectCourse.course_id).subscribe(data => {
+          this.labRepository.getLabid(data.title, data.course_id, data.role).subscribe(x => {
+            let xlength = x[0].length-1
+            this.moduleRepository.getLabModules(this.newTemplateSelect.lab_id).subscribe(mods => {
+              for(let item of mods){
+                console.log(item)
+                // console.log(x[xlength][0].lab_id)
+                
+                // this.moduleRepository.postModule(x, item.type, item.data).subscribe()
+              }
+              // this.navigateToLab(x[xlength])
+            })
+          })
+        })
     }
     else{
     this.labRepository.postLab(this.newReportName, this.newTemplateSelectCourse.course_id).subscribe(
       data => {
-        this.labRepository.getLabid(data.title, data.course_id, data.role).subscribe(x => this.navigateToLab(x))
+        this.labRepository.getLabid(data.title, data.course_id, data.role).subscribe(nav => this.navigateToLab(nav[0][0]))
       });
     }
   }

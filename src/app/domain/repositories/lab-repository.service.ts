@@ -46,8 +46,8 @@ export class LabRepository {
     }
 
     //get a lab_id
-    public getLabid(labtitle: string, courseid: number, role: number): Observable<number>{
-        return this.http.get<number>("http://52.15.171.47/labs/" + this.userManager.user.ID + "/" + labtitle + "/" + courseid + "/" + role).catch(x => this.handleException(x));
+    public getLabid(labtitle: string, courseid: number, role: number): Observable<number[][]>{
+        return this.http.get<number[][]>("http://52.15.171.47/labs/" + this.userManager.user.ID + "/" + labtitle + "/" + courseid + "/" + role).catch(x => this.handleException(x));
     }
 
     public getTemplates(courseid: number): Observable<Lab[]>{
