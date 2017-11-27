@@ -20,8 +20,8 @@ export class ModuleRepository {
     }
 
       //create a new module on a lab 
-    public postModule(labid: number, bodytype: string, bodydata: JSON): Observable<Module[]> {
-        const body = {type:bodytype, data: JSON.stringify(bodydata)};
+    public postModule(labid: number, bodytype: string, bodydata: string): Observable<Module[]> {
+        const body = {type:bodytype, data: bodydata};
         return this.http.post(this.endpoint + labid +'/modules', body).catch(x => this.handleException(x));
     }
 
@@ -30,11 +30,11 @@ export class ModuleRepository {
         return this.http.get<Module[]>(this.endpoint+ labid + '/modules/' + moduleid).catch(x => this.handleException(x));
     }
 
-    //update a module on a lab lab
-    public putModule(labid: number, moduleid: number, bodytype: string, bodydata: JSON): Observable<Module[]> {
-        const body = {type:bodytype, data: JSON.stringify(bodydata)};
-        return this.http.put(this.endpoint + labid +'/modules/' + moduleid, body).catch(x => this.handleException(x));
-    }
+    // //update a module on a lab lab
+    // public putModule(labid: number, moduleid: number, bodytype: string, bodydata: JSON): Observable<Module[]> {
+    //     const body = {type:bodytype, data: JSON.stringify(bodydata)};
+    //     return this.http.put(this.endpoint + labid +'/modules/' + moduleid, body).catch(x => this.handleException(x));
+    // }
 
       //delete an individual module
     public deleteModule(labid: number, moduleid: number): Observable<void>{
