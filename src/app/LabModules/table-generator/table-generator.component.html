@@ -16,8 +16,8 @@
             <tbody id="dataTableBody">
                 <tr *ngFor="let item of rows; let i = index;">
                     <td *ngFor="let item of cols;let j = index;">
-                      <!-- ngModel for a 2-d array to store table input values  -->
-                      <input type="text"  [(ngModel)]= "rows[i][j]"/>
+                        <!-- ngModel for a 2-d array to store table input values  -->
+                        <input type="text" [(ngModel)]="rows[i][j]" (click)="saveTable()" />
                     </td>
                 </tr>
             </tbody>

@@ -88,15 +88,15 @@
             </div>
         </div>
         <div class="footer bg-light">
-            <p class="float-right text-secondary m-3"> ® Modulab Inc., 2017. {{ enrolledCourses | json}}</p>
+            <p class="float-right text-secondary m-3"> ® Modulab Inc., 2017.</p>
         </div>
     </div>
-    <div class="footer bg-light">
+    <!-- <div class="footer bg-light">
         <p class="float-right text-secondary m-3"> ® Modulab Inc., 2017.
             <br> Labs ({{labs.length}}): {{ labs | json }}
             <br> Enrolled ({{enrolledCourses.length}}): {{ enrolledCourses | json }}
         </p>
-    </div>
+    </div> -->
 </div>
 
 <div class="modal fade" id="addCourseModal" tabindex="-1" role="dialog" aria-labelledby="courseModalLabel" aria-hidden="true">
@@ -237,7 +237,7 @@
                     </button>
                     <ul class="dropdown-menu">
                         <li *ngFor="let course of enrolledCourses" class="px-3">
-                            <a href="javascript:void(0);" (click)="newTemplateSelectCourse = course">
+                            <a href="javascript:void(0);" (click)="newTemplateSelectCourse = course; getCourseTemplates(newTemplateSelectCourse.course_id)">
                                 {{ course.title }}
                             </a>
                         </li>
@@ -250,7 +250,7 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li *ngFor="let template of labs" class="px-3">
+                        <li *ngFor="let template of templates" class="px-3">
                             <a href="javascript:void(0);" (click)="newTemplateSelect = template">
                                 {{ template.title }}
                             </a>

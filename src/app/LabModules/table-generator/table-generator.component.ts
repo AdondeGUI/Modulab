@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Module } from '../../domain/models/module';
 
 @Component({
   selector: 'table-generator',
@@ -16,19 +17,19 @@ export class TableGeneratorComponent {
     // this.loadTable(this.data);
   }
   @Input()
-  public data : string;
+  public module : Module;
 
   // obj = JSON.parse(this.data);
 
   private adjustTableSize() {
     while(this.colNum != this.cols.length || this.rowNum != this.rows.length)
     {
-      var col = {'one':this.colNum}
+      var col = ' ';
       if(this.colNum > this.cols.length)
         this.cols.push(col);
       else if(this.colNum < this.cols.length)
         this.cols.pop();
-      var row = {'one':this.rowNum}
+      var row = ' ';
       if(this.rowNum > this.rows.length)
       {
         console.log('Add Row');
@@ -62,7 +63,7 @@ export class TableGeneratorComponent {
     // }
     // output += "]";
     console.log(output2);
-    this.data = output2;
+    this.module.data = output2;
     this.loadTable(output2);
    }
 

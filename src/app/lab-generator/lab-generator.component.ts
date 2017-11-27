@@ -59,14 +59,14 @@ export class LabGeneratorComponent {
   }
 
   private saveLab(){
-    console.log()
-    //delete all modules currently associated with the lab_id
-    this.moduleRepository.deleteAllModules(this.lab.lab_id).subscribe();
 
-    //add all the new lab modules
-    for(var newMod of this.modules){
-      console.log(newMod.data);
-      this.moduleRepository.postModule(this.lab.lab_id, newMod.type, newMod.data).subscribe();
-    }
+    console.log(this.modules);
+    //delete all modules currently associated with the lab_id
+    this.moduleRepository.deleteAllModules(this.lab.lab_id).subscribe(data => {
+      //add all the new lab modules
+      for(var newMod of this.modules){
+        this.moduleRepository.postModule(this.lab.lab_id, newMod.type, newMod.data).subscribe();
+      }
+    });
   }
 }

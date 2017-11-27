@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Module } from '../../domain/models/module';
 
 @Component({
   selector: 'image-module',
@@ -8,9 +9,9 @@ import { Component, OnInit, Input } from '@angular/core';
 
 export class ImageModuleComponent implements OnInit {
   @Input()
-  public data : string;
+  public module : Module;
 
-    url:string = this.data;
+    url:string = this.module.data;
     picURLs: string[] = [];
 
     readUrl(event:any) {

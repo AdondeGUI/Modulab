@@ -3,8 +3,8 @@
 }
 
 .alert-custom {
-  background-color: #f4d6e4;
-  border-color: #dd8fbf;
+    background-color: #f4d6e4;
+    border-color: #dd8fbf;
 }
 
 a {
@@ -123,7 +123,7 @@ a:hover {
     bottom: 4.2rem;
     width: 100%;
     border-top: 1px solid #EEE;
-    bottom: 50%;
+    /* bottom: 50%; */
 }
 
 .view-div {

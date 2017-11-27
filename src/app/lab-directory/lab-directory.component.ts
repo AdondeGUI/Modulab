@@ -28,6 +28,7 @@ export class LabDirectoryComponent {
   public courses : Course[];
   public enrolledCourses : Course[];
   public labs : Lab[];
+  public templates: Lab[];
   public labsToView : Lab[];
 
   constructor(
@@ -67,6 +68,10 @@ export class LabDirectoryComponent {
   private viewLabs(index: number) {
     this.labRepository.getAllLabs().subscribe(x => this.labsToView = x);
     // this.viewLabCourse = this.courses[index];
+  }
+
+  private getCourseTemplates(){
+    this.labRepository.getTemplates(this.newTemplateSelectCourse.course_id).subscribe(data => this.templates = data);
   }
 
   //create a new course with the given information

@@ -50,6 +50,10 @@ export class LabRepository {
         return this.http.get<number>("http://52.15.171.47/labs/" + this.userManager.user.ID + "/" + labtitle + "/" + courseid + "/" + role).catch(x => this.handleException(x));
     }
 
+    public getTemplates(courseid: number): Observable<Lab[]>{
+        return this.http.get<Lab[]>("http://52.15.171.47/labs/templates/" + courseid).catch(x => this.handleException(x));
+    }
+
     protected handleException(exception: any) {
         var message = `${exception.status} : ${exception.statusText}\r\n${exception.body.error}`;
         alert(message);

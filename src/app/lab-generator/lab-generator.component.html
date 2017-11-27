@@ -6,8 +6,6 @@
     <div class="container-fluid pt-4">
         <div class="container col-8 bg-white rounded p-4">
             <h4 class="text-center">{{lab.title}}</h4>
-
-            <h5 class="text-center">Template: </h5>
             <ng-container class="module mx-auto d-block" *ngFor="let module of modules; let i = index;">
                 <a href="javascript:void(0);" class="text-danger close-icon float-right" (click)="removeModule(i)"><i class="material-icons">remove_circle</i></a>
                 <lab-module [module]="module"></lab-module>
