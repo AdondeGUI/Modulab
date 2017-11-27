@@ -25,8 +25,8 @@ export class LabRepository {
     }
 
     //get an individual lab
-    public getIndLab(labid: number): Observable<Lab[]>{
-        return this.http.get<Lab[]>(this.endpoint + "/" + String(labid)).catch(x => this.handleException(x));
+    public getIndLab(labid: number): Observable<Lab>{
+        return this.http.get<Lab>(this.endpoint + "/" + String(labid)).catch(x => this.handleException(x));
     }
 
       //update a individual lab

@@ -43,7 +43,7 @@ export class ModuleRepository {
 
     //delete all modules for a particular lab
     public deleteAllModules(labid: number): Observable<void>{
-        return this.http.delete<void>(this.endpoint+ labid + '/modules/').catch(x => this.handleException(x));
+        return this.http.delete<void>(this.endpoint + labid + '/modules/').catch(x => this.handleException(x));
     }
 
     protected handleException(exception: any) {
