@@ -241,8 +241,8 @@
             </div>
 
             <div class="form-group mt-3 mb-0 d-inline-block">
-                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                    {{ newTemplateSelect.title || 'Select Template' }}
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
+                    {{ newTemplateSelect.title || 'Select Template (Optional)' }}
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
@@ -256,12 +256,11 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-info" (click)="createLab()" [disabled]="!newReportName || !newTemplateSelect.title || !newTemplateSelectCourse.title" onclick="$('#addReportModal').modal('hide')">Add Report</button>
+            <button type="button" class="btn btn-info" (click)="createLab()" [disabled]="!newReportName || !newTemplateSelectCourse.title" onclick="$('#addReportModal').modal('hide')">Add Report</button>
         </div>
     </div>
-    <<<<<<< HEAD=======< /div>
 </div>
 
 <div>
-    <button type="button" class="btn btn-info" (click)="testLab()"> Test Lab </button> >>>>>>> a88b7ad0923af2a11b557ba1b2e35083bd577b3a
+    <button type="button" class="btn btn-info" (click)="testLab()"> Test Lab </button>
 </div>

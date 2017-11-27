@@ -6,11 +6,11 @@
 
 <div class="view-div">
     <account-nav></account-nav>
-    <div class="container col-6 pt-4 main-container bg-white">
-        <h4><i class="material-icons d-inline adj-1 pb-3">settings</i> Account Settings</h4>
+    <div class="container col-6 pt-5 main-container bg-white">
+        <h4 class="pb-3 px-5"><i class="material-icons d-inline adj-1">settings</i> Account Settings</h4>
         <hr>
         <form (ngSubmit)="save()" #settingsForm="ngForm">
-            <div class="form-group d-flex align-items-stretch">
+            <div class="form-group d-flex align-items-stretch px-5">
                 <div class="flex-column form-column pr-1">
                     <label for="first_name">First Name</label>
                     <input id="first_name" type="text" name="First Name" class="form-control text-input" [(ngModel)]="updatedUser.first_name" required #first_name="ngModel">
@@ -27,7 +27,7 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group my-3">
+            <div class="form-group my-3 px-5">
                 <label for="email">Email</label>
                 <input id="email" type="email" name="Email" class="form-control text-input" [(ngModel)]="updatedUser.email" pattern="[\w.]+[@]\w+[.][\w.]+" required #email="ngModel">
                 <div [hidden]="email.valid || !email.touched" class="alert alert-danger">
@@ -35,7 +35,7 @@
                 </div>
             </div>
 
-            <div class="form-group my-3">
+            <div class="form-group my-3 px-5">
                 <label for="password">Password</label>
                 <input id="password" type="password" name="Password" class="form-control text-input" [(ngModel)]="updatedUser.password" pattern="[.\S]{6,}" required #password="ngModel">
                 <div [hidden]="password.valid || !password.touched" class="alert alert-danger">
@@ -50,9 +50,10 @@
                 <span class="ml-3 mt-2">This will delete <strong>all</strong> of your data and files.</span>
             </div>
             <hr>
-            <button type="submit" class="btn btn-info btn-lg link-custom text-white d-inline-block float-right mr-5" [disabled]="!settingsForm.form.valid">Save Changes</button>
+            <button type="submit" class="btn btn-info btn-lg link-custom text-white d-inline-block float-right mr-3" [disabled]="!settingsForm.form.valid">Save Changes</button>
             <button class="btn btn-secondary btn-lg d-inline-block float-right mr-1" type="button" (click)="cancel()">Cancel</button>
         </form>
+
         <div class="footer bg-light">
             <p class="float-right text-secondary m-3"> ® Modulab Inc., 2017. {{ enrolledCourses | json }}</p>
         </div>
