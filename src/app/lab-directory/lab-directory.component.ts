@@ -29,13 +29,13 @@ export class LabDirectoryComponent {
   public enrolledCourses : Course[];
   public labs : Lab[];
   public labsToView : Lab[];
-  
+
   constructor(
     private http: HttpClient,
     private courseRepository: CourseRepository,
     private labRepository: LabRepository,
     private router: Router,
-    private userManager: UserManager ) 
+    private userManager: UserManager )
     {
       this.newTemplateSelectCourse = new Course();
       this.newTemplateSelect = new Lab();
@@ -54,7 +54,7 @@ export class LabDirectoryComponent {
     this.trimCourses();
     this.router.navigateByUrl("/directory");
     // this.courseRepository.getUserCourses().subscribe();
-    
+
   }
 
   private removeCourse(index: number) {
@@ -66,7 +66,7 @@ export class LabDirectoryComponent {
 
   private viewLabs(index: number) {
     this.labRepository.getAllLabs().subscribe(x => this.labsToView = x);
-    this.viewLabCourse = this.courses[index];
+    // this.viewLabCourse = this.courses[index];
   }
 
   //create a new course with the given information

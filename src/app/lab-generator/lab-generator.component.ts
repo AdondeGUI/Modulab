@@ -34,7 +34,9 @@ export class LabGeneratorComponent {
 
   private addModule() {
     this.newModule = new Module();
-    this.newModule.type = "table";
+    this.newModule.type = "text";
+    this.newModule.data = "abc";
+    this.newModule.module_id = 0;
     this.modules.push(this.newModule);
     // var dataTmp = JSON.parse('[{"0":"234","1":"234234","2":"2443","one":1},{"0":"3344","1":"fffs","2":"s34","one":2},{"0":"342f","1":"gfde","2":"45ggf","one":3}]');
     // this.moduleRepository.postModule(4, "1823", dataTmp);
@@ -57,11 +59,13 @@ export class LabGeneratorComponent {
   }
 
   private saveLab(){
+    console.log()
     //delete all modules currently associated with the lab_id
     this.moduleRepository.deleteAllModules(this.lab.lab_id).subscribe();
 
     //add all the new lab modules
     for(var newMod of this.modules){
+      console.log(newMod.data);
       this.moduleRepository.postModule(this.lab.lab_id, newMod.type, newMod.data).subscribe();
     }
   }

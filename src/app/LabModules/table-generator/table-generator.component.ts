@@ -41,6 +41,7 @@ export class TableGeneratorComponent {
         this.rows.pop();
       }
     }
+    this.saveTable();
     if(this.rows.length >= 4)
     {
       this.loadTable('[{"0":"234","1":"234234","2":"2443","one":1},{"0":"3344","1":"fffs","2":"s34","one":2},{"0":"342f","1":"gfde","2":"45ggf","one":3}]');
