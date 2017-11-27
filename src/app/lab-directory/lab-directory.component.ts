@@ -81,10 +81,29 @@ export class LabDirectoryComponent {
   }
 
   private createLab(){
+    if(this.newTemplateSelect.title){
+      //create empty lab for local template
+      let selTemp = new Lab();
+      let newLabID = 0;
+      //get the template and store it locally
+      this.labRepository.getIndTemplate(this.newTemplateSelect.lab_id, this.newTemplateSelect.id).subscribe(data => {
+        selTemp = data[0];
+        console.log(data[0]);
+        //create lab with templates info
+        // this.labRepository.postLab(selTemp.title, selTemp.course_id).subscribe(x => {
+        //   console.log(x);
+        //   //get the lab id of the newly created lab
+        //   this.labRepository.getLabid(x.title, x.course_id, x.role).subscribe(y => newLabID = y);
+        //   console.log(newLabID);
+        // })
+      });
+    }
+    else{
     this.labRepository.postLab(this.newReportName, this.newTemplateSelectCourse.course_id).subscribe(
       data => {
         this.labRepository.getLabid(data.title, data.course_id, data.role).subscribe(x => this.navigateToLab(x))
       });
+    }
   }
 
   private removeLab(index: number){
@@ -97,7 +116,7 @@ export class LabDirectoryComponent {
   }
 
   private navigateToLab(labid: number){
-    this.router.navigateByUrl('/lab-generator/' + ""+labid);
+      this.router.navigateByUrl('/lab-generator/' + ""+labid);
   }
 
   private trimCourses(){

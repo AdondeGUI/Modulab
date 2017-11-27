@@ -20,7 +20,7 @@ export class CourseRepository {
 
     //create a new course
     public createCourse(courseid: number, coursetitle: string): Observable<Course[]>{
-        const body = {course_id: courseid, title: coursetitle, instructor: this.userManager.user.first_name + ' ' + this.userManager.user.last_name, ID: this.userManager.user.ID};
+        const body = {course_id: courseid, title: coursetitle, instructor: this.userManager.user.first_name + ' ' + this.userManager.user.last_name, ID: this.userManager.user.ID, role: 1};
         return this.http.post<Course[]>(this.endpoint, body).catch(x => this.handleException(x));
     }
 
