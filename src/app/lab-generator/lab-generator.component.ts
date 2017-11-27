@@ -34,8 +34,8 @@ export class LabGeneratorComponent {
 
   private addModule() {
     this.newModule = new Module();
-    this.newModule.type = "text";
-    this.newModule.data = "abc";
+    this.newModule.type = "Text";
+    this.newModule.data = "";
     this.newModule.module_id = 0;
     this.modules.push(this.newModule);
     // var dataTmp = JSON.parse('[{"0":"234","1":"234234","2":"2443","one":1},{"0":"3344","1":"fffs","2":"s34","one":2},{"0":"342f","1":"gfde","2":"45ggf","one":3}]');
@@ -53,8 +53,8 @@ export class LabGeneratorComponent {
 
   private loadRoute(params: any) {
       if (params.id) {
-        this.labRepository.getIndLab(+params.id).subscribe(x => this.lab = x[0]);
-        this.moduleRepository.getLabModules(+params.id).subscribe(x => this.modules = x);
+        this.labRepository.getIndLab(+params.id).subscribe(x =>  this.lab = x[0]);
+        this.moduleRepository.getLabModules(+params.id).subscribe(y => this.modules = y);
       }
   }
 

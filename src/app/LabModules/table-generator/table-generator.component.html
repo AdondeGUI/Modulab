@@ -9,7 +9,7 @@
             <thead id="dataTableHead">
                 <tr>
                     <th *ngFor="let item of cols; let h = index;">
-                        Head {{h}}
+                        Head {{h + 1}}
                     </th>
                 </tr>
             </thead>
@@ -17,7 +17,7 @@
                 <tr *ngFor="let item of rows; let i = index;">
                     <td *ngFor="let item of cols;let j = index;">
                         <!-- ngModel for a 2-d array to store table input values  -->
-                        <input type="text" [(ngModel)]="rows[i][j]" (click)="saveTable()" />
+                        <input type="text" [(ngModel)]="rows[i][j]" (click)="saveTable()" style="width:100%"/>
                     </td>
                 </tr>
             </tbody>
