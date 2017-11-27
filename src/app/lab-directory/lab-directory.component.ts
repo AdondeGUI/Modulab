@@ -72,7 +72,7 @@ export class LabDirectoryComponent {
   }
 
   private createLab(){
-    this.labRepository.postLab(this.newReportName, this.newTemplateSelectCourse.course_id, this.userManager.user.role).subscribe(
+    this.labRepository.postLab(this.newReportName, this.newTemplateSelectCourse.course_id).subscribe(
       data => this.navigateToLab(data[0].lab_id)
     );
   }

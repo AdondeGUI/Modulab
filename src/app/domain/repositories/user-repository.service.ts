@@ -20,7 +20,7 @@ export class UserRepository {
     }
 
     //create a new user
-    public postUser(firstname: string, lastname: string, emailAddress: string, pwd: string, userRole: number): Observable<User[]>{
+    public postUser(firstname: string, lastname: string, emailAddress: string, pwd: string, userRole: number): Observable<User>{
         const body = {first_name: firstname, last_name: lastname, email: emailAddress, password: pwd, role: userRole};
         return this.http.post('http://52.15.171.47/users', body).catch(x => this.handleException(x));
     }

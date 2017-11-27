@@ -37,7 +37,12 @@ export class LabRepository {
 
       //delete an individual lab
     public deleteIndLab(labid: number): Observable<void>{
-        return this.http.delete<void>(this.endpoint + labid).catch(x => this.handleException(x));
+        return this.http.delete<void>(this.endpoint + "/" + String(labid)).catch(x => this.handleException(x));
+    }
+
+    //delte all labs for a user
+    public deleteAllLabs(): Observable<void>{
+        return this.http.delete<void>(this.endpoint).catch(x => this.handleException(x));
     }
 
     protected handleException(exception: any) {

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { User, UserRepository } from '../../domain/index';
+import { User, UserRepository, LabRepository, ModuleRepository, Lab, CourseRepository } from '../../domain/index';
 import { HttpClient } from '@angular/common/http';
 import { UserManager } from '../../user-manager.service';
 
@@ -18,6 +18,9 @@ export class AccountSettingsComponent {
     private activatedRoute: ActivatedRoute,
     private userManager: UserManager,
     private userRepository: UserRepository,
+    private courseRepository: CourseRepository,
+    private labRepository: LabRepository,
+    private moduleRepository: ModuleRepository,
     private http: HttpClient
   ) { }
 
@@ -34,6 +37,21 @@ export class AccountSettingsComponent {
       alert("User settings updated");
       this.router.navigateByUrl("/settings");
     }
+  }
+
+  private deleteUser(){
+    let labs: Lab[];
+    this.labRepository.getAllLabs().subscribe(data => {
+      labs = data;
+      for (let lab of labs){
+        this.moduleRepository.deleteAllModules(lab.lab_id).subscribe();
+      }
+    });
+    this.courseRepository.deleteUserCourses();
+    this.labRepository.deleteAllLabs().subscribe();
+    this.userRepository.deleteUser().subscribe();
+    this.userManager.user = new User();
+    this.router.navigateByUrl('landing-page');
   }
 
   private cancel() {

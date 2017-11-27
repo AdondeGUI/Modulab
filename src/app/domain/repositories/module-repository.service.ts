@@ -41,6 +41,11 @@ export class ModuleRepository {
         return this.http.delete<void>(this.endpoint+ labid + '/modules/'  + moduleid).catch(x => this.handleException(x));
     }
 
+    //delete all modules for a particular lab
+    public deleteAllModules(labid: number): Observable<void>{
+        return this.http.delete<void>(this.endpoint+ labid + '/modules/').catch(x => this.handleException(x));
+    }
+
     protected handleException(exception: any) {
         var message = `${exception.status} : ${exception.statusText}\r\n${exception.body.error}`;
         alert(message);

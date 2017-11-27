@@ -32,9 +32,7 @@ export class LoginNewComponent{
       this.passwordMismatch = 0;
     }
     else{
-      this.userRepository.postUser(this.newUser.first_name, this.newUser.last_name, this.newUser.email, this.newUser.password, this.newUser.role).subscribe(data => { 
-        this.userManager.user = data[0];
-      });
+      this.userRepository.postUser(this.newUser.first_name, this.newUser.last_name, this.newUser.email, this.newUser.password, this.newUser.role).subscribe(data => this.userManager.user = data);
       console.log("HERE!");
       this.router.navigateByUrl('/directory');
     }
