@@ -59,7 +59,6 @@ export class LabGeneratorComponent {
   }
 
   private saveLab(){
-
     console.log(this.modules);
     //delete all modules currently associated with the lab_id
     this.moduleRepository.deleteAllModules(this.lab.lab_id).subscribe(data => {

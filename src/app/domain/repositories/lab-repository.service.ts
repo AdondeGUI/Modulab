@@ -3,6 +3,7 @@ import { Lab } from './../models/lab';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs";
 import { UserManager } from "../../user-manager.service"
+import { Labid } from "../index";
 
 @Injectable()
 export class LabRepository {
@@ -46,8 +47,8 @@ export class LabRepository {
     }
 
     //get a lab_id
-    public getLabid(labtitle: string, courseid: number, role: number): Observable<number>{
-        return this.http.get<number>("http://52.15.171.47/labs/" + this.userManager.user.ID + "/" + labtitle + "/" + courseid + "/" + role).catch(x => this.handleException(x));
+    public getLabid(labtitle: string, courseid: number, role: number): Observable<Labid[]>{
+        return this.http.get<Labid[]>("http://52.15.171.47/labs/" + this.userManager.user.ID + "/" + labtitle + "/" + courseid + "/" + role).catch(x => this.handleException(x));
     }
 
     public getTemplates(courseid: number): Observable<Lab[]>{
@@ -56,7 +57,12 @@ export class LabRepository {
 
     //get an individual lab
     public getIndTemplate(labid: number, userID: number): Observable<Lab[]>{
-        return this.http.get<Lab[]>("http://52.15.171.47/users/" + userID+ "/labs/" + String(labid)).catch(x => this.handleException(x));
+        return this.http.get<Lab[]>("http://52.15.171.47/users/" + userID + "/labs/" + String(labid)).catch(x => this.handleException(x));
+    }
+
+    //get all student labs for a course
+    public getStudentLabs(courseid: number): Observable<Lab[]>{
+        return this.http.get<Lab[]>("http://52.15.171.47/labs/students/" + courseid).catch(x => this.handleException(x));
     }
 
     protected handleException(exception: any) {

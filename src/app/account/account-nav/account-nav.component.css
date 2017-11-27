@@ -3,6 +3,11 @@
   bottom: 0.08em;
 }
 
+.dropdown-item.active, .dropdown-item:active {
+  background-color: #aa4477;
+  color: #fff !important;
+}
+
 .adj-2 {
   position: relative;
   top: 0.08em;
