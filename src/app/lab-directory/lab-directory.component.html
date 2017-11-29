@@ -44,7 +44,7 @@
                             </a>
 
                             <a href="javascript:void(0);" class="text-info-custom">
-                            {{course.title}} {{course.course_id}}<span *ngIf="this.userManager.user.role == 0"> - {{course.instructor}}</span>
+                            {{course.title}} {{course.course_num}}<span *ngIf="this.userManager.user.role == 0"> - {{course.instructor}}</span>
                         </a>
                         </div>
                     </li>
@@ -137,7 +137,7 @@
                     </button>
                     <div class="adj-5">
                         <a href="javascript:void(0);" class="text-info-custom">
-                            {{course.title}} {{course.course_id}} - {{course.instructor}}
+                            {{course.title}} {{course.course_num}} - {{course.instructor}}
                         </a>
                     </div>
                 </li>
@@ -147,7 +147,7 @@
                     </button>
                     <div class="adj-5">
                         <a href="javascript:void(0);" class="text-info-custom">
-                            {{course.title}} {{course.course_id}} - {{course.instructor}}
+                            {{course.title}} {{course.course_num}} - {{course.instructor}}
                         </a>
                     </div>
                 </li>
@@ -163,7 +163,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="enrollModalLabel">View Labs for {{viewLabCourse.title}} {{viewLabCourse.course_id}}</h5>
+                <h5 class="modal-title" id="enrollModalLabel">View Labs for {{viewLabCourse.title}} {{viewLabCourse.course_num}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -197,13 +197,13 @@
 
                 <div class="form-group mt-3 mb-0 d-inline-block">
                     <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                    {{ newTemplateSelectCourse.title || 'Select Course' }} {{newTemplateSelectCourse.course_id}}
+                    {{ newTemplateSelectCourse.title || 'Select Course' }} {{newTemplateSelectCourse.course_num}}
                     <span class="caret"></span>
                 </button>
                     <ul class="dropdown-menu">
                         <li *ngFor="let course of enrolledCourses" class="px-3">
                             <a href="javascript:void(0);" (click)="newTemplateSelectCourse = course">
-                            {{ course.title }} {{ course.course_id}}
+                            {{ course.title }} {{ course.course_num}}
                         </a>
                         </li>
                     </ul>
@@ -232,12 +232,12 @@
 
                 <div class="form-group mt-3 mb-0 d-inline-block">
                     <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                        {{ newTemplateSelectCourse.title || 'Select Course' }} {{newTemplateSelectCourse.course_id}}
+                        {{ newTemplateSelectCourse.title || 'Select Course' }} {{newTemplateSelectCourse.course_num}}
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
                         <li *ngFor="let course of enrolledCourses" class="px-3">
-                            <a href="javascript:void(0);" (click)="newTemplateSelectCourse = course; getCourseTemplates(newTemplateSelectCourse.course_id)">
+                            <a href="javascript:void(0);" (click)="newTemplateSelectCourse = course; getCourseTemplates(newTemplateSelectCourse.course_num)">
                                 {{ course.title }}
                             </a>
                         </li>

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Folder, User, CourseRepository, LabRepository, Lab, ModuleRepository, Labid } from '../domain/index';
+import { Folder, User, CourseRepository, LabRepository, Lab, ModuleRepository, Labid, UserRepository } from '../domain/index';
 import { AccountModule } from '../account';
 import { HttpClient } from '@angular/common/http';
 import { Course } from '../domain/models/course';
@@ -21,7 +21,7 @@ export class LabDirectoryComponent {
   private newReportName = "";
   public newTemplateSelect: Lab;
   public newTemplateSelectCourse: Course;
-  private viewLabCourse : Course = {ID: 1, title: " ", instructor:" ", course_id: 1, role: 0};
+  private viewLabCourse : Course = {ID: 1, title: " ", instructor:" ", course_num: 1, role: 0};
 
   @Input()
 
@@ -35,6 +35,7 @@ export class LabDirectoryComponent {
     private http: HttpClient,
     private courseRepository: CourseRepository,
     private labRepository: LabRepository,
+    private userRepository: UserRepository,
     private moduleRepository: ModuleRepository,
     private router: Router,
     private userManager: UserManager )
@@ -44,26 +45,38 @@ export class LabDirectoryComponent {
     }
 
   public ngOnInit(){
-    this.courseRepository.getUserCourses().subscribe(x => this.enrolledCourses = x);
+    this.userRepository.getUser(this.userManager.user.email).subscribe(data => {
+      this.userManager.user = data[0];
+      if(this.userManager.user.role == 0)
+        this.courseRepository.getUserCourses().subscribe(x => this.enrolledCourses = x);
+      else
+        this.courseRepository.getTeacherCourses().subscribe(x => this.enrolledCourses = x);
+    });
+    
     this.courseRepository.getAllCourses().subscribe(x => this.courses = x);
     this.labRepository.getAllLabs().subscribe(x => this.labs = x);
   }
 
   private enrollInCourse(index: number) {
-    this.courseRepository.enrollCourse(this.courses[index].course_id, this.courses[index].title, this.courses[index].instructor).subscribe(data => {
-      this.courseRepository.getUserCourses().subscribe(x => this.enrolledCourses = x);
+    this.courseRepository.enrollCourse(this.courses[index].course_num, this.courses[index].title, this.courses[index].instructor).subscribe(data => {
+      this.courseRepository.getUserCourses().subscribe(x => {
+        this.enrolledCourses = x
+        this.trimCourses();
+        this.router.navigateByUrl("/directory");
+      });
     });
-    this.trimCourses();
-    this.router.navigateByUrl("/directory");
-    // this.courseRepository.getUserCourses().subscribe();
-
   }
 
   private removeCourse(index: number) {
-    this.courseRepository.deleteUserCourse(this.enrolledCourses[index].course_id).subscribe(data => {
-      this.courseRepository.getUserCourses().subscribe(x => this.enrolledCourses = x);
+    this.courseRepository.deleteUserCourse(this.enrolledCourses[index].course_num).subscribe(data => {
+      this.courseRepository.getUserCourses().subscribe(x => {
+        this.enrolledCourses = x
+        this.courseRepository.getAllCourses().subscribe(y => {
+          this.courses = y
+          this.router.navigateByUrl("/directory");
+        });
+      });
     });
-    this.router.navigateByUrl("/directory");
   }
 
   private viewLabs(index: number) {
@@ -72,7 +85,7 @@ export class LabDirectoryComponent {
   }
 
   private getCourseTemplates(){
-    this.labRepository.getTemplates(this.newTemplateSelectCourse.course_id).subscribe(data => this.templates = data);
+    this.labRepository.getTemplates(this.newTemplateSelectCourse.course_num).subscribe(data => this.templates = data);
   }
 
   //create a new course with the given information
@@ -87,8 +100,8 @@ export class LabDirectoryComponent {
       //create empty lab for local template
       let newLabID = 0;
       //get the template and store it locally
-        this.labRepository.postLab(this.newTemplateSelectCourse.title, this.newTemplateSelectCourse.course_id).subscribe(data => {
-          this.labRepository.getLabid(data.title, data.course_id, data.role).subscribe(x => {
+        this.labRepository.postLab(this.newTemplateSelectCourse.title.split(' ').join('_'), this.newTemplateSelectCourse.course_num).subscribe(data => {
+          this.labRepository.getLabid(data.title, data.course_num, data.role).subscribe(x => {
             let xlength = x.length-1
             this.moduleRepository.getLabModules(this.newTemplateSelect.lab_id).subscribe(mods => {
               for(let item of mods){
@@ -100,16 +113,18 @@ export class LabDirectoryComponent {
         })
     }
     else{
-    this.labRepository.postLab(this.newReportName.split(' ').join('_'), this.newTemplateSelectCourse.course_id).subscribe(
+    this.labRepository.postLab(this.newReportName.split(' ').join('_'), this.newTemplateSelectCourse.course_num).subscribe(
       data => {
-        this.labRepository.getLabid(data.title, data.course_id, data.role).subscribe(nav => this.navigateToLab(nav[0][0]))
+        this.labRepository.getLabid(data.title, data.course_num, data.role).subscribe(nav => this.navigateToLab(nav[0].lab_id))
       });
     }
   }
 
   private removeLab(index: number){
-    this.labRepository.deleteIndLab(this.labs[index].lab_id).subscribe();
-    this.labRepository.getAllLabs().subscribe(x => this.labs = x);
+    this.labRepository.deleteIndLab(this.labs[index].lab_id).subscribe(data => {
+      this.labRepository.getAllLabs().subscribe(x => this.labs = x);
+    });
+    
   }
 
   private loadLab(index: number){
@@ -117,11 +132,11 @@ export class LabDirectoryComponent {
   }
 
   private navigateToLab(labid: number){
-      this.router.navigateByUrl('/lab-generator/' + ""+labid);
+    this.router.navigateByUrl('/lab-generator/' + ""+labid);
   }
 
   private deleteCourse(index: number) {
-      this.courseRepository.deleteIndCourse(this.enrolledCourses[index].course_id).subscribe();
+    this.courseRepository.deleteIndCourse(this.enrolledCourses[index].course_num).subscribe();
   }
 
   private trimCourses(){

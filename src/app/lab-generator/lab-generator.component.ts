@@ -66,6 +66,7 @@ export class LabGeneratorComponent {
       for(var newMod of this.modules){
         this.moduleRepository.postModule(this.lab.lab_id, newMod.type, newMod.data).subscribe();
       }
+      alert("Lab Saved");
     });
   }
 }

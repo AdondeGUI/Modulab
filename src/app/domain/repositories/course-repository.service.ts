@@ -15,23 +15,28 @@ export class CourseRepository {
 
     //Get all courses
     public getAllCourses(): Observable<Course[]>{
-        return this.http.get<Course[]>("http://52.15.171.47/role").catch(x => this.handleException(x));
+        return this.http.get<Course[]>("http://52.15.171.47/classes/list").catch(x => this.handleException(x));
     }
 
     //create a new course
     public createCourse(courseid: number, coursetitle: string): Observable<Course[]>{
-        const body = {course_id: courseid, title: coursetitle, instructor: this.userManager.user.first_name + ' ' + this.userManager.user.last_name, ID: this.userManager.user.ID, role: 1};
-        return this.http.post<Course[]>(this.endpoint, body).catch(x => this.handleException(x));
+        const body = {course_num: courseid, title: coursetitle, instructor: this.userManager.user.first_name + ' ' + this.userManager.user.last_name, ID: this.userManager.user.ID, role: 1};
+        return this.http.post<Course[]>("http://52.15.171.47/classes/list", body).catch(x => this.handleException(x));
     }
 
     //enroll in a particular course
     public enrollCourse(courseid: number, coursetitle: string, courseInstructor: string): Observable<Course[]>{
-        const body = {"course_id": courseid, "title": coursetitle, "instructor": courseInstructor, "ID": this.userManager.user.ID, "role": 0};
+        const body = {"course_num": courseid, "title": coursetitle, "instructor": courseInstructor, "ID": this.userManager.user.ID, "role": 0};
         return this.http.post(this.endpoint, body).catch(x => this.handleException(x));
     }
 
     //Get all courses for a user
     public  getUserCourses(): Observable<Course[]>{
+        return this.http.get<Course[]>(this.endpoint + '/' + String(this.userManager.user.ID)).catch(x => this.handleException(x));
+    }
+
+    //get teacher courses
+    public getTeacherCourses(): Observable<Course[]>{
         return this.http.get<Course[]>(this.endpoint + '/' + String(this.userManager.user.ID)).catch(x => this.handleException(x));
     }
 
