@@ -50,9 +50,12 @@ export class LabDirectoryComponent {
       if(this.userManager.user.role == 0)
         this.courseRepository.getUserCourses().subscribe(x => this.enrolledCourses = x);
       else
-        this.courseRepository.getTeacherCourses().subscribe(x => this.enrolledCourses = x);
+        this.courseRepository.getTeacherCourses().subscribe(x => {
+          this.enrolledCourses = x;
+        });
     });
     
+    //implement thing lawrimore showed
     this.courseRepository.getAllCourses().subscribe(x => this.courses = x);
     this.labRepository.getAllLabs().subscribe(x => this.labs = x);
   }
@@ -80,8 +83,7 @@ export class LabDirectoryComponent {
   }
 
   private viewLabs(index: number) {
-    this.labRepository.getAllLabs().subscribe(x => this.labsToView = x);
-    // this.viewLabCourse = this.courses[index];
+    this.labRepository.getStudentLabs(this.enrolledCourses[index].course_num).subscribe(x => this.labsToView = x);
   }
 
   private getCourseTemplates(){
@@ -100,7 +102,7 @@ export class LabDirectoryComponent {
       //create empty lab for local template
       let newLabID = 0;
       //get the template and store it locally
-        this.labRepository.postLab(this.newTemplateSelectCourse.title.split(' ').join('_'), this.newTemplateSelectCourse.course_num).subscribe(data => {
+        this.labRepository.postLab(this.newReportName.split(' ').join('_'), this.newTemplateSelectCourse.course_num).subscribe(data => {
           this.labRepository.getLabid(data.title, data.course_num, data.role).subscribe(x => {
             let xlength = x.length-1
             this.moduleRepository.getLabModules(this.newTemplateSelect.lab_id).subscribe(mods => {
@@ -113,18 +115,22 @@ export class LabDirectoryComponent {
         })
     }
     else{
-    this.labRepository.postLab(this.newReportName.split(' ').join('_'), this.newTemplateSelectCourse.course_num).subscribe(
-      data => {
-        this.labRepository.getLabid(data.title, data.course_num, data.role).subscribe(nav => this.navigateToLab(nav[0].lab_id))
-      });
-    }
+      let newTitle = "";
+      if(this.userManager.user.ID == 0)
+        newTitle == this.newReportName.split(' ').join('_');
+      else
+        newTitle = this.newTemplateName.split(' ').join('_');
+      this.labRepository.postLab(newTitle, this.newTemplateSelectCourse.course_num).subscribe(
+        data => {
+          this.labRepository.getLabid(data.title, data.course_num, data.role).subscribe(nav => this.navigateToLab(nav[0].lab_id))
+        });
+      }
   }
 
   private removeLab(index: number){
     this.labRepository.deleteIndLab(this.labs[index].lab_id).subscribe(data => {
       this.labRepository.getAllLabs().subscribe(x => this.labs = x);
     });
-    
   }
 
   private loadLab(index: number){

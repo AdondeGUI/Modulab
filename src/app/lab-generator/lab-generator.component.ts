@@ -53,8 +53,11 @@ export class LabGeneratorComponent {
 
   private loadRoute(params: any) {
       if (params.id) {
-        this.labRepository.getIndLab(+params.id).subscribe(x =>  this.lab = x[0]);
-        this.moduleRepository.getLabModules(+params.id).subscribe(y => this.modules = y);
+        this.labRepository.getIndLab(+params.id).subscribe(x =>  {
+          this.lab = x[0];
+          this.moduleRepository.getLabModules(+params.id).subscribe(y => this.modules = y);
+        });
+        
       }
   }
 

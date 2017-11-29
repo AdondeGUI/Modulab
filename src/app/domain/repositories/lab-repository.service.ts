@@ -22,7 +22,7 @@ export class LabRepository {
     //post a new lab
     public postLab(bodytitle: string, bodycourse_num: number): Observable<Lab>  {
         const body = {title: bodytitle, course_num: bodycourse_num, role: this.userManager.user.role};
-        return this.http.post(this.endpoint, body).catch(x => this.handleException(x));
+        return this.http.post<Lab>(this.endpoint, body).catch(x => this.handleException(x));
     }
 
     //get an individual lab
@@ -70,5 +70,7 @@ export class LabRepository {
         alert(message);
         return Observable.throw(message);
     }
+
+
 
 }

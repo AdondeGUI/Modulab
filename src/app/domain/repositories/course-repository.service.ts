@@ -31,13 +31,13 @@ export class CourseRepository {
     }
 
     //Get all courses for a user
-    public  getUserCourses(): Observable<Course[]>{
+    public getUserCourses(): Observable<Course[]>{
         return this.http.get<Course[]>(this.endpoint + '/' + String(this.userManager.user.ID)).catch(x => this.handleException(x));
     }
 
     //get teacher courses
     public getTeacherCourses(): Observable<Course[]>{
-        return this.http.get<Course[]>(this.endpoint + '/' + String(this.userManager.user.ID)).catch(x => this.handleException(x));
+        return this.http.get<Course[]>('http://52.15.171.47/classes/list/' + String(this.userManager.user.ID)).catch(x => this.handleException(x));
     }
 
     //delete all courses for a user
