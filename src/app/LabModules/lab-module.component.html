@@ -1,5 +1,5 @@
 <div class="col-10">
-    <label for="moduleType">Module Type{{module.type}}</label>
+    <label for="moduleType">Module Type</label>
     <select class="form-control" id="moduleType" [(ngModel)]="module.type">
       <ng-container *ngFor="let level of moduleTypes">
         <option [value]="level"> {{ level }}</option>

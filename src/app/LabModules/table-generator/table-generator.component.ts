@@ -8,7 +8,7 @@ import { Module } from '../../domain/models/module';
 })
 
 export class TableGeneratorComponent {
-  rows: any[] = [];
+  rows: any[] = [[]];
   cols: any[] = [];
   table: any[][] = [];
   rowNum: number = 1;
@@ -19,14 +19,22 @@ export class TableGeneratorComponent {
   @Input()
   public module : Module;
 
+  public ngOnInit(){
+    this.loadTable(this.module.data);
+  }
+
   private adjustTableSize() {
-    while(this.colNum != this.cols.length || this.rowNum != this.rows.length)
+    while(this.colNum != this.rows[0].length || this.rowNum != this.rows.length)
     {
       var col = ' ';
-      if(this.colNum > this.cols.length)
-        this.cols.push(col);
-      else if(this.colNum < this.cols.length)
-        this.cols.pop();
+      if(this.colNum > this.rows[0].length){
+        for(row of this.rows)
+          row.push(col);
+      }
+      else if(this.colNum < this.rows[0].length){
+        for(row of this.rows)
+          row.pop();
+      }
       var row : any[] = [];
       if(this.rowNum > this.rows.length)
       {
@@ -37,55 +45,26 @@ export class TableGeneratorComponent {
         this.rows.pop();
       }
     }
-    if(this.rows.length == 4)
-    {
-      this.loadTable('[["4","7","6","3435.3"],["653.45","7.7","6445","3436.7"],["44.0","866","556","343.3"]]');
-    }
-    this.saveTable()
   }
 
   private saveTable() {
     var output2 = JSON.stringify(this.rows);
-    // var output = "[";
-    // for(var i=0;i<this.rowNum;i++)
-    // {
-    //   output += "[";
-    //   for(var j=0;j<this.colNum;j++){
-    //     output += (this.rows[i][j] != undefined) ? "\"" + this.rows[i][j] + "\"" : "\"0\"";
-    //     output += (j != this.colNum - 1) ? "," : "";
-    //   }
-    //   output += (i != this.rowNum - 1) ? "]," : "]";
-    // }
-    // output += "]";
     console.log(output2);
-     this.module.data = output2;
+    this.module.data = output2;
     // this.loadTable(output2);
    }
 
   private loadTable(tableStr : string) {
-    var rowsTmp = JSON.parse(tableStr);
-    //  this.colNum = rowsTmp[0].length;
-    //  this.rowNum = rowsTmp.length;
-    //  this.adjustTableSize();
-     this.rows = rowsTmp;
-
-
-    // var tableTmp = [];
-    // var n =0;
-    // while(n<3)
-    // {
-    //   var rowTmp = tableStr.substr(tableStr.indexOf("["),tableStr.indexOf("]")+1);
-    //   console.log(rowTmp);
-    //   var m = 0;
-    //   while(rowTmp.indexOf("]") != 0 && rowTmp.indexOf("]") != 1 && m<10)
-    //   {
-    //     var colTmp = rowTmp.substr(0,rowTmp.indexOf(",")-1);
-    //     console.log(colTmp);
-    //     rowTmp = rowTmp.substr(rowTmp.indexOf(",")+1);
-    //     m++;
-    //   }
-    //   n++;
-    //   tableStr = tableStr.substr(tableStr.indexOf("]")+1);
-    // };
+    var rowsTmp = [];
+    try {
+      rowsTmp = JSON.parse(tableStr);
+    } catch (e) {
+        return false;
+    }
+    console.log(rowsTmp[0]);
+    this.colNum = rowsTmp[0].length;
+    this.rowNum = rowsTmp.length;
+    this.adjustTableSize();
+    this.rows = rowsTmp;
   }
 }

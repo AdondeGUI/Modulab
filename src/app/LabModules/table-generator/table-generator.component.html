@@ -8,14 +8,14 @@
         <table class="table table-striped">
             <thead id="dataTableHead">
                 <tr>
-                    <th *ngFor="let item of cols; let h = index;">
+                    <th *ngFor="let item of rows[0]; let h = index;">
                         Head {{h + 1}}
                     </th>
                 </tr>
             </thead>
             <tbody id="dataTableBody">
                 <tr *ngFor="let item of rows; let i = index;">
-                    <td *ngFor="let item of cols;let j = index;">
+                    <td *ngFor="let item of rows[0];let j = index;">
                         <!-- ngModel for a 2-d array to store table input values  -->
                         <input type="text" [(ngModel)]="rows[i][j]" (click)="saveTable()" style="width:100%"/>
                     </td>
