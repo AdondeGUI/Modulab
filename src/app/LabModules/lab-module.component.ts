@@ -11,7 +11,7 @@ import { LabModulesModule } from '../LabModules';
 
 export class LabModuleComponent {
   private newModule = new Module();
-  private moduleTypes = ['Image','Table','Hypothesis','Conclusion','Appendix','Process','Method','Text']
+  private moduleTypes = ['Table','Hypothesis','Conclusion','Appendix','Process','Method','Text']
 
   @Input()
   public module : Module;

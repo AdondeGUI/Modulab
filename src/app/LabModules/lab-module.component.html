@@ -6,9 +6,6 @@
       </ng-container>
     </select>
     <div class="module-body" [ngSwitch]="module.type">
-        <ng-container *ngSwitchCase="'Image'">
-            <image-module [module]="module"></image-module>
-        </ng-container>
         <ng-container *ngSwitchCase="'Table'">
             <table-generator [module]="module"></table-generator>
         </ng-container>
