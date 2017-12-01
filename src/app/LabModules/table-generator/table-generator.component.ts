@@ -55,6 +55,7 @@ export class TableGeneratorComponent {
    }
 
   private loadTable(tableStr : string) {
+    debugger;
     var rowsTmp = [];
     try {
       rowsTmp = JSON.parse(tableStr);
