@@ -1,0 +1,670 @@
+// Routes
+
+
+//users get
+$app->get('/users', function ($request, $response, $args) {
+   try{
+    $this -> logger -> info("/users route");
+    $sth = $this->db->prepare("SELECT * FROM users");
+    $sth->execute();
+    $users = $sth->fetchAll();
+    return $this->response->withJson($users);
+   }catch(PDOException $ex){
+   return $response->withJson(array('error' => $ex->getMessage()),422);
+   }
+});
+
+//users post
+$app->post('/users',function ($request, $response){
+    $test = $request->getParsedBody();
+    $paramEmail = "";
+    $paramPassword = "";
+    $paramFirst = "";
+    $paramLast = "";
+    $paramRole = "";
+    foreach ($test as $key => $value) {
+        if ($key =='email' )
+            $paramEmail = $test[$key];
+        if ($key == 'password')
+            $paramPassword = $test[$key];
+        if ($key == 'first_name')
+            $paramFirst = $test[$key];
+        if ($key == 'last_name')
+            $paramLast = $test[$key];
+        if ($key == 'role')
+            $paramRole = $test[$key];
+    }
+   $sth = $this->db->prepare("INSERT INTO users (email,password,first_name,last_name,role) VALUES (:email,:password,:first_name,:last_name,:role)");
+   try {
+      $sth->bindParam(":email", $paramEmail);
+      $sth->bindParam(":password", $paramPassword);
+      $sth->bindParam(":first_name", $paramFirst);
+      $sth->bindParam(":last_name", $paramLast);
+      $sth->bindParam(":role", $paramRole);
+      $sth->execute();
+      $stmt = "$paramFirst $paramLast $paramEmail $paramPassword $paramRole";
+      return $this->response->withJson(array('first_name' => $paramFirst, 'last_name' => $paramLast, 'email' => $paramEmail, 'password' => $paramPassword, 'role' => $paramRole),200);
+   } catch(PDOException $ex){
+      return $this->response->withJson(array('error' => $ex->getMessage()),422);
+ }
+});
+
+
+//login get email
+$app->get('/login/{email}', function ($request, $response) {
+   try{
+       $email = $request->getAttribute(email);
+       $sth = $this->db->prepare("SELECT * FROM `users` WHERE email = :email");
+       $sth->bindParam(":email", $email);
+       $sth->execute();
+       $users = $sth->fetchAll();
+       return $this->response->withJson($users);
+      }catch(PDOException $ex){
+       return $response->withJson(array('error' => $ex->getMessage()),422);      }
+});
+
+
+//url when checking is 52.15.171.47/users/# (the number varies on the request)
+//users with id get
+$app->get('/users/{ID}', function ($request, $response) {
+   try{
+       $ID = $request->getAttribute(ID);
+       $sth = $this->db->prepare("SELECT `ID`, `email`, `first_name`, `last_name` FROM `users` WHERE ID = :ID");
+       $sth->bindParam(":ID", $ID);
+       $sth->execute();
+       $users = $sth->fetchAll();
+       return $this->response->withJson($users);
+      }catch(PDOException $ex){
+       return $response->withJson(array('error' => $ex->getMessage()),422);
+      }
+});
+//users with id put
+$app->put('/users/{ID}',function ($request, $response){
+    $test = $request->getParsedBody();
+    $paramEmail = "";
+    $paramPassword = "";
+    $paramFirst = "";
+    $paramLast = "";
+    $role = "";
+    foreach ($test as $key => $value) {
+        if ($key =='email' )
+            $paramEmail = $test[$key];
+        if ($key == 'password')
+            $paramPassword = $test[$key];
+        if ($key == 'first_name')
+            $paramFirst = $test[$key];
+        if ($key == 'last_name')
+            $paramLast = $test[$key];
+        if ($key == 'role')
+           $role = $test[$key];
+    }
+    $ID = $request->getAttribute(ID);
+    $sth = $this->db->prepare("UPDATE users SET email = :email, password = :password, first_name = :first_name, last_name = :last_name, role = :role  WHERE ID = :ID");
+    try {
+       $sth->bindParam(":email", $paramEmail);
+       $sth->bindParam(":password", $paramPassword);
+       $sth->bindParam(":first_name", $paramFirst);
+       $sth->bindParam(":last_name", $paramLast);
+       $sth->bindParam(":ID", $ID);
+       $sth->bindParam(":role", $role);
+       $sth->execute();
+       return $this->response->withJson(array('email' => $paramEmail, 'password' => $paramPassword, 'first_name' => $paramFirst, 'last_name' => $paramLast, 'ID' => $ID, 'role' => $role));
+      }catch(PDOException $ex){
+     return $response->withJson(array('error' => $ex->getMessage()),422);
+   }
+});
+
+//users with id delete
+$app->delete('/users/{ID}', function ($request, $response){
+  try{
+       $ID = $request->getAttribute(ID);
+       $sth = $this->db->prepare("DELETE FROM users WHERE ID = :ID");
+       $sth->bindParam(":ID", $ID);
+       $sth->execute();
+      }catch(PDOException $ex){
+     return $response->withJson(array('error' => $ex->getMessage()),422);
+   }
+});
+
+//courses post
+$app->post('/courses',function ($request, $response){
+    $test = $request->getParsedBody();
+    $paramTitle = "";
+    $paramCourseNum = "";
+    $paramInstructor = "";
+    $ID = "";
+    $role = "";
+    foreach ($test as $key => $value) {
+        if ($key == 'title')
+            $paramTitle = $test[$key];
+        if ($key =='course_num')
+            $paramCourseNum = $test[$key];
+        if ($key == 'instructor')
+            $paramInstructor = $test[$key];
+        if ($key == 'ID')
+            $ID = $test[$key];
+        if ($key == 'role')
+            $role = $test[$key];
+    }
+   $sth = $this->db->prepare("INSERT INTO Courses (ID, title, instructor, course_num, role) VALUES (:ID, :title, :instructor, :course_num, :role)");
+   try {
+      $sth->bindParam(":ID", $ID);
+      $sth->bindParam(":title", $paramTitle);
+      $sth->bindParam(":instructor", $paramInstructor);
+      $sth->bindParam(":course_num", $paramCourseNum);
+      $sth->bindParam(":role", $role);
+      $sth->execute();
+      return $this->response->withJson(array('ID' => $ID, 'title' => $paramTitle, 'instructor' => $paramInstructor, 'course_num' => $paramCourseNum, 'role' => $role));
+   } catch(PDOException $ex){
+      return $response->withJson(array('error' => $ex->getMessage()),422);
+   }
+});
+
+//courses post with ID
+$app->post('/courses/{ID}',function ($request, $response){
+    $test = $request->getParsedBody();
+    $paramTitle = "";
+    $paramCourseNum = "";
+    $paramInstructor = "";
+    $ID = $request->getAttribute(ID);
+    $role = "";
+    foreach ($test as $key => $value) {
+        if ($key == 'title')
+            $paramTitle = $test[$key];
+        if ($key =='course_num')
+            $paramCourseNum = $test[$key];
+        if ($key == 'instructor')
+            $paramInstructor = $test[$key];
+        if ($key == 'role')
+            $role = $test[$key];
+    }
+   $sth = $this->db->prepare("INSERT INTO Courses (ID, title, instructor, course_num, role) VALUES (:ID, :title, :instructor, :course_num, :role)");
+   try {
+      $sth->bindParam(":ID", $ID);
+      $sth->bindParam(":title", $paramTitle);
+      $sth->bindParam(":instructor", $paramInstructor);
+      $sth->bindParam(":course_num", $paramCourseNum);
+      $sth->bindParam(":role", $role);
+      $sth->execute();
+      return $this->response->withJson(array('ID' => $ID, 'title' => $paramTitle, 'instructor' => $paramInstructor, 'course_num' => $paramCourseNum, 'role' => $role));
+   } catch(PDOException $ex){
+      return $response->withJson(array('error' => $ex->getMessage()),422);
+   }
+});
+
+//courses with id get
+$app->get('/courses/{ID}', function ($request, $response) {
+   try{
+       $ID = $request->getAttribute(ID);
+       $sth = $this->db->prepare("SELECT *  FROM `Courses` WHERE ID = :ID");
+       $sth->bindParam(":ID", $ID);
+       $sth->execute();
+       $users = $sth->fetchAll();
+       return $this->response->withJson($users);
+      }catch(PDOException $ex){
+      return $response->withJson(array('error' => $ex->getMessage()),422);
+      }
+});
+
+
+//courses with id get
+$app->get('/role', function ($request, $response) {
+   try{
+       $sth = $this->db->prepare("SELECT *  FROM `Courses` WHERE role = 1");
+       $sth->execute();
+       $users = $sth->fetchAll();
+       return $this->response->withJson($users);
+      }catch(PDOException $ex){
+      return $response->withJson(array('error' => $ex->getMessage()),422);
+      }
+});
+
+//courses with id put
+$app->put('/courses/{ID}/{course_num}',function ($request, $response){
+    $test = $request->getParsedBody();
+    $paramTitle = "";
+    $paramInstructor = "";
+    $paramCourseNum = $request->getAttribute(course_num);
+    foreach ($test as $key => $value) {
+        if ($key =='title' )
+            $paramTitle = $test[$key];
+        if ($key == 'instructor')
+            $paramInstructor = $test[$key];
+    }
+    $ID = $request->getAttribute(ID);
+    $sth = $this->db->prepare("UPDATE Courses SET title = :title, instructor = :instructor  WHERE ID = :ID AND course_num = :course_num");
+    try {
+       $sth->bindParam(":title", $paramTitle);
+       $sth->bindParam(":instructor", $paramInstructor);
+       $sth->bindParam(":course_num", $paramCourseNum);
+       $sth->bindParam(":ID", $ID);
+       $sth->execute();
+       return $this->response->withJson(array( 'title' => $paramTitle, 'instructor' => $paramInstructor, 'course_num' => $paramCourseNum, 'ID' => $ID));
+     }catch(PDOException $ex){
+     return $response->withJson(array('error' => $ex->getMessage()),422);
+   }
+});
+
+//courses with id delete
+$app->delete('/courses/{ID}', function ($request, $response){
+  try{
+       $ID = $request->getAttribute(ID);
+       $sth = $this->db->prepare("DELETE FROM Courses  WHERE ID = :ID");
+       $sth->bindParam(":ID", $ID);
+       $sth->execute();
+ }catch(PDOException $ex){
+      return $response->withJson(array('error' => $ex->getMessage()),422);
+   }
+});
+
+//courses with course_id get
+$app->get('/courses/classes/{course_num}', function ($request, $response) {
+   try{
+       $ID = $request->getAttribute(course_num);
+       $sth = $this->db->prepare("SELECT *  FROM `Courses` WHERE course_num = :course_num");
+       $sth->bindParam(":course_num", $ID);
+       $sth->execute();
+       $users = $sth->fetchAll();
+       return $this->response->withJson($users);
+      }catch(PDOException $ex){
+       return $response->withJson(array('error' => $ex->getMessage()),422);
+      }
+});
+
+//courses with courses_id delete
+$app->delete('/courses/classes/{course_id}', function ($request, $response){
+  try{
+       $ID = $request->getAttribute(course_id);
+       $sth = $this->db->prepare("DELETE FROM Courses WHERE course_id = :course_id");
+       $sth->bindParam(":course_id", $ID);
+       $sth->execute();
+      }catch(PDOException $ex){
+      return $response->withJson(array('error' => $ex->getMessage()),422);
+   }
+});
+
+
+//courses with courses_id and ID delete 
+$app->delete('/courses/{ID}/{course_num}', function ($request, $response){
+  try{
+       $ID = $request->getAttribute(ID);
+       $course_num = $request->getAttribute(course_num);
+       $sth = $this->db->prepare("DELETE FROM Courses WHERE course_num = :course_num AND ID = :ID");
+       $sth->bindParam(":course_num", $course_num);
+       $sth->bindParam(":ID", $ID);
+       $sth->execute();
+      }catch(PDOException $ex){
+      return $response->withJson(array('error' => $ex->getMessage()),422);
+   }
+});
+
+//courses with courses_id and ID get 
+$app->get('/courses/{ID}/{course_num}', function ($request, $response){
+  try{
+       $ID = $request->getAttribute(ID);
+       $course_num = $request->getAttribute(course_num);
+       $sth = $this->db->prepare("SELECT * FROM  Courses WHERE course_num = :course_num AND ID = :ID");
+       $sth->bindParam(":course_num", $course_num);
+       $sth->bindParam(":ID", $ID);
+       $sth->execute();
+       $stmt =$sth->fetchAll();
+       return $this->response->withJson($stmt);
+      }catch(PDOException $ex){
+      return $response->withJson(array('error' => $ex->getMessage()),422);
+   }
+});
+
+//courses get
+$app->get('/courses', function ($request, $response, $args) {
+    try{
+    $this -> logger -> info("/courses route");
+    $sth = $this->db->prepare("SELECT * FROM Courses");
+    $sth->execute();
+    $users = $sth->fetchAll();
+    return $this->response->withJson($users);
+    }catch(PDOException $ex){
+   return $response->withJson(array('error' => $ex->getMessage()),422);
+   }
+});
+
+//labs with user id get
+$app->get('/users/{ID}/labs', function ($request, $response) {
+   try{
+       $ID = $request->getAttribute(ID);
+       $sth = $this->db->prepare("SELECT * FROM `Labs` WHERE ID = :ID");
+       $sth->bindParam(":ID", $ID);
+       $sth->execute();
+       $users = $sth->fetchAll();
+       return $this->response->withJson($users);
+      }catch(PDOException $ex){
+      return $response->withJson(array('error' => $ex->getMessage()),422);
+      }
+});
+
+//labs with user id post
+$app->post('/users/{ID}/labs',function ($request, $response){
+    $test = $request->getParsedBody();
+    $paramTitle = "";
+    $paramCourseNum = "";
+    $role = "";
+    $ID = $request->getAttribute(ID);
+    foreach ($test as $key => $value) {
+        if ($key =='course_num')
+            $paramCourseNum = $test[$key];
+        if ($key == 'title')
+            $paramTitle = $test[$key];
+        if ($key == 'role')
+            $role = $test[$key];
+    }
+   $sth = $this->db->prepare("INSERT INTO Labs (ID, title, course_num, role) VALUES (:ID, :title, :course_num, :role)");
+   try {
+      $sth->bindParam(":ID", $ID);
+      $sth->bindParam(":title", $paramTitle);
+      $sth->bindParam(":course_num", $paramCourseNum);
+      $sth->bindParam(":role", $role);
+      $sth->execute();
+      $stmt = "Lab $paramTitle created for user $ID.";
+      return $this->response->withJson(array('ID' => $ID, 'title' => $paramTitle, 'course_num' => $paramCourseNum, 'role' => $role));
+   } catch(PDOException $ex){
+      return $response->withJson(array('error' => $ex->getMessage()),422);
+   }
+
+});
+
+//labs with lab_id and user id get
+$app->get('/users/{ID}/labs/{lab_id}', function ($request, $response) {
+   try{
+       $ID = $request->getAttribute(ID);
+       $lab_id = $request->getAttribute(lab_id);
+       $sth = $this->db->prepare("SELECT *  FROM `Labs` WHERE ID = :ID AND lab_id = :lab_id");
+       $sth->bindParam(":ID", $ID);
+       $sth->bindParam(":lab_id", $lab_id);
+       $sth->execute();
+       $users = $sth->fetchAll();
+       return $this->response->withJson($users);
+      }catch(PDOException $ex){
+      return $response->withJson(array('error' => $ex->getMessage()),422);
+      }
+});
+
+//labs with lab_id and user id put
+$app->put('/users/{ID}/labs/{lab_id}',function ($request, $response){
+    $ID = $request->getAttribute(ID);
+    $lab_id = $request->getAttribute(lab_id);
+    $test = $request->getParsedBody();
+    $paramTitle = "";
+    foreach ($test as $key => $value) {
+        if ($key =='title' )
+            $paramTitle = $test[$key];
+    }
+    $sth = $this->db->prepare("UPDATE Labs SET title = :title  WHERE ID = :ID AND lab_id = :lab_id");
+    try {
+       $sth->bindParam(":title", $paramTitle);
+       $sth->bindParam(":ID", $ID);
+       $sth->bindParam(":lab_id", $lab_id);
+       $sth->execute();
+       return $this->response->withJson(array('title' => $paramTitle, 'ID' => $ID, 'lab_id' => $lab_id));
+     }catch(PDOException $ex){
+      return $response->withJson(array('error' => $ex->getMessage()),422);
+   }
+});
+
+//labs with lab_id and user id delete
+$app->delete('/users/{ID}/labs/{lab_id}', function ($request, $response){
+  try{
+       $ID = $request->getAttribute(ID);
+       $lab_id = $request->getAttribute(lab_id);
+       $sth = $this->db->prepare("DELETE FROM Labs WHERE ID = :ID AND lab_id = :lab_id");
+       $sth->bindParam(":ID", $ID);
+       $sth->bindParam(":lab_id", $lab_id);
+       $sth->execute();
+      }catch(PDOException $ex){
+      return $response->withJson(array('error' => $ex->getMessage()),422);
+   }
+});
+
+//labs with lab_id and user id delete
+$app->delete('/users/{ID}/labs', function ($request, $response){
+  try{
+       $ID = $request->getAttribute(ID);
+       $sth = $this->db->prepare("DELETE FROM Labs WHERE ID = :ID");
+       $sth->bindParam(":ID", $ID);
+       $sth->execute();
+      }catch(PDOException $ex){
+      return $response->withJson(array('error' => $ex->getMessage()),422);
+   }
+});
+
+//modules with lab_id get
+$app->get('/labs/{lab_id}/modules', function ($request, $response) {
+   try{
+       $lab_id = $request->getAttribute(lab_id);
+       $sth = $this->db->prepare("SELECT *  FROM Modules  WHERE lab_id = :lab_id");
+       $sth->bindParam(":lab_id", $lab_id);
+       $sth->execute();
+       $users = $sth->fetchAll();
+       return $this->response->withJson($users);
+      }catch(PDOException $ex){
+      return $response->withJson(array('error' => $ex->getMessage()),422);
+      }
+});
+
+//modules with lab_id post
+$app->post('/labs/{lab_id}/modules',function ($request, $response){
+    $test = $request->getParsedBody();
+    $paramType = "";
+    $paramData = "";
+    $lab_id = $request->getAttribute(lab_id);
+    foreach ($test as $key => $value) {
+        if ($key =='data')
+            $paramData = $test[$key];
+        if ($key == 'type')
+            $paramType = $test[$key];
+    }
+   $sth = $this->db->prepare("INSERT INTO Modules  (lab_id, type, data) VALUES (:lab_id, :type, :data)");
+   try {
+      $sth->bindParam(":lab_id", $lab_id);
+      $sth->bindParam(":type", $paramType);
+      $sth->bindParam(":data", $paramData);
+      $sth->execute();
+      $stmt = "Details: Module created for lab $lab_id.";
+      return $this->response->withJson(array('lab_id' => $lab_id, 'type' => $paramType, 'data' => $paramData));
+   } catch(PDOException $ex){
+      return $response->withJson(array('error' => $ex->getMessage()),422);
+   }
+
+});
+
+//modules with  lab_id and module_id get
+$app->get('/labs/{lab_id}/modules/{module_id}', function ($request, $response) {
+   try{
+       $lab_id = $request->getAttribute(lab_id);
+       $module_id = $request->getAttribute(module_id);
+       $sth = $this->db->prepare("SELECT * FROM Modules WHERE lab_id = :lab_id AND module_id = :module_id");
+       $sth->bindParam(":lab_id", $lab_id);
+       $sth->bindParam(":module_id", $module_id);
+       $sth->execute();
+       $result = $sth->rowCount();
+       $users = $sth->fetchAll();
+       return $this->response->withJson($users);
+      }catch(PDOException $ex){
+      return $response->withJson(array('error' => $ex->getMessage()),422);
+      }
+});
+
+//modules with lab_id and module_id put
+$app->put('/labs/{lab_id}/modules/{module_id}',function ($request, $response){
+    $test = $request->getParsedBody();
+    $paramType = "";
+    $paramData = "";
+    $lab_id = $request->getAttribute(lab_id);
+    $module_id = $request->getAttribute(module_id);
+    foreach ($test as $key => $value) {
+        if ($key =='data')
+            $paramData = $test[$key];
+        if ($key == 'type')
+            $paramType = $test[$key];
+    }
+   $sth = $this->db->prepare("UPDATE Modules SET type = :type, data  = :data  WHERE lab_id= :lab_id AND module_id = :module_id");
+   try {
+      $sth->bindParam(":lab_id", $lab_id);
+      $sth->bindParam(":type", $paramType);
+      $sth->bindParam(":data", $paramData);
+      $sth->bindParam(":module_id", $module_id);
+      $sth->execute();
+      return $this->response->withJson(array('lab_id' => $lab_id, 'type' => $paramType, 'data' => $paramData, 'module_id' => $module_id));
+   } catch(PDOException $ex){
+      return $response->withJson(array('error' => $ex->getMessage()),422);
+   }
+
+});
+
+//modules with lab_id and module_id delete
+$app->delete('/labs/{lab_id}/modules/{module_id}', function ($request, $response){
+  try{
+       $module_id = $request->getAttribute(module_id);
+       $lab_id = $request->getAttribute(lab_id);
+       $sth = $this->db->prepare("DELETE FROM Modules WHERE module_id = :module_id  AND lab_id = :lab_id");
+       $sth->bindParam(":module_id", $module_id);
+       $sth->bindParam(":lab_id", $lab_id);
+       $sth->execute();
+      }catch(PDOException $ex){
+      return $response->withJson(array('error' => $ex->getMessage()),422);
+   }
+});
+
+//modules with lab_id and module_id delete
+$app->delete('/labs/{lab_id}/modules', function ($request, $response){
+  try{
+       $lab_id = $request->getAttribute(lab_id);
+       $sth = $this->db->prepare("DELETE FROM Modules WHERE lab_id = :lab_id");
+       $sth->bindParam(":lab_id", $lab_id);
+       $sth->execute();
+      }catch(PDOException $ex){
+      return $response->withJson(array('error' => $ex->getMessage()),422);
+   }
+});
+
+//GET lab_id
+$app->get('/labs/{ID}/{title}/{course_num}/{role}', function ($request, $response) {
+   try{
+       $ID = $request->getAttribute(ID);
+       $title = $request->getAttribute(title);
+       $course_num = $request->getAttribute(course_num);
+       $role = $request->getAttribute(role);
+       $sth = $this->db->prepare("SELECT lab_id FROM Labs WHERE ID = :ID AND title = :title AND course_num = :course_num AND role = :role");
+       $sth->bindParam(":ID", $ID);
+       $sth->bindParam(":title", $title);
+       $sth->bindParam(":course_num", $course_num);
+       $sth->bindParam(":role", $role);
+       $sth->execute();
+       $result = $sth->rowCount();
+       $users = $sth->fetchAll();
+       return $this->response->withJson($users);
+      }catch(PDOException $ex){
+      return $response->withJson(array('error' => $ex->getMessage()),422);
+      }
+});
+
+//Get all labs templates for a specific course_id
+//GET lab_id
+$app->get('/labs/templates/{course_num}', function ($request, $response) {
+   try{
+       $course_num = $request->getAttribute(course_num);
+       $sth = $this->db->prepare("SELECT * FROM Labs WHERE course_num = :course_num AND role = 1");
+       $sth->bindParam(":course_num", $course_num);
+       $sth->execute();
+       $result = $sth->rowCount();
+       $users = $sth->fetchAll();
+       return $this->response->withJson($users);
+      }catch(PDOException $ex){
+      return $response->withJson(array('error' => $ex->getMessage()),422);
+      }
+});
+
+//Get all labs templates for a specific course_id
+//GET lab_id
+$app->get('/labs/students/{course_num}', function ($request, $response) {
+   try{
+       $course_num = $request->getAttribute(course_num);
+       $sth = $this->db->prepare("SELECT * FROM Labs WHERE course_num = :course_num AND role = 0");
+       $sth->bindParam(":course_num", $course_num);
+       $sth->execute();
+       $result = $sth->rowCount();
+       $users = $sth->fetchAll();
+       return $this->response->withJson($users);
+      }catch(PDOException $ex){
+      return $response->withJson(array('error' => $ex->getMessage()),422);
+      }
+});
+
+//users get
+$app->get('/classes/list', function ($request, $response, $args) {
+   try{
+    $sth = $this->db->prepare("SELECT * FROM CoursesList");
+    $sth->execute();
+    $users = $sth->fetchAll();
+    return $this->response->withJson($users);
+   }catch(PDOException $ex){
+   return $response->withJson(array('error' => $ex->getMessage()),422);
+   }
+});
+
+//courses post
+$app->post('/classes/list',function ($request, $response){
+    $test = $request->getParsedBody();
+    $paramTitle = "";
+    $paramCourseNum = "";
+    $paramInstructor = "";
+    $ID = "";
+    foreach ($test as $key => $value) {
+        if ($key == 'title')
+            $paramTitle = $test[$key];
+        if ($key =='course_num')
+            $paramCourseNum = $test[$key];
+        if ($key == 'instructor')
+            $paramInstructor = $test[$key];
+        if ($key == 'ID')
+            $ID = $test[$key];
+    }
+   $sth = $this->db->prepare("INSERT INTO CoursesList (ID, title, instructor, course_num) VALUES (:ID, :title, :instructor, :course_num)");
+   try {
+      $sth->bindParam(":ID", $ID);
+      $sth->bindParam(":title", $paramTitle);
+      $sth->bindParam(":instructor", $paramInstructor);
+      $sth->bindParam(":course_num", $paramCourseNum);
+      $sth->execute();
+      return $this->response->withJson(array('ID' => $ID, 'title' => $paramTitle, 'instructor' => $paramInstructor, 'course_num' => $paramCourseNum));
+   } catch(PDOException $ex){
+      return $response->withJson(array('error' => $ex->getMessage()),422);
+   }
+});
+
+//users get
+$app->get('/classes/list/{ID}', function ($request, $response, $args) {
+   try{
+    $ID = $request->getAttribute(ID);
+    $sth = $this->db->prepare("SELECT * FROM CoursesList WHERE ID = :ID");
+    $sth->bindParam(":ID",$ID);
+    $sth->execute();
+    $users = $sth->fetchAll();
+    return $this->response->withJson($users);
+   }catch(PDOException $ex){
+   return $response->withJson(array('error' => $ex->getMessage()),422);
+   }
+});
+
+//labs with user id get
+$app->get('/teachers/{course_num}/labs', function ($request, $response) {
+   try{
+       $course_num = $request->getAttribute(course_num);
+       $sth = $this->db->prepare("SELECT * FROM `Labs` WHERE course_num = :course_num");
+       $sth->bindParam(":course_num", $course_num);
+       $sth->execute();
+       $users = $sth->fetchAll();
+       return $this->response->withJson($users);
+      }catch(PDOException $ex){
+      return $response->withJson(array('error' => $ex->getMessage()),422);
+      }
+});
+
